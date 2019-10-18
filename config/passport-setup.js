@@ -15,5 +15,13 @@ passport.use(
     console.log(profile.id);
     console.log(profile.username);
     // You're gonna want profile.id and profile.username !
+    new User({
+      username: profile.username,
+      twitterID: profile.id,
+      accessToken: token,
+      accessTokenSecret: tokenSecret
+    }).save().then((newUser) => {
+      console.log('new user created' + newUser);
+    });
   })
 );
