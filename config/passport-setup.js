@@ -25,7 +25,7 @@ passport.use(
         }).save().then((newUser) => {
           console.log('new user created' + newUser);
         });
-      }
+      })
     })
   })
 );
