@@ -15,7 +15,7 @@ passport.use(
       if(currentUser){
         // User exists
         console.log('User is: ', currentUser);
-      } else
+      } else {
         // User does not exist. Create new user record.
         new User({
           username: profile.username,
