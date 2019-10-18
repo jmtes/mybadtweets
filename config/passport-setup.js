@@ -14,18 +14,17 @@ passport.use(
     User.findOne({twitterID: profile.id}).then((currentUser) => {
       if(currentUser){
         // User exists
-        console.log('User is: ', currentUser);
+        console.log('User is: ', currentuser);
       } else {
-        // User does not exist. Create new user record.
         new User({
           username: profile.username,
           twitterID: profile.id,
           accessToken: token,
           accessTokenSecret: tokenSecret
-        }).save().then((newUser) => {
-          console.log('new user created' + newUser);
+          }).save().then((newUser) => {
+            console.log('new user created' + newUser);
         });
-      })
+      }
     })
   })
 );
