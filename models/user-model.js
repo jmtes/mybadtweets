@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username:  String,
+  username: String,
   twitterID: String,
   accessToken: String,
   accessTokenSecret: String
 });
 
-const User =  mongoose.model('user', userSchema);
+const User = mongoose.model('user', userSchema);
 
 module.exports = User;
