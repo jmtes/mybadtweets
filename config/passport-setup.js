@@ -3,6 +3,16 @@ const Strategy = require('passport-twitter');
 const keys = require('./keys');
 const User = require('../models/user-model');
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id).then((user) => {
+    done(null, user);
+  });
+});
+
 passport.use(
   new Strategy({
   // Options for the strategy
@@ -15,6 +25,7 @@ passport.use(
       if(currentUser){
         // User exists
         console.log('User is: ', currentuser);
+        done(null, currentUser);
       } else {
         new User({
           username: profile.username,
@@ -23,6 +34,7 @@ passport.use(
           accessTokenSecret: tokenSecret
           }).save().then((newUser) => {
             console.log('new user created' + newUser);
+            done(null, newUser);
         });
        }
     })
