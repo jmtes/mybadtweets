@@ -8,14 +8,14 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findOne({twitterID: id}).then((user) => {
-    done(null, user);
+    User.findOne({twitterID: id}).then((user) => {
+      done(null, user);
   });
 });
 
 passport.use(
   new Strategy({
-  // Options for the strategy
+    // Options for the strategy
     consumerKey: keys.twitter.consumerKey,
     consumerSecret: keys.twitter.consumerSecret,
     callbackURL: '/auth/twitter/redirect'
@@ -37,6 +37,6 @@ passport.use(
             done(null, newUser);
         });
        }
-    })
+    });
   })
 );
