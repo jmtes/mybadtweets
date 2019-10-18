@@ -10,12 +10,12 @@ passport.use(
     consumerSecret: keys.twitter.consumerSecret,
     callbackURL: '/auth/twitter/redirect'
   }, (token, tokenSecret, profile, done) => {
-    // Check if user already exists in db
-    // User.findOne({twitterID: profile.id}).then((currentUser) => {
-    //   if(currentUser){
-    //     // User exists
-    //     console.log('User is: ', currentuser);
-    //   } else {
+    Check if user already exists in db
+    User.findOne({twitterID: profile.id}).then((currentUser) => {
+      if(currentUser){
+        // User exists
+        console.log('User is: ', currentuser);
+      } else {
         new User({
           username: profile.username,
           twitterID: profile.id,
@@ -24,7 +24,7 @@ passport.use(
           }).save().then((newUser) => {
             console.log('new user created' + newUser);
         });
-       //}
-    //})
+       }
+    })
   })
 );
