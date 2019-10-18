@@ -9,7 +9,8 @@ router.get('/login', (req, res) => {
 // Auth logout
 router.get('/logout', (req, res) => {
   // Handle with passport
-  res.send('Logging out');
+  req.logout();
+  res.redirect('/');
 })
 
 // Auth with Twitter
