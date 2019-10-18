@@ -10,11 +10,11 @@ const passport = require('passport');
 const app = express();
 
 // Set up session
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: 'sugarboy'
-}));
+// app.use(session({
+//   resave: true,
+//   saveUninitialized: true,
+//   secret: 'sugarboy'
+// }));
 
 // Set up view engine
 app.set('view engine', 'ejs');
