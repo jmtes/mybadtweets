@@ -20,7 +20,7 @@ passport.use(
     consumerSecret: keys.twitter.consumerSecret,
     callbackURL: '/auth/twitter/redirect'
   }, (token, tokenSecret, profile, done) => {
-    Check if user already exists in db
+    // Check if user already exists in db
     User.findOne({twitterID: profile.id}).then((currentUser) => {
       if(currentUser){
         // User exists
