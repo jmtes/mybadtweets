@@ -1,13 +1,17 @@
 const express = require('express');
-const authRoutes = require('./routes/auth-routes');
 const passportSetup = require('./config/passport-setup');
 const session = require('express-session');
-const mongoose = require('mongoose');
-const keys = require('./config/keys');
-const cookieSession = require('cookie-session');
+const authRoutes = require('./routes/auth-routes');
 const passport = require('passport');
 
 const app = express();
+
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
+const cookieSession = require('cookie-session');
+
+
+
 
 // Set up session
 // app.use(session({
@@ -19,6 +23,11 @@ const app = express();
 // Set up view engine
 app.set('view engine', 'ejs');
 
+// Connect to mongodb
+mongoose.connect(keys.mongodb.dbURI, () => {
+  console.log('connected to mongodb');
+});
+
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey]
@@ -27,11 +36,6 @@ app.use(cookieSession({
 // Initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Connect to mongodb
-mongoose.connect(keys.mongodb.dbURI, () => {
-  console.log('connected to mongodb');
-});
 
 // Set up routes
 app.use('/auth', authRoutes);
