@@ -17,6 +17,11 @@
   </header>
   <div class='container'>
     <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3>
+    <ul>
+      <% tweets.forEach(function (tweet) { %>
+        <li><%= tweet.text %></li>
+      <% }); %>
+    </ul>
   </div>
   <footer>
     <p>made by julienne 'juno tesoro' tesoro</p>
