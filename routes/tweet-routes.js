@@ -36,16 +36,15 @@ router.get('/', authCheck, (req, res) => {
       console.log('inside callback');
       tweetArray = data;
       console.log('tweetArray is: ', tweetArray);
+      res.render('tweets', {
+        user: req.user,
+        tweets: tweetArray
+      });
     });
   }
 
   getTweets();
-  console.log('right before render. tweetArray is: ' + tweetArray);
-  // res.render('tweets', {
-  //   user: req.user,
-  //   tweets: tweetArray
-  // });
-  res.send(tweetArray);
+  // console.log('right before render. tweetArray is: ' + tweetArray);
 });
 
 module.exports = router;
