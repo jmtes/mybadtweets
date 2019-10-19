@@ -30,7 +30,7 @@ router.get('/', authCheck, (req, res) => {
 
   function getTweets() {
     client.get('statuses/user_timeline', params, (err, data, response) => {
-      console.log(data);
+      // console.log(data);
       return data;
     });
   }
