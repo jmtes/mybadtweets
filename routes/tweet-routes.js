@@ -45,6 +45,7 @@ router.get('/', authCheck, (req, res) => {
   //   user: req.user,
   //   tweets: tweetArray
   // });
+  getTweets();
   res.send('test');
 });
 
