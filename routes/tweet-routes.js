@@ -41,10 +41,11 @@ router.get('/', authCheck, (req, res) => {
 
   getTweets();
   console.log('right before render. tweetArray is: ' + tweetArray);
-  res.render('tweets', {
-    user: req.user,
-    tweets: tweetArray
-  });
+  // res.render('tweets', {
+  //   user: req.user,
+  //   tweets: tweetArray
+  // });
+  res.send(tweetArray);
 });
 
 module.exports = router;
