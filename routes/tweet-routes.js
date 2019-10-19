@@ -34,15 +34,17 @@ router.get('/', authCheck, (req, res) => {
     client.get('statuses/user_timeline', params, (err, data, response) => {
       // console.log(data);
       tweetArray = data;
+      console.log('tweetArray is: ', tweetArray);
     });
   }
-  
-  console.log(tweetArray);
-  console.log('TYPEOF TWEETARRAY!!!!!! ' + typeof tweetArray);
-  res.render('tweets', {
-    user: req.user,
-    tweets: tweetArray
-  });
+
+  //console.log(tweetArray);
+  //console.log('TYPEOF TWEETARRAY!!!!!! ' + typeof tweetArray);
+  // res.render('tweets', {
+  //   user: req.user,
+  //   tweets: tweetArray
+  // });
+  res.send('test');
 });
 
 module.exports = router;
