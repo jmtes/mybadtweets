@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Twit = require('twit');
 const keys = require('../config/keys');
+const math = require('math');
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -14,6 +15,7 @@ const authCheck = (req, res, next) => {
 
 router.get('/', authCheck, (req, res) => {
   let tweetArray = [];
+  let likeThreshold = undefined;
   let i = 15;
 
   const params = {
@@ -32,10 +34,13 @@ router.get('/', authCheck, (req, res) => {
     access_token_secret: req.user.accessTokenSecret
   });
 
+  function calcLikeThreshold() {
+
+  }
+
   function getTweets() {
     client.get('statuses/user_timeline', params, function makeTweetList(err, data, response) {
       tweetArray = tweetArray.concat(data);
-      console.log('tweetArray is: ' + tweetArray);
       params.max_id = tweetArray[tweetArray.length - 1].id;
       i--;
       if (i) {
