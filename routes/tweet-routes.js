@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Twit = require('twit');
 const keys = require('../config/keys');
-const math = require('math');
+const math = require('mathjs');
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
