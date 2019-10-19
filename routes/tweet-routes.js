@@ -39,14 +39,11 @@ router.get('/', authCheck, (req, res) => {
     });
   }
 
-  //console.log(tweetArray);
-  //console.log('TYPEOF TWEETARRAY!!!!!! ' + typeof tweetArray);
-  // res.render('tweets', {
-  //   user: req.user,
-  //   tweets: tweetArray
-  // });
   getTweets();
-  res.send('test');
+  res.render('tweets', {
+    user: req.user,
+    tweets: tweetArray
+  });
 });
 
 module.exports = router;
