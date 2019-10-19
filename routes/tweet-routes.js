@@ -33,10 +33,7 @@ router.get('/', authCheck, (req, res) => {
 
   function getTweets() {
     client.get('statuses/user_timeline', params, (err, data, response) => {
-      // console.log(data);
-      // console.log('inside callback');
       tweetArray = data;
-      // console.log('tweetArray is: ', tweetArray);
       res.render('tweets', {
         user: req.user,
         tweets: tweetArray
@@ -44,8 +41,9 @@ router.get('/', authCheck, (req, res) => {
     });
   }
 
-  getTweets();
-  // console.log('right before render. tweetArray is: ' + tweetArray);
+  getTweets().then(
+    console.log('lol');
+  );
 });
 
 module.exports = router;
