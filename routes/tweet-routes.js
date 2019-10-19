@@ -41,8 +41,11 @@ router.get('/', authCheck, (req, res) => {
     });
   }
 
-  getTweets().then(
+  getTweets().then( () => {
     console.log('lol');
+  }, () => {
+    console.log('oh no');
+  }
   );
 });
 
