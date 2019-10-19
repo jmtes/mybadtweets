@@ -21,7 +21,7 @@ router.get('/', authCheck, (req, res) => {
     trim_user: true,
     exclude_replies: true,
     include_rts: false,
-    tweet_mode: extended
+    tweet_mode: 'extended'
   }
 
   const client = new Twit({
