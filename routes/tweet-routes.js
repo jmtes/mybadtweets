@@ -13,6 +13,8 @@ const authCheck = (req, res, next) => {
 }
 
 router.get('/', authCheck, (req, res) => {
+  let tweetArray = undefined;
+
   const params = {
     screen_name: req.user.username,
     count: 200,
@@ -31,12 +33,11 @@ router.get('/', authCheck, (req, res) => {
   function getTweets() {
     client.get('statuses/user_timeline', params, (err, data, response) => {
       // console.log(data);
-      return data;
+      tweetArray = data;
     });
   }
-
-  const tweetArray = getTweets();
-  // console.log(tweetArray);
+  
+  console.log(tweetArray);
   console.log('TYPEOF TWEETARRAY!!!!!! ' + typeof tweetArray);
   res.render('tweets', {
     user: req.user,
