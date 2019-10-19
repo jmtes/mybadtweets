@@ -37,9 +37,7 @@ router.get('/', authCheck, (req, res) => {
   function calcLikeThreshold() {
     let tweetLikes = [];
     tweetArray.forEach(function (tweet) {
-      tweetLikes.push(tweet.favourites_count);
-      console.log(tweetLikes.length)
-      console.log(tweetLikes);
+      console.log(tweet.favourites_count);
     })
   }
 
