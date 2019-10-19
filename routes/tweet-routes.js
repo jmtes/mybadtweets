@@ -41,12 +41,7 @@ router.get('/', authCheck, (req, res) => {
     });
   }
 
-  getTweets().then( () => {
-    console.log('lol');
-  }, () => {
-    console.log('oh no');
-  }
-  );
+  getTweets();
 });
 
 module.exports = router;
