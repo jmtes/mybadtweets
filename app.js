@@ -2,6 +2,7 @@ const express = require('express');
 const passportSetup = require('./config/passport-setup');
 const session = require('express-session');
 const authRoutes = require('./routes/auth-routes');
+const profileRoutes = require('./routes/profile-routes');
 const passport = require('passport');
 
 const app = express();
@@ -9,9 +10,6 @@ const app = express();
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
-
-
-
 
 // Set up session
 // app.use(session({
@@ -39,6 +37,7 @@ app.use(passport.session());
 
 // Set up routes
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 // Create home route
 app.get('/', (req, res) => {
