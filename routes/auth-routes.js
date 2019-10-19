@@ -18,7 +18,7 @@ router.get('/twitter', passport.authenticate('twitter'));
 
 // Callback route for Twitter to redirect to
 router.get('/twitter/redirect', passport.authenticate('twitter'), (req, res) => {
-  res.send('You reached the callback URI');
+  res.send(req.user);
 })
 
 module.exports = router;
