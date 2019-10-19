@@ -18,7 +18,7 @@ passport.use(
     // Options for the strategy
     consumerKey: keys.twitter.consumerKey,
     consumerSecret: keys.twitter.consumerSecret,
-    callbackURL: '/auth/twitter/redirect'
+    callbackURL: '/auth/redirect'
   }, (token, tokenSecret, profile, done) => {
     // Check if user already exists in db
     User.findOne({twitterID: profile.id}).then((currentUser) => {
