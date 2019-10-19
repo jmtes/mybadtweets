@@ -34,7 +34,7 @@ router.get('/', authCheck, (req, res) => {
 
   function getTweets() {
     client.get('statuses/user_timeline', params, function makeTweetList(err, data, response) {
-      tweetArray.concat(data);
+      tweetArray = tweetArray.concat(data);
       console.log('tweetArray is: ' + tweetArray);
       params.max_id = tweetArray[tweetArray.length - 1].id;
       iterations--;
