@@ -19,7 +19,7 @@
     <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3>
     <ul>
       <% tweets.forEach(function (tweet) { %>
-        <li><%= tweet.text %></li>
+        <li><%= tweet.full_text %></li>
       <% }); %>
     </ul>
   </div>
