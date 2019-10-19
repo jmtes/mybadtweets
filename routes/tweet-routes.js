@@ -36,7 +36,7 @@ router.get('/', authCheck, (req, res) => {
   }
 
   const tweetArray = getTweets();
-  console.log(tweetArray);
+  // console.log(tweetArray);
   console.log('TYPEOF TWEETARRAY!!!!!! ' + typeof tweetArray);
   res.render('tweets', {
     user: req.user,
