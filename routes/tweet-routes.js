@@ -17,7 +17,7 @@ router.get('/', authCheck, (req, res) => {
 
   const params = {
     screen_name: req.user.username,
-    count: 200,
+    count: 2,
     trim_user: true,
     exclude_replies: true,
     include_rts: false
@@ -40,6 +40,7 @@ router.get('/', authCheck, (req, res) => {
   }
 
   getTweets();
+  console.log('right before render. tweetArray is: ' + tweetArray);
   res.render('tweets', {
     user: req.user,
     tweets: tweetArray
