@@ -13,7 +13,8 @@ const authCheck = (req, res, next) => {
 }
 
 router.get('/', authCheck, (req, res) => {
-  let tweetArray = undefined;
+  let tweetArray = [];
+  let i = 15;
 
   const params = {
     screen_name: req.user.username,
@@ -32,12 +33,18 @@ router.get('/', authCheck, (req, res) => {
   });
 
   function getTweets() {
-    client.get('statuses/user_timeline', params, (err, data, response) => {
-      tweetArray = data;
-      res.render('tweets', {
-        user: req.user,
-        tweets: tweetArray
-      });
+    client.get('statuses/user_timeline', params, function makeTweetList(err, data, response) {
+      tweetArray.concat(data);
+      params.max_id = tweetArray[tweetArray.length - 1].id;
+      iterations--;
+      if (iterations) {
+        client.get('statuses/user_timeline', params, makeTweetList);
+      } else {
+        res.render('tweets', {
+          user: req.user,
+          tweets: tweetArray
+        });
+      }
     });
   }
 
