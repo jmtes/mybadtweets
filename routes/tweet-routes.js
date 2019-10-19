@@ -17,7 +17,7 @@ router.get('/', authCheck, (req, res) => {
 
   const params = {
     screen_name: req.user.username,
-    count: 2,
+    count: 200,
     trim_user: true,
     exclude_replies: true,
     include_rts: false
@@ -33,9 +33,9 @@ router.get('/', authCheck, (req, res) => {
   function getTweets() {
     client.get('statuses/user_timeline', params, (err, data, response) => {
       // console.log(data);
-      console.log('inside callback');
+      // console.log('inside callback');
       tweetArray = data;
-      console.log('tweetArray is: ', tweetArray);
+      // console.log('tweetArray is: ', tweetArray);
       res.render('tweets', {
         user: req.user,
         tweets: tweetArray
