@@ -35,7 +35,12 @@ router.get('/', authCheck, (req, res) => {
   });
 
   function calcLikeThreshold() {
-
+    let tweetLikes = [];
+    tweetArray.forEach(function (tweet) {
+      tweetLikes.push(tweet.favorites_count);
+      console.log(tweetLikes.length)
+      console.log(tweetLikes);
+    })
   }
 
   function getTweets() {
@@ -46,6 +51,7 @@ router.get('/', authCheck, (req, res) => {
       if (i) {
         client.get('statuses/user_timeline', params, makeTweetList);
       } else {
+        calcLikeThreshold();
         res.render('tweets', {
           user: req.user,
           tweets: tweetArray
