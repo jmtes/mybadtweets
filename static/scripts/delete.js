@@ -14,7 +14,7 @@ deleteButtons.forEach(button => {
     }).then(response => {
       const responseJSON = response.json().then(data => {
         if (data.status === 'OK') {
-          console.log('successfully deleted tweet');
+          button.parentElement.remove();
         } else {
           console.log('try again lol');
         }
