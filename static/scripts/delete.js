@@ -11,9 +11,9 @@ deleteButtons.forEach(button => {
     }).then(response => {
       console.log('inside callback');
       console.log(response);
-      const responseJSON = response.json().then(
+      const responseJSON = response.json().then( () => {
         console.log(JSON.stringify(responseJSON));
-      );
+      });
     });
   });
 });
