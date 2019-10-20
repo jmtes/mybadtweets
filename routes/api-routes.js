@@ -31,7 +31,8 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
     secret: req.user.accessTokenSecret
   }
   console.log(data);
-  res.send('test');
+  res.set('Content-Type', 'application/json');
+  res.send(data);
 });
 
 module.exports = router;
