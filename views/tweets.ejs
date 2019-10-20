@@ -20,6 +20,7 @@
     <ul>
       <% tweets.forEach(function (tweet) { %>
         <li><%= tweet.full_text %></li>
+        <button class='delete' data-tweetid='<%= tweet.id %>'>tweetus deletus</button>
       <% }); %>
     </ul>
   </div>
