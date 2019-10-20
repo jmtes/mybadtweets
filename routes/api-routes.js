@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Twit = require('twit');
 const keys = require('../config/keys');
+const bodyParser = require('body-parser').json();
 
 let client = undefined;
 
@@ -20,7 +21,7 @@ const authCheck = (req, res, next) => {
   }
 }
 
-router.post('/delete', authCheck, (req, res) => {
+router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
   console.log(req);
   res.send({
