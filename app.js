@@ -1,8 +1,10 @@
 const express = require('express');
 const passportSetup = require('./config/passport-setup');
 const session = require('express-session');
+// const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-routes');
 const tweetRoutes = require('./routes/tweet-routes');
+const apiRoutes = require('./routes/api-routes');
 const passport = require('passport');
 
 const app = express();
@@ -38,6 +40,13 @@ app.use(passport.session());
 // Set up routes
 app.use('/auth', authRoutes);
 app.use('/tweets', tweetRoutes);
+app.use('/api', apiRoutes);
+
+// Set up static assets folder
+app.use(express.static('static'));
+
+// Use body parser
+// app.use(bodyParser.json());
 
 // Create home route
 app.get('/', (req, res) => {
