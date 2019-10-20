@@ -43,11 +43,7 @@ router.get('/', authCheck, (req, res) => {
 
     const avg = parseInt(math.mean(tweetLikes));
     const stdDev = parseInt(math.std(tweetLikes));
-    const threshold = avg - stdDev;
-
-    console.log('The average amount of likes you get is: ' + avg);
-    console.log('The standard deviation of the likes you get is: ' + stdDev);
-    console.log("The like threshold of the tweets I'll display is: " + threshold);
+    return (avg - stdDev);
   }
 
   function getTweets() {
@@ -58,7 +54,8 @@ router.get('/', authCheck, (req, res) => {
       if (i) {
         client.get('statuses/user_timeline', params, makeTweetList);
       } else {
-        calcLikeThreshold();
+        likeThreshold = calcLikeThreshold();
+        console.log('Like threshold is: ' + likeThreshold);
         res.render('tweets', {
           user: req.user,
           tweets: tweetArray
