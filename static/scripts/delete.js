@@ -10,8 +10,10 @@ deleteButtons.forEach(button => {
       })
     }).then(response => {
       console.log('inside callback');
-      const responseJSON = response.json();
-      console.log(JSON.stringify(responseJSON));
+      console.log(response);
+      const responseJSON = response.json().then(
+        console.log(JSON.stringify(responseJSON));
+      );
     });
   });
 });
