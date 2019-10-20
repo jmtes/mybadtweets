@@ -32,7 +32,7 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   const endpoint = 'statuses/show/' + req.body.tweetid;
   console.log(endpoint);
 
-  client.post(endpoint, (err, data, response) => {
+  client.get(endpoint, (err, data, response) => {
     console.log('inside callback');
     console.log(err);
     console.log(data);
