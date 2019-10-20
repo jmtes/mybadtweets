@@ -2,8 +2,8 @@ const deleteButtons = document.querySelectorAll('button.delete');
 
 deleteButtons.forEach(button => {
   button.addEventListener('click', () => {
-    console.log('button pressed. tweet id is ' + button.dataset.tweetid);
-    data = { tweetid: button.dataset.tweetid };
+    console.log('button pressed. tweet id is ' + button.parentElement.dataset.tweetid);
+    data = { tweetid: button.parentElement.dataset.tweetid };
 
     fetch('/api/delete', {
       method: 'POST',
