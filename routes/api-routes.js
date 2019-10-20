@@ -36,7 +36,7 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
 
   client.post(endpoint, (err, data, response) => {
     console.log(data);
-    console.log(response);
+    // console.log(response);
   })
 
   res.set('Content-Type', 'application/json');
