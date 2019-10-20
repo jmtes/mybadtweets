@@ -1,11 +1,11 @@
-const deleteButtons = document.querySelectorAll('button.delete');
+const retweetButtons = document.querySelectorAll('button.retweet');
 
-deleteButtons.forEach(button => {
+retweetButtons.forEach(button => {
   button.addEventListener('click', () => {
     console.log('button pressed. tweet id is ' + button.parentElement.dataset.tweetid);
     data = { tweetid: button.parentElement.dataset.tweetid };
 
-    fetch('/api/delete', {
+    fetch('/api/retweet', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

@@ -47,7 +47,34 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
       res.send(bod);
     }
   })
+});
 
+router.post('/retweet', authCheck, bodyParser, (req, res) => {
+  console.log('inside route');
+  console.log('tweet id is ' + req.body.tweetid);
+  const bod = {
+    status: undefined
+  };
+
+  const endpoint = 'statuses/retweet/' + req.body.tweetid;
+  console.log('endpoint is ' + endpoint);
+
+  client.post(endpoint, (err, data, response) => {
+    console.log('inside callback');
+    console.log(err);
+    console.log(data.text);
+    if (!err) {
+      bod.status = 'OK';
+      console.log(bod);
+      res.set('Content-Type', 'application/json');
+      res.send(bod);
+    } else {
+      bod.status = 'FAIL';
+      console.log(bod);
+      res.set('Content-Type', 'application/json');
+      res.send(bod);
+    }
+  })
 });
 
 module.exports = router;
