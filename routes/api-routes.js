@@ -34,6 +34,11 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   const endpoint = 'statuses/destroy/' + req.body.tweetid;
   console.log(endpoint);
 
+  client.post(endpoint, (err, data, response) +> {
+    console.log(data);
+    console.log(response);
+  })
+
   res.set('Content-Type', 'application/json');
   res.send(data);
 });
