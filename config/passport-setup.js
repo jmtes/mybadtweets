@@ -24,7 +24,7 @@ passport.use(
     User.findOne({twitterID: profile.id}).then((currentUser) => {
       if(currentUser){
         // User exists
-        console.log('User is: ', currentUser);
+        // console.log('User is: ', currentUser);
         done(null, currentUser);
       } else {
         new User({
