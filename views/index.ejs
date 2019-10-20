@@ -13,6 +13,9 @@
     </div>
     <span class='menu'>
       <button class='settings'>settings</button>
+      <% if (user) {%>
+      <button class='logout' onclick='window.location.href = "auth/logout"'>logout</button>
+      <% } %>
     </span>
   </header>
   <div class='container'>

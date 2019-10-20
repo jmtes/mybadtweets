@@ -8,7 +8,7 @@ let client = undefined;
 const authCheck = (req, res, next) => {
   if (!req.user) {
     // If user is not logged in
-    res.redirect('/auth/login');
+    res.redirect('/auth');
   } else {
     // If user is logged in
     client = new Twit({
