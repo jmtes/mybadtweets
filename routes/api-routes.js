@@ -28,11 +28,10 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
     status: undefined
   };
 
-  // const endpoint = 'statuses/destroy/' + req.body.tweetid;
-  const endpoint = 'statuses/show/' + req.body.tweetid;
+  const endpoint = 'statuses/destroy/' + req.body.tweetid;
   console.log(endpoint);
 
-  client.get(endpoint, (err, data, response) => {
+  client.post(endpoint, (err, data, response) => {
     console.log('inside callback');
     console.log(err);
     console.log(data);
