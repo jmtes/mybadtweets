@@ -39,6 +39,9 @@ app.use(passport.session());
 app.use('/auth', authRoutes);
 app.use('/tweets', tweetRoutes);
 
+// Set up static assets folder
+app.use(express.static('static'));
+
 // Create home route
 app.get('/', (req, res) => {
   res.render('index');
