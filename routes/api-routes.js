@@ -24,7 +24,7 @@ const authCheck = (req, res, next) => {
 router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
   console.log('tweet id is ' + req.body.tweetid);
-  const data = {
+  const bod = {
     status: undefined
   }
 
@@ -33,15 +33,15 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
 
   client.post(endpoint, (err, data, response) => {
     if (!err) {
-      data.status = 'OK';
+      bod.status = 'OK';
     } else {
-      data.status = 'FAIL';
+      bod.status = 'FAIL';
     }
   })
 
-  console.log(data);
+  console.log(bod);
   res.set('Content-Type', 'application/json');
-  res.send(data);
+  res.send(bod);
 });
 
 module.exports = router;
