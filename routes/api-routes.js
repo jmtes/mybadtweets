@@ -25,21 +25,21 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
   console.log('tweet id is ' + req.body.tweetid);
   const data = {
-    tweetid: req.body.tweetid,
-    username: req.user.username,
-    access: req.user.accessToken,
-    secret: req.user.accessTokenSecret
+    status: undefined
   }
 
   const endpoint = 'statuses/destroy/' + req.body.tweetid;
   console.log(endpoint);
 
   client.post(endpoint, (err, data, response) => {
-    console.log(err);
-    console.log(data.text);
-    // console.log(response);
+    if (!err) {
+      data.status = 'OK';
+    } else {
+      data.status = 'FAIL';
+    }
   })
 
+  console.log(data);
   res.set('Content-Type', 'application/json');
   res.send(data);
 });
