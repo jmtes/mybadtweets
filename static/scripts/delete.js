@@ -9,6 +9,7 @@ deleteButtons.forEach(button => {
         tweetid: button.dataset.tweetid
       })
     }).then(response => {
+      console.log('inside callback');
       const responseJSON = response.json();
       console.log(JSON.stringify(responseJSON));
     });
