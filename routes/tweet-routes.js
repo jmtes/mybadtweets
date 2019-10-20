@@ -49,13 +49,13 @@ router.get('/', authCheck, (req, res) => {
 
   function getTweets() {
     client.get('statuses/user_timeline', params, function makeTweetList(err, data, response) {
-      console.log('data is ', data);
       tweetArray = tweetArray.concat(data);
       params.max_id = tweetArray[tweetArray.length - 1].id;
       i--;
       if (i) {
         client.get('statuses/user_timeline', params, makeTweetList);
       } else {
+        console.log('finished recursing. tweetArray is', tweetArray);
         const likeThreshold = calcLikeThreshold();
         const badTweets = tweetArray.filter(tweet => tweet.favorite_count < likeThreshold);
         // console.log(badTweets);
