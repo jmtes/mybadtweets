@@ -3,7 +3,7 @@ const Twit = require('twit');
 const keys = require('../config/keys');
 const math = require('mathjs');
 
-const client = undefined;
+let client = undefined;
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
