@@ -34,6 +34,8 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
 
   client.post(endpoint, (err, data, response) => {
     console.log('inside callback');
+    console.log(err);
+    console.log(data);
     if (!err) {
       bod.status = 'OK';
       console.log(bod);
