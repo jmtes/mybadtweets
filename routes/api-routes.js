@@ -20,7 +20,7 @@ const authCheck = (req, res, next) => {
   }
 }
 
-router.get('/delete', authCheck, (req, res) => {
+router.post('/delete', authCheck, (req, res) => {
   console.log(req.params.tweetid);
   res.json({
     tweetid: req.params.tweetid,
