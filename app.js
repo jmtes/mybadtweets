@@ -44,6 +44,9 @@ app.use('/api', apiRoutes);
 // Set up static assets folder
 app.use(express.static('static'));
 
+// Use body parser
+app.use(express.bodyParser());
+
 // Create home route
 app.get('/', (req, res) => {
   res.render('index');
