@@ -36,14 +36,17 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
     console.log('inside callback');
     if (!err) {
       bod.status = 'OK';
+      console.log(bod);
+      res.set('Content-Type', 'application/json');
+      res.send(bod);
     } else {
       bod.status = 'FAIL';
+      console.log(bod);
+      res.set('Content-Type', 'application/json');
+      res.send(bod);
     }
   })
 
-  console.log(bod);
-  res.set('Content-Type', 'application/json');
-  res.send(bod);
 });
 
 module.exports = router;
