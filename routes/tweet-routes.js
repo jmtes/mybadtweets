@@ -56,11 +56,11 @@ router.get('/', authCheck, (req, res) => {
         client.get('statuses/user_timeline', params, makeTweetList);
       } else {
         const likeThreshold = calcLikeThreshold();
-        const badTweets = tweetArray.filter(tweet => tweet.favorite_count > likeThreshold);
+        const badTweets = tweetArray.filter(tweet => tweet.favorite_count < likeThreshold);
 
         res.render('tweets', {
           user: req.user,
-          tweets: tweetArray
+          tweets: badTweets
         });
       }
     });
