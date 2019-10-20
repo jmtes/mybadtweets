@@ -23,7 +23,7 @@ const authCheck = (req, res, next) => {
 
 router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
-  console.log(req);
+  console.log(req.body.tweetid);
   res.send({
     tweetid: req.params.tweetid,
     username: req.user.username,
