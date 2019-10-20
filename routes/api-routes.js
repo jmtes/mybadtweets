@@ -23,14 +23,17 @@ const authCheck = (req, res, next) => {
 
 router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
-  console.log(req.body.tweetid);
+  console.log('tweet id is ' + req.body.tweetid);
   const data = {
     tweetid: req.body.tweetid,
     username: req.user.username,
     access: req.user.accessToken,
     secret: req.user.accessTokenSecret
   }
-  console.log(data);
+
+  const endpoint = 'statuses/destroy/' + req.body.tweetid;
+  console.log(endpoint);
+
   res.set('Content-Type', 'application/json');
   res.send(data);
 });
