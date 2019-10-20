@@ -7,7 +7,10 @@ deleteButtons.forEach(button => {
       method: 'POST',
       body: JSON.stringify({
         tweetid: button.dataset.tweetid
-      })
+      }),
+      headers: {
+        'Content-type': 'application/json'
+      }
     }).then(response => {
       console.log('inside callback');
       console.log(response);
