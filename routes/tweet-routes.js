@@ -55,7 +55,7 @@ router.get('/', authCheck, (req, res) => {
       } else {
         const likeThreshold = calcLikeThreshold();
         console.log('Like threshold is: ' + likeThreshold);
-        const badTweets = tweetArray.filter(tweet => tweet.favorite_count <= likeThreshold);
+        const badTweets = tweetArray.filter(tweet => tweet.favorite_count < likeThreshold);
         res.render('tweets', {
           user: req.user,
           tweets: badTweets
