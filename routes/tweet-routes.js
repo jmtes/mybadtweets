@@ -17,6 +17,7 @@ const authCheck = (req, res, next) => {
       access_token: req.user.accessToken,
       access_token_secret: req.user.accessTokenSecret
     });
+    console.log(req.user.username)
     next();
   }
 }
@@ -66,6 +67,7 @@ router.get('/', authCheck, (req, res) => {
     });
   }
 
+  console.log(params.screen_name);
   getTweets();
 });
 
