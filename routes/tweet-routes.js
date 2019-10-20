@@ -3,12 +3,20 @@ const Twit = require('twit');
 const keys = require('../config/keys');
 const math = require('mathjs');
 
+const client = undefined;
+
 const authCheck = (req, res, next) => {
   if (!req.user) {
     // If user is not logged in
     res.redirect('/auth/login');
   } else {
     // If user is logged in
+    client = new Twit({
+      consumer_key: keys.twitter.consumerKey,
+      consumer_secret: keys.twitter.consumerSecret,
+      access_token: req.user.accessToken,
+      access_token_secret: req.user.accessTokenSecret
+    });
     next();
   }
 }
@@ -26,12 +34,12 @@ router.get('/', authCheck, (req, res) => {
     tweet_mode: 'extended'
   }
 
-  const client = new Twit({
-    consumer_key: keys.twitter.consumerKey,
-    consumer_secret: keys.twitter.consumerSecret,
-    access_token: req.user.accessToken,
-    access_token_secret: req.user.accessTokenSecret
-  });
+  // const client = new Twit({
+  //   consumer_key: keys.twitter.consumerKey,
+  //   consumer_secret: keys.twitter.consumerSecret,
+  //   access_token: req.user.accessToken,
+  //   access_token_secret: req.user.accessTokenSecret
+  // });
 
   function calcLikeThreshold() {
     let tweetLikes = [];
