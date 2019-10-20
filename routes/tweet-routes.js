@@ -40,8 +40,14 @@ router.get('/', authCheck, (req, res) => {
     tweetArray.forEach(function (tweet) {
       tweetLikes.push(tweet.favorite_count);
     })
-    console.log(tweetLikes.length);
-    console.log(tweetLikes);
+
+    const avg = math.mean(tweetLikes);
+    const stdDev = math.std(tweetLikes);
+    const threshold = avg - stdDev;
+
+    console.log('The average amount of likes you get is: ' + avg);
+    console.log('The standard deviation of the likes you get is: ' + stdDev);
+    console.log("The like threshold of the tweets I'll display is: " + threshold);
   }
 
   function getTweets() {
