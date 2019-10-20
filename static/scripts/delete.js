@@ -13,7 +13,6 @@ deleteButtons.forEach(button => {
       }
     }).then(response => {
       const responseJSON = response.json().then(data => {
-        console.log(data);
       });
     });
   });

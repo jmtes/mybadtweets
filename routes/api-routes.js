@@ -35,7 +35,8 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log(endpoint);
 
   client.post(endpoint, (err, data, response) => {
-    console.log(data);
+    console.log(err);
+    console.log(data.text);
     // console.log(response);
   })
 
