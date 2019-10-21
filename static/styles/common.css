@@ -43,4 +43,74 @@ header {
   /* margin-top: 250px; */
   padding-top: 150px;
   margin: auto;
+  text-align: center;
+  position: static;
+  /* display: flex;
+  align-items: center;
+  align-content: center; */
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  height: 80px;
+}
+
+.description {
+  width: 60%;
+  margin: auto;
+  border: 1px solid #000;
+  padding: 10px 50px;
+  box-shadow: -2px -2px #000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: space-around;
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  min-height: 300px;
+  vertical-align: center;
+}
+
+.buttoncontainer {
+  width: 100%;
+  margin: auto;
+  /* position: relative; */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
+}
+
+.signin {
+  display: inline-block;
+  margin: 15px;
+  border: 1px solid #000;
+  padding: 15px;
+  box-shadow: -2px -2px #000;
+}
+
+.signin a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.leave {
+  display: inline-block;
+  margin: 15px;
+  border: 1px solid #000;
+  padding: 15px;
+  box-shadow: -2px -2px #000;
+}
+
+.leave a {
+  text-decoration: none;
+  font-size: 14px;
 }
