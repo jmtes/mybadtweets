@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>mybadtweets</title>
+
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/common.css">
 
@@ -12,11 +13,13 @@
 <body>
   <header>
     <div class='title'>
-      <h1>mybadtweets dot com</h1>
+      <h1>mybadtweets™</h1>
     </div>
     <span class='menu'>
       <button class='settings'>settings</button>
+      <% if (user) {%>
       <button class='logout' onclick='window.location.href = "auth/logout"'>logout</button>
+      <% } %>
     </span>
   </header>
   <div class='container'>
@@ -32,9 +35,8 @@
   </div>
   <footer>
     <p>made by julienne 'juno tesoro' tesoro</p>
-    <p>add contact links n shit here lol idk</p>
   </footer>
-  <script src='scripts/delete.js'></script>
-  <script src='scripts/retweet.js'></script>
+  <script src='scripts/index-buttons.js'></script>
+  <!-- <script src='./static/scripts/title.js'></script> -->
 </body>
 </html>
