@@ -3,7 +3,7 @@ const Twit = require('twit');
 const keys = require('../config/keys');
 const math = require('mathjs');
 
-let client = undefined;
+let client;
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -35,19 +35,23 @@ router.get('/', authCheck, (req, res) => {
   }
 
   function calcLikeThreshold() {
-    let tweetLikes = [];
+    const tweetLikes = [];
 
     tweetArray.forEach(function (tweet) {
       tweetLikes.push(tweet.favorite_count);
     })
 
     const avg = parseInt(math.mean(tweetLikes));
-    const stdDev = parseInt(math.std(tweetLikes));
+    let stdDev = parseInt(math.std(tweetLikes));
+    while (stdDev > avg) {
+      stdDev = parseInt(stdDev * 0.8);
+    }
+
     return (avg - stdDev);
   }
 
   function getTweets() {
-    client.get('statuses/user_timeline', params, function makeTweetList(err, data, response) {
+    client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
       tweetArray = tweetArray.concat(data);
       params.max_id = tweetArray[tweetArray.length - 1].id;
       i--;
@@ -55,9 +59,12 @@ router.get('/', authCheck, (req, res) => {
         client.get('statuses/user_timeline', params, makeTweetList);
       } else {
         const likeThreshold = calcLikeThreshold();
-        const badTweets = tweetArray.filter(tweet => tweet.favorite_count < likeThreshold);
-        // console.log(badTweets);
-
+        let badTweets;
+        if (likeThreshold) {
+          badTweets = tweetArray.filter(tweet => tweet.favorite_count < likeThreshold);
+        } else {
+          badTweets = tweetArray.filter(tweet => tweet.favorite_count === likeThreshold);
+        }
         res.render('tweets', {
           user: req.user,
           tweets: badTweets
