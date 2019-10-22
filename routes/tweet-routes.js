@@ -23,7 +23,7 @@ const authCheck = (req, res, next) => {
 
 router.get('/', authCheck, (req, res) => {
   let tweetArray = [];
-  let i = 0;
+  let i = 1;
 
   const params = {
     screen_name: req.user.username,
