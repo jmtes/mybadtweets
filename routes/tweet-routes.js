@@ -27,7 +27,7 @@ router.get('/', authCheck, (req, res) => {
 
   const params = {
     screen_name: req.user.username,
-    count: 10,
+    count: 20,
     trim_user: true,
     exclude_replies: true,
     include_rts: false,
