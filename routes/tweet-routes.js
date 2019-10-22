@@ -41,6 +41,7 @@ router.get('/', authCheck, (req, res) => {
       tweetLikes.push(tweet.favorite_count);
     });
 
+    console.log(tweetLikes);
     const avg = parseInt(math.mean(tweetLikes));
     let stdDev = parseInt(math.std(tweetLikes));
     while (stdDev > avg) {
