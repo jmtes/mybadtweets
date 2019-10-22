@@ -38,8 +38,10 @@ router.get('/', authCheck, (req, res) => {
     const tweetLikes = [];
 
     tweetArray.forEach(function (tweet) {
-      tweetLikes.push(tweet.favorite_count);
+      console.log(tweet.favorite_count);
+      // tweetLikes.push(tweet.favorite_count);
     });
+
     console.log('tweetLikes is ' + tweetLikes);
     const avg = parseInt(math.mean(tweetLikes));
     let stdDev = parseInt(math.std(tweetLikes));
