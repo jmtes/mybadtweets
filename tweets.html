@@ -15,12 +15,12 @@
     <div class='title'>
       <h1>mybadtweets™</h1>
     </div>
-    <span class='menu'>
+    <!-- <span class='menu'>
       <button class='settings'>settings</button>
-      <!-- <% if (user) {%> -->
+      <% if (user) {%>
       <a class='logout' onclick='window.location.href = "auth/logout"'>logout</a>
-      <!-- <% } %> -->
-    </span>
+      <% } %>
+    </span> -->
   </header>
   <div class='container'>
     <!-- <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3> -->
@@ -32,7 +32,7 @@
           <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
           <p>and it received 0 likes!</p>
           <br>
-          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <p><em>hit or miss, i guess they never hit huh?</em></p>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>
         </div>
@@ -97,7 +97,12 @@
     </div>
   </div>
   <footer>
-    <p>made by julienne 'juno tesoro' tesoro</p>
+    <!-- <p>about / settings / logout</p> -->
+    <span class='about'>about</span>
+    <span> / </span>
+    <span class='settings'>settings</span>
+    <span> / </span>
+    <span class='logout'>logout</span>
   </footer>
   <script src='static/scripts/button-press.js'></script>
   <script src='static/scripts/delete.js'></script>
