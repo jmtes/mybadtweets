@@ -36,8 +36,9 @@ signIn.addEventListener('mouseover', () => {
       b--;
     }
     signIn.firstElementChild.style.color = `rgb(${r}, ${g}, ${b})`;
-    signIn.style.border = `1px solid rgb(${r}, ${g}, ${b})`;
-    signIn.style.boxShadow = `-1px -1px rgb(${r}, ${g}, ${b})`;
+    signIn.firstElementChild.style.fontWeight = 'bold';
+    // signIn.style.border = `1px solid rgb(${r}, ${g}, ${b})`;
+    // signIn.style.boxShadow = `-1px -1px rgb(${r}, ${g}, ${b})`;
   }, 1);
 });
 
@@ -45,8 +46,9 @@ signIn.addEventListener('mouseout', () => {
   document.querySelector('body').style.backgroundImage = 'none';
   clearTimeout(rainbow);
   signIn.firstElementChild.style.color = '#0000ff';
-  signIn.style.border = `1px solid #000`;
-  signIn.style.boxShadow = `-1px -1px #000`;
+  signIn.firstElementChild.style.fontWeight = 'normal';
+  // signIn.style.border = `1px solid #000`;
+  // signIn.style.boxShadow = `-1px -1px #000`;
 })
 
 signIn.addEventListener('click', () => {
