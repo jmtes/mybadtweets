@@ -18,7 +18,7 @@
     <span class='menu'>
       <button class='settings'>settings</button>
       <!-- <% if (user) {%> -->
-      <button class='logout' onclick='window.location.href = "auth/logout"'>logout</button>
+      <a class='logout' onclick='window.location.href = "auth/logout"'>logout</a>
       <!-- <% } %> -->
     </span>
   </header>
@@ -29,10 +29,12 @@
       <div class='card'>
         <div class='tweet'>
           <p>on oct 20, 2019 you tweeted:</p>
-          <a href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
+          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
           <p>and it received 0 likes!</p>
           <br>
           <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <a class='page prev'> < </a>
+          <a class='page next'> > </a>
         </div>
         <div class='panel'>
           <!-- <p>wow, that really should've stayed in the drafts!</p> -->
@@ -46,16 +48,60 @@
           </div>
         </div>
       </div>
-      <a class='prev'> < </a>
-      <a class='next'> > </a>
+      <div class='card'  style='display: none;'>
+        <div class='tweet'>
+          <p>on oct 20, 2019 you tweeted:</p>
+          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"do i want to pass the trimester or do i want to pass away"</a>
+          <p>and it received 1 like!</p>
+          <br>
+          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <a class='page prev'> < </a>
+          <a class='page next'> > </a>
+        </div>
+        <div class='panel'>
+          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
+          <div class='buttoncontainer'>
+            <div class='delete button'>
+              <a>ur right delete it</a>
+            </div>
+            <div class='retweet button'>
+              <a>no fuck you this was good</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='card' style='display: none;'>
+        <div class='tweet'>
+          <p>on oct 20, 2019 you tweeted:</p>
+          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"ayy u got kik lol"</a>
+          <p>and it received 0 likes!</p>
+          <br>
+          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <a class='page prev'> < </a>
+          <a class='page next'> > </a>
+        </div>
+        <div class='panel'>
+          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
+          <div class='buttoncontainer'>
+            <div class='delete button'>
+              <a>ur right delete it</a>
+            </div>
+            <div class='retweet button'>
+              <a>no fuck you this was good</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <a class='page prev'> < </a>
+      <a class='page next'> > </a> -->
     </div>
   </div>
   <footer>
     <p>made by julienne 'juno tesoro' tesoro</p>
   </footer>
-  <script src='scripts/index-buttons.js'></script>
-  <script src='scripts/delete.js'></script>
-  <script src='scripts/retweet.js'></script>
+  <script src='static/scripts/button-press.js'></script>
+  <script src='static/scripts/delete.js'></script>
+  <script src='static/scripts/retweet.js'></script>
   <!-- <script src='./static/scripts/title.js'></script> -->
 </body>
 </html>
