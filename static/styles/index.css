@@ -31,7 +31,7 @@ header {
   padding: 20px;
 }
 
-.logout {
+/* .logout {
   position: fixed;
   top: 5px;
   right: 5px;
@@ -41,7 +41,7 @@ header {
   position: fixed;
   top: 5px;
   left: 5px;
-}
+} */
 
 .container {
   /* margin-top: 150px;
