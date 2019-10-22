@@ -40,7 +40,7 @@ router.get('/', authCheck, (req, res) => {
     tweetArray.forEach(function (tweet) {
       console.log(tweet);
       console.log(tweet.favorite_count);
-      // tweetLikes.push(tweet.favorite_count);
+      tweetLikes.push(tweet.favorite_count);
     });
 
     console.log('tweetLikes is ' + tweetLikes);
