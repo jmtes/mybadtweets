@@ -38,6 +38,7 @@ router.get('/', authCheck, (req, res) => {
     const tweetLikes = [];
 
     tweetArray.forEach(function (tweet) {
+      console.log(tweet);
       console.log(tweet.favorite_count);
       // tweetLikes.push(tweet.favorite_count);
     });
