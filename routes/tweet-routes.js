@@ -40,6 +40,7 @@ router.get('/', authCheck, (req, res) => {
     tweetArray.forEach(function (tweet) {
       tweetLikes.push(tweet.favorite_count);
     });
+    console.log('tweetLikes is ' + tweetLikes);
     const avg = parseInt(math.mean(tweetLikes));
     let stdDev = parseInt(math.std(tweetLikes));
     while (stdDev > avg) {
