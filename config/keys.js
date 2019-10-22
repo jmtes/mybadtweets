@@ -4,7 +4,7 @@ module.exports = {
     consumerSecret: process.env.CONSUMERSECRET,
   },
   mongodb: {
-    dbURI: process.env.DBURI
+    dbURI: `mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPWD}@hosanna-ikelv.mongodb.net/test?retryWrites=true&w=majority`
   },
   session: {
     cookieKey: 'star'

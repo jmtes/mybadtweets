@@ -7,7 +7,7 @@
   <title>mybadtweets</title>
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="static/styles/common.css">
 
 </head>
 <body>
@@ -17,26 +17,29 @@
     </div>
     <span class='menu'>
       <button class='settings'>settings</button>
-      <% if (user) {%>
+      <!-- <% if (user) {%> -->
       <button class='logout' onclick='window.location.href = "auth/logout"'>logout</button>
-      <% } %>
+      <!-- <% } %> -->
     </span>
   </header>
   <div class='container'>
-    <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3>
-    <ul>
-      <% tweets.forEach(function (tweet) { %>
-        <li data-tweetid='<%= tweet.id_str %>'><%= tweet.full_text %>
-          <button class='delete'>tweetus deletus</button>
-          <button class='retweet'>bump that shit</button>
-        </li>
-      <% }); %>
-    </ul>
+    <div class='description'>
+      <h3>YOU'VE SUCCESSFULLY REACHED THE MYBADTWEETS™ HOMEPAGE!</h3>
+      <h4>are your tweets bad? you know they are. have you ever wondered what the worst of them are? have i got the service for you. to get started sign in with twitter below</h4>
+      <div class='buttoncontainer'>
+        <div class='signin button'>
+          <a href="auth/">SIGN IN WITH TWITTER!!!</a>
+        </div>
+        <div class='leave button'>
+          <a href="javascript:history.back()">i want to leave actually</a>
+        </div>
+      </div>
+    </div>
   </div>
   <footer>
     <p>made by julienne 'juno tesoro' tesoro</p>
   </footer>
-  <script src='scripts/index-buttons.js'></script>
+  <script src='./static/scripts/index-buttons.js'></script>
   <!-- <script src='./static/scripts/title.js'></script> -->
 </body>
 </html>
