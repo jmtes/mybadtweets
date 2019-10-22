@@ -125,7 +125,7 @@ footer {
 
 .button a {
   text-decoration: none;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* .leave {
@@ -143,13 +143,20 @@ footer {
 
 .card-wrapper {
   padding: 10px;
+  /* position: absolute;
+  left: 0;
+  right: 0; */
 }
 
 .card {
   padding: 10px;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  align-content: space-between;
+  align-content: space-between; */
+  /* display: none; */
+  /* position: absolute;
+  left: 0;
+  right: 0; */
 }
 
 .tweet {
@@ -158,10 +165,11 @@ footer {
   width: 70%;
   margin: auto;
   padding: 20px;
+  position: relative;
   /* border-radius: 5px; */
 }
 
-.tweet a {
+.tweet-text {
   text-shadow: -1px -1px #0000ff;
   font-size: 1.5em;
   text-decoration: none;
@@ -184,4 +192,22 @@ footer {
   margin: auto;
   padding: 20px;
   /* display: none; */
+}
+
+.page {
+  font-size: 32px;
+}
+
+.prev {
+  position: absolute;
+  left: -10%;
+  /* right: 95%; */
+  top: 50%;
+}
+
+.next {
+  position: absolute;
+  right: -10%;
+  /* left: 95%; */
+  top: 50%;
 }
