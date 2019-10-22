@@ -25,14 +25,30 @@
   <div class='container'>
     <!-- <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3> -->
     <h3>now displaying your SHITTIEST tweets!</h3>
-    <!-- <ul>
-      <% tweets.forEach(function (tweet) { %>
-        <li data-tweetid='<%= tweet.id_str %>'><%= tweet.full_text %>
-          <button class='delete'>tweetus deletus</button>
-          <button class='retweet'>bump that shit</button>
-        </li>
-      <% }); %>
-    </ul> -->
+    <div class='card-wrapper'>
+      <div class='card'>
+        <div class='tweet'>
+          <p>on oct 20, 2019 you tweeted:</p>
+          <a href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
+          <p>and it received 0 likes!</p>
+          <br>
+          <p><em>wow, that really should've stayed in the drafts!</em></p>
+        </div>
+        <div class='panel'>
+          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
+          <div class='buttoncontainer'>
+            <div class='delete button'>
+              <a>ur right delete it</a>
+            </div>
+            <div class='retweet button'>
+              <a>no fuck you this was good</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class='prev'> < </a>
+      <a class='next'> > </a>
+    </div>
   </div>
   <footer>
     <p>made by julienne 'juno tesoro' tesoro</p>
