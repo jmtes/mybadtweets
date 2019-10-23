@@ -30,7 +30,7 @@
       <% let date = tweet.created_at.split(' '); %>
       <div class='card'>
         <div class='tweet'>
-          <p>on <%= date[1] %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
+          <p>on <%= date[1].toLowerCase() %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
           <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>'>"<%= tweet.full_text %>"</a>
           <p>and it received <%= tweet.favorite_count %> likes!</p>
           <br>
