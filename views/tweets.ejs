@@ -62,8 +62,10 @@
     <span class='about'>about</span>
     <span> / </span>
     <span class='settings'>settings</span>
+    <% if (user) { %> 
     <span> / </span>
-    <span class='logout'>logout</span>
+    <span><a href='/auth/logout'>logout</a></span>
+    <% } %>
   </footer>
   <script src='scripts/button-press.js'></script>
   <script src='scripts/delete.js'></script>
