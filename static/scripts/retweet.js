@@ -1,4 +1,4 @@
-const retweetButtons = document.querySelectorAll('button.retweet');
+const retweetButtons = document.querySelectorAll('.retweet');
 
 retweetButtons.forEach(button => {
   button.addEventListener('click', () => {

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mybadtweets</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/styles/tweets.css">
+
+</head>
+<body>
+  <header>
+    <div class='title'>
+      <h1>mybadtweets™</h1>
+    </div>
+    <!-- <span class='menu'>
+      <button class='settings'>settings</button>
+      <% if (user) {%>
+      <a class='logout' onclick='window.location.href = "auth/logout"'>logout</a>
+      <% } %>
+    </span> -->
+  </header>
+  <div class='container'>
+    <!-- <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3> -->
+    <h3>now displaying your SHITTIEST tweets!</h3>
+    <div class='card-wrapper'>
+      <div class='card'>
+        <div class='tweet'>
+          <p>on oct 20, 2019 you tweeted:</p>
+          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
+          <p>and it received 0 likes!</p>
+          <br>
+          <p><em>hit or miss, i guess they never hit huh?</em></p>
+          <a class='page prev'> < </a>
+          <a class='page next'> > </a>
+        </div>
+        <div class='panel'>
+          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
+          <div class='buttoncontainer'>
+            <div class='delete button'>
+              <a>ur right delete it</a>
+            </div>
+            <div class='retweet button'>
+              <a>no fuck you this was good</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Start test cards -->
+      <div class='card'>
+        <div class='tweet'>
+          <p>on oct 20, 2019 you tweeted:</p>
+          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"do i want to pass the trimester or do i want to pass away"</a>
+          <p>and it received 1 like!</p>
+          <br>
+          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <a class='page prev'> < </a>
+          <a class='page next'> > </a>
+        </div>
+        <div class='panel'>
+          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
+          <div class='buttoncontainer'>
+            <div class='delete button'>
+              <a>ur right delete it</a>
+            </div>
+            <div class='retweet button'>
+              <a>no fuck you this was good</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='card'>
+        <div class='tweet'>
+          <p>on oct 20, 2019 you tweeted:</p>
+          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"ayy u got kik lol"</a>
+          <p>and it received 0 likes!</p>
+          <br>
+          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <a class='page prev'> < </a>
+          <a class='page next'> > </a>
+        </div>
+        <div class='panel'>
+          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
+          <div class='buttoncontainer'>
+            <div class='delete button'>
+              <a>ur right delete it</a>
+            </div>
+            <div class='retweet button'>
+              <a>no fuck you this was good</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End test cards -->
+      <!-- <a class='page prev'> < </a>
+      <a class='page next'> > </a> -->
+      <div class='progress'>
+        1 / 3
+      </div>
+    </div>
+  </div>
+  <footer>
+    <!-- <p>about / settings / logout</p> -->
+    <span class='about'>about</span>
+    <span> / </span>
+    <span class='settings'>settings</span>
+    <span> / </span>
+    <span class='logout'>logout</span>
+  </footer>
+  <script src='static/scripts/button-press.js'></script>
+  <script src='static/scripts/delete.js'></script>
+  <script src='static/scripts/retweet.js'></script>
+  <script src='static/scripts/slides.js'></script>
+  <!-- <script src='./static/scripts/title.js'></script> -->
+</body>
+</html>
