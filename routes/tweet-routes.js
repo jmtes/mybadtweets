@@ -23,7 +23,7 @@ const authCheck = (req, res, next) => {
 
 router.get('/', authCheck, (req, res) => {
   let tweetArray = [];
-  let i = 15;
+  let i = 16;
   let tweetcount = 0;
 
   const params = {
