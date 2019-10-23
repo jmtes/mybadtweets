@@ -28,7 +28,7 @@
     <div class='card-wrapper'>
       <% tweets.forEach(tweet => { %>
       <% let date = tweet.created_at.split(' '); %>
-      <% let plurality = tweet.count === 1 ? 'like' : 'likes'; %>
+      <% let plurality = tweet.count == 1 ? 'like' : 'likes'; %>
       <div class='card'>
         <div class='tweet'>
           <p>on <%= date[1].toLowerCase() %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
