@@ -23,7 +23,8 @@ const authCheck = (req, res, next) => {
 
 router.get('/', authCheck, (req, res) => {
   let tweetArray = [];
-  let i = 1;
+  let i = 15;
+  let tweetcount = 0;
 
   const params = {
     screen_name: req.user.username,
@@ -54,6 +55,7 @@ router.get('/', authCheck, (req, res) => {
     client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
       tweetArray = tweetArray.concat(data);
       params.max_id = tweetArray[tweetArray.length - 1].id;
+      tweetcount += 200;
       i--;
       if (i) {
         client.get('statuses/user_timeline', params, makeTweetList);
@@ -66,6 +68,7 @@ router.get('/', authCheck, (req, res) => {
         } else {
           badTweets = tweetArray.filter(tweet => tweet.favorite_count === likeThreshold);
         }
+        console.log(tweetcount + ' tweets fetched')
         res.render('tweets', {
           user: req.user,
           tweets: badTweets
