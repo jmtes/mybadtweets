@@ -1,4 +1,5 @@
 let cardIndex = 0;
+const progress = document.querySelector('.progress');
 
 showCards(cardIndex);
 
@@ -30,6 +31,7 @@ function showCards(index) {
     cards[i].style.display = 'none';
   }
   cards[cardIndex].style.display = 'block';
+  progress.innerText = `${cardIndex + 1} / ${cards.length}`;
 }
 
 document.addEventListener('click', event => {
