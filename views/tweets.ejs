@@ -67,6 +67,17 @@
     <span><a href='/auth/logout'>logout</a></span>
     <!-- <% } %> -->
   </footer>
+  <div class='confirm-modal'>
+    <div class='confirm-box'>
+    <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
+    <h4><em>are you sure?</em></h4>
+    <br>
+    <div class='buttoncontainer'>
+      <a class='yes'>YES</a>
+      <a class='no'>NO</a>
+    </div>
+    </div>
+  </div>
   <script src='scripts/button-press.js'></script>
   <script src='scripts/delete.js'></script>
   <script src='scripts/retweet.js'></script>
