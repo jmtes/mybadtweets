@@ -24,7 +24,6 @@ const authCheck = (req, res, next) => {
 router.get('/', authCheck, (req, res) => {
   let tweetArray = [];
   let i = 16;
-  let tweetcount = 0;
 
   const params = {
     screen_name: req.user.username,
@@ -55,7 +54,6 @@ router.get('/', authCheck, (req, res) => {
     client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
       tweetArray = tweetArray.concat(data);
       params.max_id = tweetArray[tweetArray.length - 1].id;
-      tweetcount += 200;
       i--;
       if (i) {
         client.get('statuses/user_timeline', params, makeTweetList);

@@ -13,7 +13,7 @@
 <body>
   <header>
     <div class='title'>
-      <h1>mybadtweets™</h1>
+      <h1><a href='/'>mybadtweets™</a></h1>
     </div>
     <!-- <span class='menu'>
       <button class='settings'>settings</button>
@@ -32,7 +32,7 @@
       <div class='card'>
         <div class='tweet'>
           <p>on <%= date[1].toLowerCase() %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
-          <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>'>"<%= tweet.full_text %>"</a>
+          <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>' target='_blank'>"<%= tweet.full_text %>"</a>
           <p>and it received <%= tweet.favorite_count %> <%= plurality %>!</p>
           <br>
           <p><em>hit or miss, i guess they never hit huh?</em></p>
@@ -62,13 +62,27 @@
     <span class='about'>about</span>
     <span> / </span>
     <span class='settings'>settings</span>
+    <!-- <% if (user) { %>  -->
     <span> / </span>
-    <span class='logout'>logout</span>
+    <span><a href='/auth/logout'>logout</a></span>
+    <!-- <% } %> -->
   </footer>
+  <div class='confirm-modal'>
+    <div class='confirm-box'>
+    <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
+    <h4><em>are you sure?</em></h4>
+    <br>
+    <div class='buttoncontainer'>
+      <a class='yes'>YES</a>
+      <a class='no'>NO</a>
+    </div>
+    </div>
+  </div>
   <script src='scripts/button-press.js'></script>
-  <script src='scripts/delete.js'></script>
-  <script src='scripts/retweet.js'></script>
-  <script src='scripts/slides.js'></script>
+  <!-- <script src='scripts/delete.js'></script>
+  <script src='scripts/retweet.js'></script> -->
+  <!-- <script src='scripts/slides.js'></script> -->
+  <script src='scripts/tweets.js'></script>
   <!-- <script src='./static/scripts/title.js'></script> -->
 </body>
 </html>

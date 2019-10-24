@@ -13,19 +13,19 @@
 <body>
   <header>
     <div class='title'>
-      <h1>mybadtweets™</h1>
+      <h1><a href='/'>mybadtweets™</a></h1>
     </div>
-    <span class='menu'>
+    <!-- <span class='menu'>
       <button class='settings'>settings</button>
       <% if (user) {%>
       <button class='logout' onclick='window.location.href = "auth/logout"'>logout</button>
       <% } %>
-    </span>
+    </span> -->
   </header>
   <div class='container'>
     <div class='description'>
       <h3>YOU'VE SUCCESSFULLY REACHED THE MYBADTWEETS™ HOMEPAGE!</h3>
-      <h4>are your tweets bad? you know they are. have you ever wondered what the worst of them are? have i got the service for you. to get started sign in with twitter below</h4>
+      <h4>are your tweets bad? the answer is yes. have you ever wondered what the worst of them are? have i got the service for you. to get started sign in with twitter below</h4>
       <div class='buttoncontainer'>
         <div class='signin button'>
           <a href="auth/">SIGN IN WITH TWITTER!!!</a>
@@ -37,9 +37,16 @@
     </div>
   </div>
   <footer>
-    <p>made by julienne 'juno tesoro' tesoro</p>
+    <span class='about'>about</span>
+    <span> / </span>
+    <span class='settings'>settings</span>
+    <!-- <% if (user) { %> 
+    <span> / </span>
+    <span><a href='/auth/logout'>logout</a></span>
+    <% } %> -->
   </footer>
   <script src='scripts/index-buttons.js'></script>
+  <script src='scripts/button-press.js'></script>
   <!-- <script src='./static/scripts/title.js'></script> -->
 </body>
 </html>
