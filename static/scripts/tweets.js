@@ -1,4 +1,4 @@
-// Handle delete and retweet buttons
+// Handle delete and retweet buttons and confirm modal
 const confirmModal = document.querySelector('.confirm-modal');
 const yesButton = document.querySelector('.yes');
 const noButton = document.querySelector('.no');
@@ -32,30 +32,13 @@ function tweetAction (button) {
     const responseJSON = response.json().then(data => {
       if (data.status === 'OK') {
         button.parentElement.parentElement.parentElement.remove();
+        showCards(cardIndex += 1);
       } else {
         console.log('try again lol');
       }
     });
   });
 }
-
-// buttons.forEach(button => {
-//   button.addEventListener('click', () => {
-//     console.log('button pressed. tweet id is ' + button.parentElement.dataset.tweetid);
-
-//     confirmModal.style.display = 'block';
-
-//     yesButton.onclick = () => {
-//       console.log('yes clicked');
-//       confirmModal.style.display = 'none';
-//       deleteTweet(button);
-//     }
-
-//     noButton.onclick = () => {
-//       confirmModal.style.display = 'none';
-//     }
-//   });
-// });
 
 document.addEventListener('click', event => {
   if (event.target.classList.contains('button')) {
@@ -73,5 +56,53 @@ document.addEventListener('click', event => {
     noButton.onclick = () => {
       confirmModal.style.display = 'none';
     };
+  }
+});
+
+// Handle tweet slideshow display
+let cardIndex = 0;
+const progress = document.querySelector('.progress');
+
+showCards(cardIndex);
+
+function nextCard () {
+  console.log('inside nextCard');
+  // console.log('passing ' + (cardIndex += 1) ' to showCards');
+  showCards(cardIndex += 1);
+}
+
+function prevCard () {
+  console.log('inside prevCard');
+  // console.log('passing ' + (cardIndex -= 1) ' to showCards');
+  showCards(cardIndex -= 1);
+}
+
+function showCards (index) {
+  console.log('inside showCards');
+  let i;
+  const cards = document.getElementsByClassName('card');
+
+  if (index >= cards.length) {
+    cardIndex = 0;
+  }
+  if (index < 0) {
+    cardIndex = cards.length - 1;
+  }
+
+  for (i = 0; i < cards.length; i++) {
+    cards[i].style.display = 'none';
+  }
+  cards[cardIndex].style.display = 'block';
+  progress.innerText = `${cardIndex + 1} / ${cards.length}`;
+}
+
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('prev')) {
+    console.log('prev clicked');
+    prevCard();
+  }
+  if (event.target.classList.contains('next')) {
+    console.log('next clicked');
+    nextCard();
   }
 });
