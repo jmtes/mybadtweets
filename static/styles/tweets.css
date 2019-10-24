@@ -227,6 +227,10 @@ footer a {
   cursor: pointer;
 }
 
+.about {
+  cursor: pointer;
+}
+
 .modal-bg {
   min-height: 80%;
   max-height: 80%;
@@ -260,7 +264,7 @@ footer a {
   width: 20%;
 }
 
-.about {
+.about-box {
   width: 40%;
   text-align: left;
 }
@@ -280,11 +284,11 @@ footer a {
   text-decoration: underline;
 }
 
-.about h6 {
+.about-box h6 {
   margin: 10px 0px 5px 0px;
 }
 
-.about p {
+.about-box p {
   font-size: 0.4em;
   margin: 0px;
 }
