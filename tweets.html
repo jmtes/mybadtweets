@@ -38,7 +38,7 @@
         </div>
         <div class='panel'>
           <!-- <p>wow, that really should've stayed in the drafts!</p> -->
-          <div class='buttoncontainer'>
+          <div class='buttoncontainer' data-tweetid='12345'>
             <div class='delete button'>
               <a>ur right delete it</a>
             </div>
@@ -109,6 +109,17 @@
     <span> / </span>
     <span class='logout'>logout</span>
   </footer>
+  <div class='confirm-modal'>
+    <div class='confirm-box'>
+    <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
+    <h4><em>are you sure?</em></h4>
+    <br>
+    <div class='buttoncontainer'>
+      <a class='yes'>YES</a>
+      <a class='no'>NO</a>
+    </div>
+    </div>
+  </div>
   <script src='static/scripts/button-press.js'></script>
   <script src='static/scripts/delete.js'></script>
   <script src='static/scripts/retweet.js'></script>
