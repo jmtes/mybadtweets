@@ -239,10 +239,10 @@ footer a {
   padding-top: 150px;
   padding-bottom: 65px;
   overflow: hidden;
-  display: none;
+  /* display: none; */
 }
 
-.confirm-box {
+.modal-box {
   /* height: auto; */
   width: 20%;
   left: 0;
@@ -257,18 +257,18 @@ footer a {
   padding: 20px;
 }
 
-.confirm-box h4 {
+.confirm h4 {
   margin: 0px;
   font-size: 12px;
   position: relative;
 }
 
-.confirm-box a {
+.confirm a {
   font-size: 14px;
   cursor: pointer;
 }
 
-.confirm-box a:hover {
+.confirm a:hover {
   text-decoration: underline;
 }
 
