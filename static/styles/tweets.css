@@ -239,12 +239,11 @@ footer a {
   padding-top: 150px;
   padding-bottom: 65px;
   overflow: hidden;
-  /* display: none; */
+  display: none;
 }
 
 .modal-box {
   /* height: auto; */
-  width: 20%;
   left: 0;
   right: 0;
   position: absolute;
@@ -255,6 +254,15 @@ footer a {
   background-color: #fff;
   opacity: 1;
   padding: 20px;
+}
+
+.confirm {
+  width: 20%;
+}
+
+.about {
+  width: 40%;
+  text-align: left;
 }
 
 .confirm h4 {
@@ -270,6 +278,15 @@ footer a {
 
 .confirm a:hover {
   text-decoration: underline;
+}
+
+.about h6 {
+  margin: 10px 0px 5px 0px;
+}
+
+.about p {
+  font-size: 0.4em;
+  margin: 0px;
 }
 
 .close {
