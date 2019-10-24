@@ -131,12 +131,14 @@ footer a {
   box-shadow: -1px -1px #000;
   cursor: pointer;
   background-color: #fff;
-}
-
-.button a {
   text-decoration: none;
   font-size: 12px;
 }
+
+/* .button a {
+  text-decoration: none;
+  font-size: 12px;
+} */
 
 /* .leave {
   display: inline-block;
