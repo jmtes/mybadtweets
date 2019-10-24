@@ -32,7 +32,7 @@ function tweetAction (button) {
     const responseJSON = response.json().then(data => {
       if (data.status === 'OK') {
         button.parentElement.parentElement.parentElement.remove();
-        showCards(cardIndex += 1);
+        showCards(cardIndex);
       } else {
         console.log('try again lol');
       }
