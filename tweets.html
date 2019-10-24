@@ -99,7 +99,7 @@
   </div>
   <footer>
     <!-- <p>about / settings / logout</p> -->
-    <span class='about'>about</span>
+    <span class='about' onclick='document.querySelector(".about-modal").style.display = "block"'>about</span>
     <span> / </span>
     <span class='settings'>settings</span>
     <span> / </span>
@@ -117,7 +117,7 @@
     </div>
   </div>
   <div class='modal-bg about-modal'>
-    <div class='about modal-box'>
+    <div class='about-box modal-box'>
       <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
       <h6>how are bad tweets determined</h6>
       <p>mybadtweets fetches all your original tweets from your 3200 most recent ones per the limitation set by the twitter api. of the likes you've gotten on those, it calculates the average and the standard deviation. it then gets the like threshold of the tweets it'll display by subtracting the latter from the former. this is under the assumption that your likes fall into a normal disribution.</p>
