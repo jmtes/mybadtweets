@@ -39,12 +39,8 @@
         <div class='panel'>
           <!-- <p>wow, that really should've stayed in the drafts!</p> -->
           <div class='buttoncontainer' data-tweetid='12345'>
-            <div class='delete button'>
-              <a>ur right delete it</a>
-            </div>
-            <div class='retweet button'>
-              <a>no fuck you this was good</a>
-            </div>
+            <a class='delete button' title='delete tweet'>DELETE IT!</a>
+            <a class='retweet button'>BUMP IT!</a>
           </div>
         </div>
       </div>
@@ -66,7 +62,7 @@
               <a>ur right delete it</a>
             </div>
             <div class='retweet button'>
-              <a>no fuck you this was good</a>
+              <a>no fuck you this was good. rt</a>
             </div>
           </div>
         </div>
@@ -103,14 +99,14 @@
   </div>
   <footer>
     <!-- <p>about / settings / logout</p> -->
-    <span class='about'>about</span>
+    <span class='about'>ABOUT</span>
     <span> / </span>
-    <span class='settings'>settings</span>
-    <span> / </span>
-    <span class='logout'>logout</span>
+    <!-- <span class='settings'>SETTINGS</span>
+    <span> / </span> -->
+    <span class='logout'>LOGOUT</span>
   </footer>
-  <div class='confirm-modal'>
-    <div class='confirm-box'>
+  <div class='modal-bg confirm-modal'>
+    <div class='confirm modal-box'>
     <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
     <h4><em>are you sure?</em></h4>
     <br>
@@ -120,10 +116,21 @@
     </div>
     </div>
   </div>
+  <div class='modal-bg about-modal'>
+    <div class='about-box modal-box'>
+      <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
+      <h6>how are bad tweets determined</h6>
+      <p>mybadtweets fetches all your original tweets from your 3200 most recent ones per the limitation set by the twitter api. of the likes you've gotten on those, it calculates the average and the standard deviation. it then gets the like threshold of the tweets it'll display by subtracting the latter from the former. this is under the assumption that your likes fall into a normal disribution.</p>
+      <h6>why though</h6>
+      <p>this was made purely for lighthearted self-deprecation purposes</p>
+      <h6>who did this</h6>
+      <p>mybadtweets was made by juno tesoro as a school project. you can find them on github and twitter</p>
+      <br>
+    </div>
+  </div>
   <script src='static/scripts/button-press.js'></script>
-  <script src='static/scripts/delete.js'></script>
-  <script src='static/scripts/retweet.js'></script>
-  <script src='static/scripts/slides.js'></script>
+  <script src='static/scripts/tweets.js'></script>
+  <script src='static/scripts/about.js'></script>
   <!-- <script src='./static/scripts/title.js'></script> -->
 </body>
 </html>

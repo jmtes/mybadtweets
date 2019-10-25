@@ -45,7 +45,9 @@ document.addEventListener('click', event => {
     const button = event.target;
     console.log('button pressed. tweet id is ' + button.parentElement.dataset.tweetid);
 
-    confirmModal.style.display = 'block';
+    setTimeout(() => {
+      confirmModal.style.display = 'block';
+    }, 100);
 
     yesButton.onclick = () => {
       console.log('yes clicked');
