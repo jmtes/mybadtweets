@@ -43,6 +43,18 @@
     <!-- <span> / </span>
     <span class='settings'>settings</span> -->
   </footer>
+  <div class='show modal-bg about-modal'>
+    <div class='about-box modal-box'>
+      <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
+      <h6>how are bad tweets determined</h6>
+      <p>mybadtweets fetches all your original tweets from your 3200 most recent ones per the limitation set by the twitter api. of the likes you've gotten on those, it calculates the average and the standard deviation. it then gets the like threshold of the tweets it'll display by subtracting the latter from the former. this is under the assumption that your likes fall into a normal disribution.</p>
+      <h6>why though</h6>
+      <p>this was made purely for lighthearted self-deprecation purposes</p>
+      <h6>who did this</h6>
+      <p>mybadtweets was made by juno tesoro as a school project. you can find them on github and twitter</p>
+      <br>
+    </div>
+  </div>
   <script src='scripts/index-buttons.js'></script>
   <script src='scripts/button-press.js'></script>
   <script src='scripts/about.js'></script>

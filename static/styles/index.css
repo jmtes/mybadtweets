@@ -148,6 +148,10 @@ footer a {
   font-size: 14px;
 } */
 
+.about {
+  cursor: pointer;
+}
+
 .modal-bg {
   min-height: 80%;
   max-height: 80%;
