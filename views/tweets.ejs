@@ -8,6 +8,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/tweets.css">
+  <link rel="stylesheet" href="styles/animations.css">
 
 </head>
 <body>
@@ -31,14 +32,16 @@
       <% let plurality = tweet.favorite_count === 1 ? 'like' : 'likes'; %>
       <div class='card'>
         <div class='tweet'>
+          <div class='current'>
           <p>on <%= date[1].toLowerCase() %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
           <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>' target='_blank'>"<%= tweet.full_text %>"</a>
           <p>and it received <%= tweet.favorite_count %> <%= plurality %>!</p>
           <br>
           <p><em>hit or miss, i guess they never hit huh?</em></p>
+          </div>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>
-        </div>
+      </div>
         <div class='panel'>
           <!-- <p>wow, that really should've stayed in the drafts!</p> -->
           <div class='buttoncontainer' data-tweetid='<%= tweet.id_str %>'>
@@ -63,7 +66,7 @@
     <span><a href='/auth/logout'>LOGOUT</a></span>
     <!-- <% } %> -->
   </footer>
-  <div class='modal-bg confirm-modal'>
+  <div class='show modal-bg confirm-modal'>
     <div class='confirm modal-box'>
     <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
     <h4><em>are you sure?</em></h4>
@@ -74,7 +77,7 @@
     </div>
     </div>
   </div>
-  <div class='modal-bg about-modal'>
+  <div class='show modal-bg about-modal'>
     <div class='about-box modal-box'>
       <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
       <h6>how are bad tweets determined</h6>

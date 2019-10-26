@@ -1,0 +1,16 @@
+.current {
+  animation: fadein 0.5s 1;
+}
+
+.show {
+  animation: fadein 0.2s 1;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

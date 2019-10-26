@@ -8,6 +8,7 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/styles/tweets.css">
+  <link rel="stylesheet" href="./static/styles/animations.css">
 
 </head>
 <body>
@@ -28,11 +29,11 @@
     <div class='card-wrapper'>
       <div class='card'>
         <div class='tweet'>
-          <p>on oct 20, 2019 you tweeted:</p>
-          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
-          <p>and it received 0 likes!</p>
+          <p class='current'>on oct 20, 2019 you tweeted:</p>
+          <a class='current tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"what if pee was yellow instead of red"</a>
+          <p class='current'>and it received 0 likes!</p>
           <br>
-          <p><em>hit or miss, i guess they never hit huh?</em></p>
+          <p class='current'><em>hit or miss, i guess they never hit huh?</em></p>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>
         </div>
@@ -47,11 +48,11 @@
       <!-- Start test cards -->
       <div class='card'>
         <div class='tweet'>
-          <p>on oct 20, 2019 you tweeted:</p>
-          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"do i want to pass the trimester or do i want to pass away"</a>
-          <p>and it received 1 like!</p>
+          <p class='current'>on oct 20, 2019 you tweeted:</p>
+          <a class='current tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"do i want to pass the trimester or do i want to pass away"</a>
+          <p class='current'>and it received 1 like!</p>
           <br>
-          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <p class='current'><em>wow, that really should've stayed in the drafts!</em></p>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>
         </div>
@@ -59,21 +60,21 @@
           <!-- <p>wow, that really should've stayed in the drafts!</p> -->
           <div class='buttoncontainer'>
             <div class='delete button'>
-              <a>ur right delete it</a>
+              <a>DELETE IT!</a>
             </div>
             <div class='retweet button'>
-              <a>no fuck you this was good. rt</a>
+              <a>BUMP IT!</a>
             </div>
           </div>
         </div>
       </div>
       <div class='card'>
         <div class='tweet'>
-          <p>on oct 20, 2019 you tweeted:</p>
-          <a class='tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"ayy u got kik lol"</a>
-          <p>and it received 0 likes!</p>
+          <p class='current'>on oct 20, 2019 you tweeted:</p>
+          <a class='current tweet-text' href='https://twitter.com/jumicates/status/1186309424513568768'>"ayy u got kik lol"</a>
+          <p class='current'>and it received 0 likes!</p>
           <br>
-          <p><em>wow, that really should've stayed in the drafts!</em></p>
+          <p class='current'><em>wow, that really should've stayed in the drafts!</em></p>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>
         </div>
@@ -81,10 +82,10 @@
           <!-- <p>wow, that really should've stayed in the drafts!</p> -->
           <div class='buttoncontainer'>
             <div class='delete button'>
-              <a>ur right delete it</a>
+              <a>DELETE IT!</a>
             </div>
             <div class='retweet button'>
-              <a>no fuck you this was good</a>
+              <a>BUMP IT!</a>
             </div>
           </div>
         </div>
@@ -105,7 +106,7 @@
     <span> / </span> -->
     <span class='logout'>LOGOUT</span>
   </footer>
-  <div class='modal-bg confirm-modal'>
+  <div class='show modal-bg confirm-modal'>
     <div class='confirm modal-box'>
     <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
     <h4><em>are you sure?</em></h4>
@@ -116,7 +117,7 @@
     </div>
     </div>
   </div>
-  <div class='modal-bg about-modal'>
+  <div class='show modal-bg about-modal'>
     <div class='about-box modal-box'>
       <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
       <h6>how are bad tweets determined</h6>
