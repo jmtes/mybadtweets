@@ -68,12 +68,13 @@ header {
 
 footer {
   position: fixed;
-  bottom: 0;
+  bottom: 0rem;
   width: 100%;
   text-align: center;
-  height: 3.75rem;
+  height: 0.8rem;
   font-size: 0.75rem;
   background-color: #fff;
+  padding: 2.5rem 0rem;
 }
 
 footer a {
