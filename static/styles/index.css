@@ -1,3 +1,7 @@
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: 'Source Code Pro', monospace;
   /* height: 100%;
