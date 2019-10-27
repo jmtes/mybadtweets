@@ -166,7 +166,7 @@ footer a {
   padding-bottom: 4.0625em;
   overflow: hidden;
   top: 0;
-  /* display: none; */
+  display: none;
 }
 
 .modal-box {
