@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Twit = require('twit');
 const keys = require('../config/keys');
 const math = require('mathjs');
+const messages = require('../config/messages');
 
 let client;
 
@@ -50,7 +51,6 @@ router.get('/', authCheck, (req, res) => {
     return (avg - stdDev);
   }
 
-  function getTweets() {
     client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
       tweetArray = tweetArray.concat(data);
       params.max_id = tweetArray[tweetArray.length - 1].id;
@@ -67,12 +67,11 @@ router.get('/', authCheck, (req, res) => {
         }
         res.render('tweets', {
           user: req.user,
-          tweets: badTweets
+          tweets: badTweets,
+          msgs: messages
         });
       }
     });
-  }
-  getTweets();
 });
 
 module.exports = router;
