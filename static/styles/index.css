@@ -1,5 +1,5 @@
 .container {
-  padding-top: 20vh;
+  padding-top: 3rem;
   padding-bottom: 4.0625rem;
   margin: auto;
   text-align: center;
@@ -14,7 +14,7 @@
   align-items: center;
   align-content: center;
   position: absolute;
-  top: 12.5rem;
+  top: 7.5rem;
   left: 0;
   right: 0;
   height: 50%;
