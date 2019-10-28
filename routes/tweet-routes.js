@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Twit = require('twit');
 const keys = require('../config/keys');
 const math = require('mathjs');
+const messages = require('../config/messages');
 
 let client;
 
@@ -66,7 +67,8 @@ router.get('/', authCheck, (req, res) => {
         }
         res.render('tweets', {
           user: req.user,
-          tweets: badTweets
+          tweets: badTweets,
+          msgs: messages
         });
       }
     });

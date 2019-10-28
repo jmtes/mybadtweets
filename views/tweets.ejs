@@ -38,7 +38,7 @@
           <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>' target='_blank'>"<%= tweet.full_text %>"</a>
           <p>and it received <%= tweet.favorite_count %> <%= plurality %>!</p>
           <br>
-          <p><em>hit or miss, i guess they never hit huh?</em></p>
+          <p><em><%= msgs[getRandomInt(msgs.length)] %></em></p>
           </div>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>
