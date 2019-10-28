@@ -7,24 +7,25 @@
   <title>mybadtweets</title>
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css">
   <link rel="stylesheet" href="styles/tweets.css">
   <link rel="stylesheet" href="styles/animations.css">
 
 </head>
 <body>
-  <header>
-    <div class='title'>
-      <h1><a href='/'>mybadtweets™</a></h1>
-    </div>
+  <!-- <header> -->
     <!-- <span class='menu'>
       <button class='settings'>settings</button>
       <% if (user) {%>
       <a class='logout' onclick='window.location.href = "auth/logout"'>logout</a>
       <% } %>
     </span> -->
-  </header>
+  <!-- </header> -->
   <div class='container'>
     <!-- <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3> -->
+    <div class='title'>
+      <h1><a href='/'>mybadtweets™</a></h1>
+    </div>
     <h3>now displaying your SHITTIEST tweets!</h3>
     <div class='card-wrapper'>
       <% tweets.forEach(tweet => { %>
