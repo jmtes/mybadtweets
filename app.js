@@ -11,14 +11,15 @@ const app = express();
 
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 
 // Set up session
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: 'sugarboy'
-}));
+// app.use(session({
+//   resave: true,
+//   saveUninitialized: true,
+//   secret: 'sugarboy'
+// }));
 
 // Set up view engine
 app.set('view engine', 'ejs');
@@ -28,6 +29,7 @@ mongoose.connect(keys.mongodb.dbURI, () => {
   console.log('connected to mongodb');
 });
 
+app.use(cookieParser());
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey]
