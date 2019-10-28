@@ -58,10 +58,11 @@ footer {
   bottom: 0rem;
   width: 100%;
   text-align: center;
-  height: 0.8rem;
+  height: 4vh;
   font-size: 0.75rem;
   background-color: #fff;
-  padding: 2.5rem 0rem;
+  padding: 1vh 0vh;
+  line-height: 4vh;
 }
 
 footer a {
