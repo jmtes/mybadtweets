@@ -26,7 +26,7 @@ header {
   /*box-shadow: -2px -2px;*/
   margin: auto;
   text-align: center;
-  text-shadow: -0.1875rem -0.1875rem blue;
+  text-shadow: -1px -1px blue;
 }
 
 @media only screen and (max-width: 767px) {
@@ -119,7 +119,7 @@ footer a {
   margin: auto;
   top: 40%;
   border: 0.0625rem solid #000;
-  box-shadow: -0.0625rem -0.0625rem #000;
+  box-shadow: -1px -1px #000;
   background-color: #fff;
   opacity: 1;
   padding: 1.25rem;
