@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  align-content: space-around;
+  align-content: center;
   position: absolute;
   top: 12.5rem;
   left: 0;
@@ -23,12 +23,12 @@
 }
 
 .description h3 {
-  margin: auto;
+  margin: 0.625rem auto;
   background-color: #fff;
 }
 
 .description h4 {
-  margin: auto;
+  margin: 0.625rem auto 2.5rem auto;
   background-color: #fff;
 }
 
