@@ -14,11 +14,11 @@ const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 
 // Set up session
-// app.use(session({
-//   resave: true,
-//   saveUninitialized: true,
-//   secret: 'sugarboy'
-// }));
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: 'sugarboy'
+}));
 
 // Set up view engine
 app.set('view engine', 'ejs');
