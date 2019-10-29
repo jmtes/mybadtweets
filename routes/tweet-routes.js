@@ -26,14 +26,14 @@ router.get('/', authCheck, (req, res) => {
   let tweetArray = [];
   let i = 16;
 
-  const params = {
-    screen_name: req.user.username,
-    count: 200,
-    trim_user: true,
-    exclude_replies: true,
-    include_rts: false,
-    tweet_mode: 'extended'
-  }
+  // const params = {
+  //   screen_name: req.user.username,
+  //   count: 200,
+  //   trim_user: true,
+  //   exclude_replies: true,
+  //   include_rts: false,
+  //   tweet_mode: 'extended'
+  // }
 
   function calcLikeThreshold() {
     const tweetLikes = [];
@@ -51,13 +51,28 @@ router.get('/', authCheck, (req, res) => {
     return (avg - stdDev);
   }
 
-  let client = new Twit({
-    consumer_key: keys.twitter.consumerKey,
-    consumer_secret: keys.twitter.consumerSecret,
-    access_token: req.user.accessToken,
-    access_token_secret: req.user.accessTokenSecret
-  });
+  // let client = new Twit({
+  //   consumer_key: keys.twitter.consumerKey,
+  //   consumer_secret: keys.twitter.consumerSecret,
+  //   access_token: req.user.accessToken,
+  //   access_token_secret: req.user.accessTokenSecret
+  // });
 
+  function getTweets() {
+    const params = {
+      screen_name: req.user.username,
+      count: 200,
+      trim_user: true,
+      exclude_replies: true,
+      include_rts: false,
+      tweet_mode: 'extended'
+    };
+    const client = new Twit({
+      consumer_key: keys.twitter.consumerKey,
+      consumer_secret: keys.twitter.consumerSecret,
+      access_token: req.user.accessToken,
+      access_token_secret: req.user.accessTokenSecret
+    });
     client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
       tweetArray = tweetArray.concat(data);
       params.max_id = tweetArray[tweetArray.length - 1].id;
@@ -72,6 +87,7 @@ router.get('/', authCheck, (req, res) => {
         } else {
           badTweets = tweetArray.filter(tweet => tweet.favorite_count === likeThreshold);
         }
+        req.session = null;
         res.render('tweets', {
           user: req.user,
           tweets: badTweets,
@@ -79,6 +95,8 @@ router.get('/', authCheck, (req, res) => {
         });
       }
     });
+  }
+  getTweets();
 });
 
 module.exports = router;

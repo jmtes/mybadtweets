@@ -8,6 +8,7 @@ router.get('/', passport.authenticate('twitter'));
 router.get('/logout', (req, res) => {
   // Handle with passport
   req.logout();
+  req.session = null;
   res.redirect('/');
 })
 
