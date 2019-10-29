@@ -52,13 +52,9 @@ app.use(express.static('static'));
 
 // Create home route
 app.get('/', (req, res) => {
-  if (req.user) {
-    res.redirect('/tweets');
-  } else {
-    res.render('index', {
-      user: req.user
-    });
-  }
+  res.render('index', {
+    user: req.user
+  });
 });
 
 app.listen(process.env.PORT, () => {
