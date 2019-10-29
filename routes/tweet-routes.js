@@ -87,6 +87,7 @@ router.get('/', authCheck, (req, res) => {
         } else {
           badTweets = tweetArray.filter(tweet => tweet.favorite_count === likeThreshold);
         }
+        req.session = null;
         res.render('tweets', {
           user: req.user,
           tweets: badTweets,
