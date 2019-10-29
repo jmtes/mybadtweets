@@ -4,7 +4,7 @@ const keys = require('../config/keys');
 const math = require('mathjs');
 const messages = require('../config/messages');
 
-let client;
+// let client;
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -12,12 +12,12 @@ const authCheck = (req, res, next) => {
     res.redirect('/auth');
   } else {
     // If user is logged in
-    client = new Twit({
-      consumer_key: keys.twitter.consumerKey,
-      consumer_secret: keys.twitter.consumerSecret,
-      access_token: req.user.accessToken,
-      access_token_secret: req.user.accessTokenSecret
-    });
+    // client = new Twit({
+    //   consumer_key: keys.twitter.consumerKey,
+    //   consumer_secret: keys.twitter.consumerSecret,
+    //   access_token: req.user.accessToken,
+    //   access_token_secret: req.user.accessTokenSecret
+    // });
     next();
   }
 }
@@ -50,6 +50,13 @@ router.get('/', authCheck, (req, res) => {
 
     return (avg - stdDev);
   }
+
+  let client = new Twit({
+    consumer_key: keys.twitter.consumerKey,
+    consumer_secret: keys.twitter.consumerSecret,
+    access_token: req.user.accessToken,
+    access_token_secret: req.user.accessTokenSecret
+  });
 
     client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
       tweetArray = tweetArray.concat(data);
