@@ -1,3 +1,4 @@
+![The working mybadtweets logo](https://i.imgur.com/EQHVX3U.png)
 # mybadtweets
 mybadtweets is a web app that shows you your least popular tweets.
 
@@ -30,6 +31,21 @@ export DBURI='yourDBURI'
 ```
 node app.js
 ```
+## Built With
+* [EJS](https://ejs.co) - the templating engine used
+* [Express](https://expressjs.com/) - the web application framework used
+* [math.js](https://mathjs.org/) - library used to calculate tweet statistics
+* [Mongoose](https://mongoosejs.com) - the ODM used
+* [Passport.js](http://www.passportjs.org/) - middleware used for twitter authentication
+* [twit](https://www.npmjs.com/package/twit) - twitter API client used
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Authors
+* Julienne Tesoro - [Github](https://github.com/jmtes) - [Linkedin](https://www.linkedin.com/in/julienne-tesoro-72156817a/)
+
+## Acknowledgements
+* Robert Glatzel - [Github](https://github.com/robertglatzel)
+* [The Net Ninja](https://www.youtube.com/channel/UCW5YeuERMmlnqo4oq8vwUpg)
