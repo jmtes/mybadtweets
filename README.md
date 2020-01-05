@@ -3,7 +3,6 @@
 mybadtweets is a web app that shows you your least popular tweets.
 
 ## Setup for Development
-The app is deployed on Heroku, but if you want to play with the code yourself then follow these steps:
 
 1. Clone the repo and `cd` into it.
 ```
