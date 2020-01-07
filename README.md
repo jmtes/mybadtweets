@@ -39,8 +39,10 @@ node app.js
 * [twit](https://www.npmjs.com/package/twit) - twitter API client used
 
 
-## Contributing
+## Contributing and Future Developments
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+App development progress is being tracked [here](https://trello.com/b/kqxbjGpU/mybadtweets) on Trello! Any issues opened will be added to the board.
 
 ## Authors
 * Julienne Tesoro - [Github](https://github.com/jmtes) - [Linkedin](https://www.linkedin.com/in/julienne-tesoro-72156817a/)
