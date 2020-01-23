@@ -1,6 +1,6 @@
 const signIn = document.querySelector('.signin');
 const leave = document.querySelector('.leave');
-let rainbow;
+// let rainbow;
 
 
 // signIn.addEventListener('click', () => {
@@ -19,37 +19,37 @@ let rainbow;
 //   }
 // });
 
-signIn.addEventListener('mouseover', () => {
+// signIn.addEventListener('mouseover', () => {
   // document.querySelector('body').style.backgroundImage = 'url("static/images/fireworks.gif")';
-  let r = 255, g = 0, b = 0;
-  rainbow = setInterval(() => {
-    if (r > 0 && b == 0) {
-      r--;
-      g++;
-    }
-    if (g > 0 && r == 0){
-      g--;
-      b++;
-    }
-    if (b > 0 && g == 0) {
-      r++;
-      b--;
-    }
-    signIn.firstElementChild.style.color = `rgb(${r}, ${g}, ${b})`;
-    signIn.firstElementChild.style.fontWeight = 'bold';
+  // let r = 255, g = 0, b = 0;
+  // rainbow = setInterval(() => {
+  //   if (r > 0 && b == 0) {
+  //     r--;
+  //     g++;
+  //   }
+  //   if (g > 0 && r == 0){
+  //     g--;
+  //     b++;
+  //   }
+  //   if (b > 0 && g == 0) {
+  //     r++;
+  //     b--;
+  //   }
+  //   signIn.style.color = `rgb(${r}, ${g}, ${b})`;
+  //   signIn.style.fontWeight = 'bold';
     // signIn.style.border = `1px solid rgb(${r}, ${g}, ${b})`;
     // signIn.style.boxShadow = `-1px -1px rgb(${r}, ${g}, ${b})`;
-  }, 1);
-});
+//   }, 1);
+// });
 
-signIn.addEventListener('mouseout', () => {
-  document.querySelector('body').style.backgroundImage = 'none';
-  clearTimeout(rainbow);
-  signIn.firstElementChild.style.color = '#0000ff';
-  signIn.firstElementChild.style.fontWeight = 'normal';
+// signIn.addEventListener('mouseout', () => {
+//   document.querySelector('body').style.backgroundImage = 'none';
+//   clearTimeout(rainbow);
+//   signIn.style.color = '#000';
+//   signIn.style.fontWeight = 'normal';
   // signIn.style.border = `1px solid #000`;
   // signIn.style.boxShadow = `-1px -1px #000`;
-})
+// })
 
 signIn.addEventListener('click', () => {
   setTimeout(() => {
@@ -57,8 +57,8 @@ signIn.addEventListener('click', () => {
   }, 100);
 });
 
-leave.addEventListener('click', () => {
-  setTimeout(() => {
-    window.history.back();
-  }, 100);
-})
+// leave.addEventListener('click', () => {
+//   setTimeout(() => {
+//     window.history.back();
+//   }, 100);
+// });

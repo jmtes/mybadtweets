@@ -20,6 +20,15 @@
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: normal;
+  transition: text-shadow 0.25s ease, letter-spacing 0.5s ease;
+}
+
+.button:hover {
+  text-shadow: -1px -1px blue;
+  letter-spacing: 2px;
+  /* font-size: 0.8rem; */
+  /* box-shadow: -1px -1px blue; */
+  font-weight: bold;
 }
 
 .card-wrapper {
@@ -46,6 +55,22 @@
   text-decoration: none;
   font-weight: bold;
   color: #000;
+  transition: text-shadow 0.2s ease;
+}
+
+.tweet-text:hover {
+  text-shadow: -2px -2px #0000ff;
+}
+
+.message {
+  /* background: rgb(255, 255, 0, 0.8); */
+  /* text-decoration: line-through; */
+  /* border: 1px dashed #000; */
+  /* padding: 20px; */
+  /* text-shadow: -1px -1px #0000ff; */
+  /* font-family: cursive; */
+  /* letter-spacing: 2px; */
+  text-transform: uppercase;
 }
 
 .panel {
@@ -56,6 +81,11 @@
 
 .page {
   font-size: 2rem;
+  transition: text-shadow 0.3s ease;
+}
+
+.page:hover {
+  text-shadow: -3px -3px blue;
 }
 
 .prev {
@@ -85,8 +115,11 @@
 .confirm a {
   font-size: 0.875rem;
   cursor: pointer;
+  transition: text-shadow 0.25s ease, letter-spacing 0.5s ease;
 }
 
 .confirm a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  text-shadow: -1px -1px blue;
+  letter-spacing: 2px;
 }

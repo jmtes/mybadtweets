@@ -26,7 +26,7 @@
     <div class='title'>
       <h1><a href='/'>mybadtweets™</a></h1>
     </div>
-    <h3>now displaying your SHITTIEST tweets!</h3>
+    <h3>these are your SHITTIEST tweets!</h3>
     <div class='card-wrapper'>
       <% tweets.forEach(tweet => { %>
       <% let date = tweet.created_at.split(' '); %>
@@ -36,9 +36,9 @@
           <div class='current'>
           <p>on <%= date[1].toLowerCase() %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
           <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>' target='_blank'>"<%= tweet.full_text %>"</a>
-          <p>and it received <%= tweet.favorite_count %> <%= plurality %>!</p>
+          <p>and it received <span class='rainbow'><strong><%= tweet.favorite_count %></strong></span> <%= plurality %>!</p>
           <br>
-          <p><em><%= msgs[Math.floor(Math.random() * Math.floor(msgs.length))] %></em></p>
+          <p class='message'><em><%= msgs[Math.floor(Math.random() * Math.floor(msgs.length))] %></em></p>
           </div>
           <a class='page prev'> < </a>
           <a class='page next'> > </a>

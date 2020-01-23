@@ -19,11 +19,11 @@
   animation: rainbow 0.8s infinite;
 }
 
- .flash {
+.flash {
   animation: flash 0.1s linear infinite;
 }
 
- @keyframes rainbow {
+@keyframes rainbow {
   100%, 0% {
 	  color: rgb(255,0,0);
 	}
@@ -62,7 +62,7 @@
 	}
 }
 
- @keyframes flash {
+@keyframes flash {
 	0% {
     color: #000;
   }

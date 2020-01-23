@@ -27,6 +27,11 @@ header {
   margin: auto;
   text-align: center;
   text-shadow: -0.1875rem -0.1875rem blue;
+  transition: letter-spacing 1s ease;
+  /* animation: rainbow 10s infinite; */
+}
+.title:hover {
+  letter-spacing: 8px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -39,6 +44,7 @@ header {
     padding: 1.25rem;
     margin: 0;
     padding: 0;
+    /* animation: rainbow 10s infinite; */
     }
 }
 
@@ -52,6 +58,7 @@ header {
     padding: 1.25rem;
     margin: 0;
     padding: 0;
+    /* animation: rainbow 10s infinite; */
     }
 }
 
@@ -78,6 +85,11 @@ footer {
 footer a {
   text-decoration: none;
   color: #000;
+  transition: text-shadow 0.25s ease;
+}
+
+footer a:hover {
+  text-shadow: -1px -1px blue;
 }
 
 .buttoncontainer {
@@ -94,6 +106,11 @@ footer a {
 
 .about {
   cursor: pointer;
+  transition: text-shadow 0.25s ease;
+}
+
+.about:hover {
+  text-shadow: -1px -1px blue;
 }
 
 .modal-bg {
@@ -128,7 +145,7 @@ footer a {
 .about-box {
   width: 40%;
   text-align: left;
-  top: 30%;
+  top: 25%;
 }
 
 .about-box h6 {
@@ -136,7 +153,7 @@ footer a {
 }
 
 .about-box p {
-  font-size: 0.4rem;
+  font-size: 0.6rem;
   margin: 0rem;
 }
 
@@ -146,4 +163,48 @@ footer a {
   top: 0rem;
   font-size: 0.875rem;
   cursor: pointer;
+  transition: text-shadow 0.25s ease;
+}
+
+.close:hover {
+  text-shadow: -1px -1px blue;
+}
+
+@keyframes rainbow {
+  100%, 0% {
+	  color: rgb(255,0,0);
+	}
+	8% {
+		color: rgb(255,127,0);
+	}
+	16% {
+	  color: rgb(255,255,0);
+	}
+	25% {
+	  color: rgb(127,255,0);
+	}
+	33% {
+	  color: rgb(0,255,0);
+	}
+	41% {
+	  color: rgb(0,255,127);
+	}
+	50% {
+	  color: rgb(0,255,255);
+	}
+	58% {
+	  color: rgb(0,127,255);
+	}
+	66% {
+		color: rgb(0,0,255);
+	}
+	75% {
+		color: rgb(127,0,255);
+	}
+	83% {
+		color: rgb(255,0,255);
+	}
+	91% {
+		color: rgb(255,0,127);
+	}
 }
