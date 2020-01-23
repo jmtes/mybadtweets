@@ -19,6 +19,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   secret: keys.session.secret,
+  unset: 'destroy',
   cookie: {
     maxAge: 1000 * 60 * 30 // 30 minutes
   }
