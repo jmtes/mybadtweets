@@ -11,7 +11,7 @@ const app = express();
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 
 // Set up session
 app.use(session({
