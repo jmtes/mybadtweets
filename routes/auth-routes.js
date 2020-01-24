@@ -19,12 +19,12 @@ router.get('/logout', (req, res) => {
 
   res.clearCookie('session-id');
   res.redirect('/');
-})
+});
 
 // Callback route for Twitter to redirect to
 router.get('/redirect', passport.authenticate('twitter'), (req, res) => {
   // res.send(req.user);
   res.redirect('/tweets');
-})
+});
 
 module.exports = router;

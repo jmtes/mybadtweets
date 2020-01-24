@@ -22,14 +22,14 @@ function tweetAction (button) {
     endpoint = '/api/retweet';
   }
 
-  fetch(endpoint, {
+  window.fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
     }
   }).then(response => {
-    const responseJSON = response.json().then(data => {
+    response.json().then(data => {
       if (data.status === 'OK') {
         button.parentElement.parentElement.parentElement.remove();
         showCards(cardIndex);

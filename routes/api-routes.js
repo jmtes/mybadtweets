@@ -19,7 +19,7 @@ const authCheck = (req, res, next) => {
     // });
     next();
   }
-}
+};
 
 router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
@@ -31,7 +31,7 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   const endpoint = 'statuses/destroy/' + req.body.tweetid;
   console.log(endpoint);
 
-  let client = new Twit({
+  const client = new Twit({
     consumer_key: keys.twitter.consumerKey,
     consumer_secret: keys.twitter.consumerSecret,
     access_token: req.user.accessToken,
@@ -53,7 +53,7 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
       res.set('Content-Type', 'application/json');
       res.send(bod);
     }
-  })
+  });
 });
 
 router.post('/retweet', authCheck, bodyParser, (req, res) => {
@@ -66,7 +66,7 @@ router.post('/retweet', authCheck, bodyParser, (req, res) => {
   const endpoint = 'statuses/retweet/' + req.body.tweetid;
   console.log('endpoint is ' + endpoint);
 
-  let client = new Twit({
+  const client = new Twit({
     consumer_key: keys.twitter.consumerKey,
     consumer_secret: keys.twitter.consumerSecret,
     access_token: req.user.accessToken,
@@ -88,7 +88,7 @@ router.post('/retweet', authCheck, bodyParser, (req, res) => {
       res.set('Content-Type', 'application/json');
       res.send(bod);
     }
-  })
+  });
 });
 
 module.exports = router;
