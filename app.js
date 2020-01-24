@@ -1,7 +1,6 @@
 const express = require('express');
 const passportSetup = require('./config/passport-setup');
 const session = require('express-session');
-// const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth-routes');
 const tweetRoutes = require('./routes/tweet-routes');
 const apiRoutes = require('./routes/api-routes');
@@ -12,14 +11,19 @@ const app = express();
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 
 // Set up session
-// app.use(session({
-//   resave: true,
-//   saveUninitialized: true,
-//   secret: 'sugarboy'
-// }));
+app.use(session({
+  name: 'session-id',
+  resave: false,
+  saveUninitialized: false,
+  secret: keys.session.secret,
+  unset: 'destroy',
+  cookie: {
+    maxAge: 1000 * 60 * 30 // 30 minutes
+  }
+}));
 
 // Set up view engine
 app.set('view engine', 'ejs');
@@ -30,10 +34,10 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 });
 
 app.use(cookieParser());
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
-}));
+// app.use(cookieSession({
+//   maxAge: 24 * 60 * 60 * 1000,
+//   keys: [keys.session.secret]
+// }));
 
 // Initialize passport
 app.use(passport.initialize());
@@ -52,6 +56,9 @@ app.use(express.static('static'));
 
 // Create home route
 app.get('/', (req, res) => {
+  // console.log(req.user);
+  // console.log(req.session);
+  // console.log(req.sessionID);
   res.render('index', {
     user: req.user
   });

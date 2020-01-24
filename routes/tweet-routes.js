@@ -23,6 +23,9 @@ const authCheck = (req, res, next) => {
 };
 
 router.get('/', authCheck, (req, res) => {
+  // console.log(req.user);
+  // console.log(req.session);
+  // console.log(req.sessionID);
   let tweetArray = [];
   let i = 16;
 

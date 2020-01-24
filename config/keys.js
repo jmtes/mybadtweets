@@ -7,6 +7,6 @@ module.exports = {
     dbURI: 'mongodb+srv://' + process.env.DBUSER + ':' + process.env.DBPWD + '@hosanna-ikelv.mongodb.net/test?retryWrites=true&w=majority'
   },
   session: {
-    cookieKey: 'star'
+    secret: process.env.SESSIONKEY
   }
 };
