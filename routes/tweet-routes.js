@@ -23,6 +23,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get('/', authCheck, (req, res) => {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   // console.log(req.user);
   // console.log(req.session);
   // console.log(req.sessionID);
