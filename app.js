@@ -56,6 +56,9 @@ app.use(express.static('static'));
 
 // Create home route
 app.get('/', (req, res) => {
+  // console.log(req.user);
+  // console.log(req.session);
+  // console.log(req.sessionID);
   res.render('index', {
     user: req.user
   });
