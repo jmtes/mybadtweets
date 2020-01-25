@@ -22,36 +22,14 @@ function tweetAction (button) {
     endpoint = '/api/retweet';
   }
 
-  // window.fetch(endpoint, {
-  //   method: 'POST',
-  //   body: JSON.stringify(data),
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   }
-  // }).then(response => {
-  //   response.json().then(data => {
-  //     if (data.status === 'OK') {
-  //       button.parentElement.parentElement.parentElement.remove();
-  //       showCards(cardIndex);
-  //     } else {
-  //       console.log('try again lol');
-  //     }
-  //   });
-  // });
-
-  (async () => {
-    const res = await window.fetch(endpoint, {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    const data = await res.json();
-
-    return data;
-  })()
+  window.fetch(endpoint, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
     .then(data => {
       if (data.status === 'OK') {
         button.parentElement.parentElement.parentElement.remove();
