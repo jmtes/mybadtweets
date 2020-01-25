@@ -10,8 +10,8 @@ document.addEventListener('click', event => {
 });
 
 function tweetAction (button) {
-  const data = { tweetid: button.parentElement.dataset.tweetid };
-  console.log('making request with tweet id: ' + data.tweetid);
+  const body = { tweetid: button.parentElement.dataset.tweetid };
+  console.log('making request with tweet id: ' + body.tweetid);
   let endpoint;
 
   if (button.classList.contains('delete')) {
@@ -22,14 +22,37 @@ function tweetAction (button) {
     endpoint = '/api/retweet';
   }
 
-  window.fetch(endpoint, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(response => {
-    response.json().then(data => {
+  // window.fetch(endpoint, {
+  //   method: 'POST',
+  //   body: JSON.stringify(data),
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  // }).then(response => {
+  //   response.json().then(data => {
+  //     if (data.status === 'OK') {
+  //       button.parentElement.parentElement.parentElement.remove();
+  //       showCards(cardIndex);
+  //     } else {
+  //       console.log('try again lol');
+  //     }
+  //   });
+  // });
+
+  (async () => {
+    const res = await window.fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await res.json();
+
+    return data;
+  })()
+    .then(data => {
       if (data.status === 'OK') {
         button.parentElement.parentElement.parentElement.remove();
         showCards(cardIndex);
@@ -37,7 +60,6 @@ function tweetAction (button) {
         console.log('try again lol');
       }
     });
-  });
 }
 
 document.addEventListener('click', event => {
