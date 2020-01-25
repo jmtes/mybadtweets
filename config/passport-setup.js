@@ -49,7 +49,7 @@ passport.use(new Strategy({
   consumerSecret: keys.twitter.consumerSecret,
   callbackURL: '/auth/redirect'
 }, (token, tokenSecret, profile, done) => {
-  async function getUser () {
+  const getUser = (async function () {
     // Check if user already exists in db
     let user = await User.findOne({ twitterID: profile.id });
 
@@ -67,9 +67,7 @@ passport.use(new Strategy({
 
     user = await user.save();
     return user;
-  }
-
-  getUser()
+  })()
     .then(user => {
       console.log(user);
       done(null, user);
