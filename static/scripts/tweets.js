@@ -10,8 +10,8 @@ document.addEventListener('click', event => {
 });
 
 function tweetAction (button) {
-  const data = { tweetid: button.parentElement.dataset.tweetid };
-  console.log('making request with tweet id: ' + data.tweetid);
+  const body = { tweetid: button.parentElement.dataset.tweetid };
+  console.log('making request with tweet id: ' + body.tweetid);
   let endpoint;
 
   if (button.classList.contains('delete')) {
@@ -24,12 +24,13 @@ function tweetAction (button) {
 
   window.fetch(endpoint, {
     method: 'POST',
-    body: JSON.stringify(data),
+    body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(response => {
-    response.json().then(data => {
+  })
+    .then(response => response.json())
+    .then(data => {
       if (data.status === 'OK') {
         button.parentElement.parentElement.parentElement.remove();
         showCards(cardIndex);
@@ -37,7 +38,6 @@ function tweetAction (button) {
         console.log('try again lol');
       }
     });
-  });
 }
 
 document.addEventListener('click', event => {
