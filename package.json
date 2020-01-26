@@ -1,6 +1,6 @@
 {
-  "name": "oauthtest",
-  "version": "1.0.0",
+  "name": "mybadtweets",
+  "version": "1.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {
