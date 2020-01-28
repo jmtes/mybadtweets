@@ -9,6 +9,7 @@ module.exports = class UI {
     this.tweetDate = document.getElementById('date');
     this.tweetText = document.getElementById('tweet-text');
     this.likeCount = document.getElementById('like-count');
+    this.likePlurality = document.getElementById('like-plurality');
     this.message = document.getElementById('message');
     this.tweetIndex = document.getElementById('tweet-index');
     this.tweetCount = document.getElementById('tweet-count');
@@ -25,6 +26,9 @@ module.exports = class UI {
     // Set link href
     this.tweetText.setAttribute('href', this.getTweetURL(tweet));
     this.likeCount.textContent = String(tweet.favorite_count);
+    tweet.favorite_count === 1
+      ? this.likePlurality.textContent = 'like'
+      : this.likePlurality.textContent = 'likes';
   }
 
   // date param should be the created_at property of a tweet
