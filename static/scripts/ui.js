@@ -15,4 +15,19 @@ module.exports = class UI {
     this.modalMessage = document.getElementById('modal-message');
     this.modalOptions = document.getElementById('modal-options');
   }
+
+  renderTweet (tweet) {
+    // Make date string
+    const date = this.getDateString(tweet.created_at);
+    console.log(date);
+  }
+
+  // date param should be the created_at property of a tweet
+  getDateString (date) {
+    date = date.split(' ');
+    const month = date[1].toLowerCase();
+    const day = date[2];
+    const year = date[5];
+    return `${month} ${day}, ${year}`;
+  }
 };
