@@ -18,11 +18,11 @@ console.log('slides obj: ', slides);
 
 function getTweets () {
   // Fetch tweets from Twitter API
-  let tweets;
   twitter.getTweets()
     .then(data => {
-      tweets = data;
-      console.log('tweets is ', tweets); // This should be an array of tweet objects
+      slides = new Slides(data);
+      let nextTweet = slides.getNextTweet();
+      ui.renderTweet(nextTweet);
     });
 }
 
