@@ -4,7 +4,7 @@
 
 // Render tweet to screen
 
-class UI {
+module.exports = class UI {
   constructor () {
     this.tweetDate = document.getElementById('date');
     this.tweetText = document.getElementById('tweet-text');
@@ -15,6 +15,4 @@ class UI {
     this.modalMessage = document.getElementById('modal-message');
     this.modalOptions = document.getElementById('modal-options');
   }
-}
-
-export const ui = new UI();
+};

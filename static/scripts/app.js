@@ -4,9 +4,17 @@
 
 // Retweet button event listener
 
-import { twitter } from './twitter';
-import { slideshow } from './slideshow';
-import { ui } from './ui';
+var Twitter = require('./twitter');
+var UI = require('./ui');
+var Slides = require('./slideshow');
+
+var twitter = new Twitter();
+var ui = new UI();
+var slides;
+
+console.log('twitter obj: ', twitter);
+console.log('ui obj: ', ui);
+console.log('slides obj: ', slides);
 
 function getTweets () {
   // Fetch tweets from Twitter API

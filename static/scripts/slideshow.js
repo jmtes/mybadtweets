@@ -1,6 +1,4 @@
 // Tweet generator
-class Slides {
-  
-}
+module.exports = class Slides {
 
-export const slides = new Slides();
+};
