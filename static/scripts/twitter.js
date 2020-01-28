@@ -1,16 +1,13 @@
 // Get tweets
 
 // Delete/Retweet tweet
-class Twitter {
-  getTweets () {
+module.exports = class Twitter {
+  async getTweets () {
     console.log('getTweets triggered');
     // Query internal API
-    window.fetch('/api/fetch')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
+    let res = await window.fetch('/api/fetch');
+    res = await res.json();
+    console.log(res);
+    return res;
   }
-}
-
-export const twitter = new Twitter();
+};
