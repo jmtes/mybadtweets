@@ -74,7 +74,10 @@ router.get('/fetch', authCheck, (req, res) => {
       } else {
         badTweets = tweetArray.filter(tweet => tweet.favorite_count === likeThreshold);
       }
-      res.send(JSON.stringify(badTweets));
+      res.send(JSON.stringify({
+        user: req.user.username,
+        tweets: badTweets
+      }));
     }
   });
 });
