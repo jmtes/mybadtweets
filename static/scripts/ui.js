@@ -19,7 +19,9 @@ module.exports = class UI {
   renderTweet (tweet) {
     // Make date string
     const date = this.getDateString(tweet.created_at);
-    console.log(date);
+    this.tweetDate.textContent = date;
+    this.tweetText.textContent = tweet.full_text;
+    this.likeCount.textContent = String(tweet.favorite_count);
   }
 
   // date param should be the created_at property of a tweet
