@@ -20,7 +20,9 @@ function getTweets () {
   // Fetch tweets from Twitter API
   twitter.getTweets()
     .then(data => {
-      slides = new Slides(data);
+      console.log('user is: ', data.user);
+      console.log('their tweets are: ', data.tweets);
+      slides = new Slides(data.tweets);
       let nextTweet = slides.getNextTweet();
       ui.renderTweet(nextTweet);
     });
