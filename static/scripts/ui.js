@@ -20,7 +20,7 @@ module.exports = class UI {
     // Make date string
     const date = this.getDateString(tweet.created_at);
     this.tweetDate.textContent = date;
-    this.tweetText.textContent = tweet.full_text;
+    this.tweetText.textContent = `"${tweet.full_text}"`;
     this.likeCount.textContent = String(tweet.favorite_count);
   }
 
