@@ -24,6 +24,7 @@ function getTweets () {
       console.log('their tweets are: ', data.tweets);
       slides = new Slides(data.tweets);
       let nextTweet = slides.getNextTweet();
+      ui.setUser(data.user);
       ui.renderTweet(nextTweet);
     });
 }
