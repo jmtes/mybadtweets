@@ -7,7 +7,6 @@ module.exports = class Twitter {
     // Query internal API
     let res = await window.fetch('/api/fetch');
     res = await res.json();
-    console.log(res);
     return res;
   }
 };
