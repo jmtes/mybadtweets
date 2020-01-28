@@ -10,7 +10,12 @@ import { ui } from './ui';
 
 function getTweets () {
   // Fetch tweets from Twitter API
-  const tweets = twitter.getTweets(); // This should be an array of tweet objects
+  let tweets;
+  twitter.getTweets()
+    .then(data => {
+      tweets = data;
+      console.log('tweets is ', tweets); // This should be an array of tweet objects
+    });
 }
 
 // DOM content loaded event listener
