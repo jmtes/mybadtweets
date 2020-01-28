@@ -14,6 +14,7 @@ module.exports = class UI {
     this.tweetCount = document.getElementById('tweet-count');
     this.modalMessage = document.getElementById('modal-message');
     this.modalOptions = document.getElementById('modal-options');
+    this.user = undefined;
   }
 
   renderTweet (tweet) {
@@ -21,6 +22,7 @@ module.exports = class UI {
     const date = this.getDateString(tweet.created_at);
     this.tweetDate.textContent = date;
     this.tweetText.textContent = `"${tweet.full_text}"`;
+    // Set data attribute
     this.likeCount.textContent = String(tweet.favorite_count);
   }
 
@@ -31,5 +33,10 @@ module.exports = class UI {
     const day = date[2];
     const year = date[5];
     return `${month} ${day}, ${year}`;
+  }
+
+  // Set user
+  setUser (username) {
+    this.user = username;
   }
 };
