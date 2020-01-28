@@ -22,7 +22,8 @@ module.exports = class UI {
     const date = this.getDateString(tweet.created_at);
     this.tweetDate.textContent = date;
     this.tweetText.textContent = `"${tweet.full_text}"`;
-    // Set data attribute
+    // Set link href
+    this.tweetText.setAttribute('href', this.getTweetURL(tweet));
     this.likeCount.textContent = String(tweet.favorite_count);
   }
 
@@ -33,6 +34,10 @@ module.exports = class UI {
     const day = date[2];
     const year = date[5];
     return `${month} ${day}, ${year}`;
+  }
+
+  getTweetURL (tweet) {
+    return `https://twitter.com/${this.user}/status/${tweet.id_str}`;
   }
 
   // Set user
