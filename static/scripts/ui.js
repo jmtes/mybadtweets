@@ -20,19 +20,24 @@ module.exports = class UI {
 
   renderTweet (tweet) {
     // Make date string
-    const date = this.getDateString(tweet.created_at);
+    const date = this.getDateString(tweet.data.created_at);
     this.tweetDate.textContent = date;
-    this.tweetText.textContent = `"${tweet.full_text}"`;
+    this.tweetText.textContent = `"${tweet.data.full_text}"`;
     // Set link href
-    this.tweetText.setAttribute('href', this.getTweetURL(tweet));
-    this.likeCount.textContent = String(tweet.favorite_count);
-    tweet.favorite_count === 1
+    this.tweetText.setAttribute('href', this.getTweetURL(tweet.data));
+    this.likeCount.textContent = String(tweet.data.favorite_count);
+    tweet.data.favorite_count === 1
       ? this.likePlurality.textContent = 'like'
       : this.likePlurality.textContent = 'likes';
+    this.updateIndex(tweet.index);
   }
 
   updateIndex (index) {
     this.tweetIndex.textContent = String(index);
+  }
+
+  showTweetCount (totalTweets) {
+    this.tweetCount.textContent = String(totalTweets);
   }
 
   // date param should be the created_at property of a tweet
