@@ -17,7 +17,7 @@ function getTweets () {
       console.log('user is: ', data.user);
       console.log('their tweets are: ', data.tweets);
       ui.setUser(data.user);
-      slides = new Slides(data.tweets);
+      slides.setTweets(data.tweets);
       ui.showTweetCount(slides.getTweetCount());
       nextTweet();
     });

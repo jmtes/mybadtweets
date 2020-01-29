@@ -6,6 +6,10 @@ class Slides {
     this.currentIndex = -1;
   }
 
+  setTweets (tweets) {
+    this.tweets = tweets;
+  }
+
   getNextTweet () {
     this.currentIndex = (this.currentIndex + 1) % this.tweets.length;
     return {
