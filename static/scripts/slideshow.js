@@ -10,4 +10,11 @@ module.exports = class Slides {
     this.currentIndex = (this.currentIndex + 1) % this.tweets.length;
     return this.tweets[this.currentIndex];
   }
+
+  getPrevTweet () {
+    this.currentIndex === 0
+      ? this.currentIndex = this.tweets.length - 1
+      : this.currentIndex--;
+    return this.tweets[this.currentIndex];
+  }
 };
