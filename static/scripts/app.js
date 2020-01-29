@@ -25,6 +25,12 @@ function confirmAction (event) {
   ui.showConfirmModal();
 }
 
+function clickModal (event) {
+  if (event.target.classList.contains('close-modal')) {
+    ui.hideModal();
+  }
+}
+
 function nextTweet () {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
@@ -46,5 +52,8 @@ document.getElementById('prev').addEventListener('click', prevTweet);
 
 // Delete button event listener
 document.getElementById('panel').addEventListener('click', confirmAction);
+
+// Modal event listener
+document.getElementById('modal-bg').addEventListener('click', clickModal);
 
 console.log('successfully transpiled!');

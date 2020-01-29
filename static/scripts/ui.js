@@ -52,8 +52,11 @@ class UI {
 
     const noButton = document.createElement('span');
     noButton.id = 'no';
-    noButton.className = 'modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    noButton.className = 'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
     noButton.textContent = 'NO';
+
+    // Remove any existing option buttons
+    this.clearModalOptions();
 
     // Add option buttons to DOM
     this.modalOptions.appendChild(yesButton);
@@ -61,6 +64,16 @@ class UI {
 
     // Unhide modal
     this.modal.classList.remove('hidden');
+  }
+
+  hideModal () {
+    this.modal.classList.add('hidden');
+  }
+
+  clearModalOptions () {
+    while (this.modalOptions.firstChild) {
+      this.modalOptions.removeChild(this.modalOptions.firstChild);
+    }
   }
 
   // date param should be the created_at property of a tweet
