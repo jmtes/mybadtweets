@@ -41,6 +41,6 @@ document.getElementById('next').addEventListener('click', nextTweet);
 document.getElementById('prev').addEventListener('click', prevTweet);
 
 // Delete button event listener
-document.getElementById('delete-btn').addEventListener('click', deleteTweet);
+document.getElementById('panel').addEventListener('click', confirmAction);
 
 console.log('successfully transpiled!');
