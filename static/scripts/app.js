@@ -21,6 +21,10 @@ function getTweets () {
     });
 }
 
+function confirmAction (event) {
+  ui.showConfirmModal();
+}
+
 function nextTweet () {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
