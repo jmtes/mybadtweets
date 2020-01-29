@@ -2,13 +2,9 @@
 
 // Retweet button event listener
 
-var Twitter = require('./twitter');
-var UI = require('./ui');
-var Slides = require('./slideshow');
-
-var twitter = new Twitter();
-var ui = new UI();
-var slides;
+import { twitter } from './twitter';
+import { slides } from './slideshow';
+import { ui } from './ui';
 
 console.log('twitter obj: ', twitter);
 console.log('ui obj: ', ui);
