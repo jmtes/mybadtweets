@@ -1,5 +1,5 @@
 // Tweet generator
-module.exports = class Slides {
+class Slides {
   // tweets param should be array of tweet objects
   constructor (tweets) {
     this.tweets = tweets;
@@ -31,4 +31,6 @@ module.exports = class Slides {
   getCurrentIndex () {
     return this.currentIndex + 1;
   }
-};
+}
+
+export const slides = new Slides();

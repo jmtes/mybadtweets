@@ -4,7 +4,7 @@
 
 // Render tweet to screen
 
-module.exports = class UI {
+class UI {
   constructor () {
     this.tweetDate = document.getElementById('date');
     this.tweetText = document.getElementById('tweet-text');
@@ -57,4 +57,6 @@ module.exports = class UI {
   setUser (username) {
     this.user = username;
   }
-};
+}
+
+export const ui = new UI();

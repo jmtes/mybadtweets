@@ -1,7 +1,7 @@
 // Get tweets
 
 // Delete/Retweet tweet
-module.exports = class Twitter {
+class Twitter {
   async getTweets () {
     console.log('getTweets triggered');
     // Query internal API
@@ -9,4 +9,6 @@ module.exports = class Twitter {
     res = await res.json();
     return res;
   }
-};
+}
+
+export const twitter = new Twitter();
