@@ -1,5 +1,3 @@
-// Delete button event listener
-
 // Retweet button event listener
 
 import { twitter } from './twitter';
@@ -41,5 +39,8 @@ document.addEventListener('DOMContentLoaded', getTweets);
 // Page event listeners
 document.getElementById('next').addEventListener('click', nextTweet);
 document.getElementById('prev').addEventListener('click', prevTweet);
+
+// Delete button event listener
+document.getElementById('delete-btn').addEventListener('click', deleteTweet);
 
 console.log('successfully transpiled!');
