@@ -31,6 +31,10 @@ module.exports = class UI {
       : this.likePlurality.textContent = 'likes';
   }
 
+  updateIndex (index) {
+    this.tweetIndex.textContent = String(index);
+  }
+
   // date param should be the created_at property of a tweet
   getDateString (date) {
     date = date.split(' ');
