@@ -1,8 +1,8 @@
 // Tweet generator
 class Slides {
   // tweets param should be array of tweet objects
-  constructor (tweets) {
-    this.tweets = tweets;
+  constructor () {
+    this.tweets = undefined;
     this.currentIndex = -1;
   }
 
