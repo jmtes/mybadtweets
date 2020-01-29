@@ -13,6 +13,7 @@ class UI {
     this.message = document.getElementById('message');
     this.tweetIndex = document.getElementById('tweet-index');
     this.tweetCount = document.getElementById('tweet-count');
+    this.modal = document.getElementById('modal-bg');
     this.modalMessage = document.getElementById('modal-message');
     this.modalOptions = document.getElementById('modal-options');
     this.user = undefined;
@@ -38,6 +39,28 @@ class UI {
 
   showTweetCount (totalTweets) {
     this.tweetCount.textContent = String(totalTweets);
+  }
+
+  showConfirmModal () {
+    this.modalMessage.textContent = 'ARE YOU SURE?';
+
+    // Create option buttons
+    const yesButton = document.createElement('span');
+    yesButton.id = 'yes';
+    yesButton.className = 'modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    yesButton.textContent = 'YES';
+
+    const noButton = document.createElement('span');
+    noButton.id = 'no';
+    noButton.className = 'modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    noButton.textContent = 'NO';
+
+    // Add option buttons to DOM
+    this.modalOptions.appendChild(yesButton);
+    this.modalOptions.appendChild(noButton);
+
+    // Unhide modal
+    this.modal.classList.remove('hidden');
   }
 
   // date param should be the created_at property of a tweet
