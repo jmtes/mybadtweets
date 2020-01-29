@@ -1,5 +1,3 @@
-// Page event listener
-
 // Delete button event listener
 
 // Retweet button event listener
@@ -22,14 +20,27 @@ function getTweets () {
     .then(data => {
       console.log('user is: ', data.user);
       console.log('their tweets are: ', data.tweets);
-      slides = new Slides(data.tweets);
-      let nextTweet = slides.getNextTweet();
       ui.setUser(data.user);
-      ui.renderTweet(nextTweet);
+      slides = new Slides(data.tweets);
+      nextTweet();
     });
+}
+
+function nextTweet () {
+  const nextTweet = slides.getNextTweet();
+  ui.renderTweet(nextTweet);
+}
+
+function prevTweet () {
+  const prevTweet = slides.getPrevTweet();
+  ui.renderTweet(prevTweet);
 }
 
 // DOM content loaded event listener
 document.addEventListener('DOMContentLoaded', getTweets);
+
+// Page event listeners
+document.getElementById('next').addEventListener('click', nextTweet);
+document.getElementById('prev').addEventListener('click', prevTweet);
 
 console.log('successfully transpiled!');
