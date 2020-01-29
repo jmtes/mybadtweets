@@ -17,4 +17,8 @@ module.exports = class Slides {
       : this.currentIndex--;
     return this.tweets[this.currentIndex];
   }
+
+  getCurrentIndex () {
+    return this.currentIndex + 1;
+  }
 };
