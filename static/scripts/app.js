@@ -22,6 +22,7 @@ function getTweets () {
       console.log('their tweets are: ', data.tweets);
       ui.setUser(data.user);
       slides = new Slides(data.tweets);
+      ui.showTweetCount(slides.getTweetCount());
       nextTweet();
     });
 }
@@ -29,13 +30,13 @@ function getTweets () {
 function nextTweet () {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
-  ui.updateIndex(slides.getCurrentIndex());
+  // ui.updateIndex(slides.getCurrentIndex());
 }
 
 function prevTweet () {
   const prevTweet = slides.getPrevTweet();
   ui.renderTweet(prevTweet);
-  ui.updateIndex(slides.getCurrentIndex());
+  // ui.updateIndex(slides.getCurrentIndex());
 }
 
 // DOM content loaded event listener
