@@ -8,14 +8,24 @@ module.exports = class Slides {
 
   getNextTweet () {
     this.currentIndex = (this.currentIndex + 1) % this.tweets.length;
-    return this.tweets[this.currentIndex];
+    return {
+      data: this.tweets[this.currentIndex],
+      index: this.currentIndex + 1
+    };
   }
 
   getPrevTweet () {
     this.currentIndex === 0
       ? this.currentIndex = this.tweets.length - 1
       : this.currentIndex--;
-    return this.tweets[this.currentIndex];
+    return {
+      data: this.tweets[this.currentIndex],
+      index: this.currentIndex + 1
+    };
+  }
+
+  getTweetCount () {
+    return this.tweets.length;
   }
 
   getCurrentIndex () {
