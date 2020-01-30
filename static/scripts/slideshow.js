@@ -35,6 +35,10 @@ class Slides {
   getCurrentIndex () {
     return this.currentIndex + 1;
   }
+
+  getCurrentID () {
+    return this.tweets[this.currentIndex].id_str;
+  }
 }
 
 export const slides = new Slides();
