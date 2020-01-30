@@ -19,6 +19,16 @@ class Twitter {
     res = await res.json();
     return res;
   }
+
+  async bumpTweet (tweetid) {
+    let res = await window.fetch('/api/retweet', {
+      method: 'POST',
+      body: JSON.stringify({ tweetid }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+    res = await res.json();
+    return res;
+  }
 }
 
 export const twitter = new Twitter();

@@ -33,7 +33,14 @@ function deleteTweet () {
 }
 
 function bumpTweet () {
-  twitter.bumpTweet(slides.getCurrentID());
+  twitter.bumpTweet(slides.getCurrentID())
+    .then(data => {
+      if (data.status === 'OK') {
+        ui.showSuccess('RETWEETED');
+      } else {
+        ui.showFailure('RETWEETED');
+      }
+    });
 }
 
 function confirmAction (event) {
