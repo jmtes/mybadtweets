@@ -84,6 +84,21 @@ class UI {
     this.message.textContent = this.showActionMessage(action);
   }
 
+  showFailure (action) {
+    this.modalMessage.textContent = 'HMM, SOMETHING WENT WRONG. TRY AGAIN LATER.';
+
+    // Create option button
+    const okButton = document.createElement('span');
+    okButton.className = 'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    okButton.textContent = 'OK';
+
+    // Remove any existing option buttons
+    this.clearModalOptions();
+
+    // Add button to DOM
+    this.modalOptions.appendChild(okButton);
+  }
+
   showActionMessage (action) {
     if (action === 'DELETED') {
       return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
