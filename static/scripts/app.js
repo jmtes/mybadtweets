@@ -21,8 +21,24 @@ function getTweets () {
     });
 }
 
+function deleteTweet () {
+
+}
+
+function bumpTweet () {
+  
+}
+
 function confirmAction (event) {
   ui.showConfirmModal();
+  const buttonID = event.target.id;
+  document.getElementById('yes').addEventListener('click', () => {
+    if (buttonID === 'delete-btn') {
+      deleteTweet();
+    } else {
+      bumpTweet();
+    }
+  });
 }
 
 function clickModal (event) {
@@ -50,7 +66,7 @@ document.addEventListener('DOMContentLoaded', getTweets);
 document.getElementById('next').addEventListener('click', nextTweet);
 document.getElementById('prev').addEventListener('click', prevTweet);
 
-// Delete button event listener
+// Button event listener
 document.getElementById('panel').addEventListener('click', confirmAction);
 
 // Modal event listener
