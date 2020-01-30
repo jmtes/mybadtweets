@@ -66,6 +66,32 @@ class UI {
     this.modal.classList.remove('hidden');
   }
 
+  showSuccess (action) {
+    this.modalMessage.textContent = `TWEET SUCCESSFULLY ${action}`;
+
+    // Create option button
+    const okButton = document.createElement('span');
+    okButton.className = 'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    okButton.textContent = 'OK';
+
+    // Remove any existing option buttons
+    this.clearModalOptions();
+
+    // Add button to DOM
+    this.modalOptions.appendChild(okButton);
+
+    // Change message in tweet card
+    this.message.textContent = this.showActionMessage(action);
+  }
+
+  showActionMessage (action) {
+    if (action === 'DELETED') {
+      return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
+    } else {
+      return 'YOU BUMPED THIS RECENTLY! HOPE IT DOES NUMBERS THIS TIME CHIEF!';
+    }
+  }
+
   hideModal () {
     this.modal.classList.add('hidden');
   }
