@@ -22,11 +22,18 @@ function getTweets () {
 }
 
 function deleteTweet () {
-
+  twitter.deleteTweet(slides.getCurrentID())
+    .then(data => {
+      if (data.status === 'OK') {
+        ui.showSuccess('DELETED');
+      } else {
+        ui.showFailure('DELETED');
+      }
+    });
 }
 
 function bumpTweet () {
-  
+  twitter.bumpTweet(slides.getCurrentID());
 }
 
 function confirmAction (event) {
