@@ -1,8 +1,4 @@
-// Show confirm modal
-
-// Hide confirm modal
-
-// Render tweet to screen
+import { messages } from './messages';
 
 class UI {
   constructor () {
@@ -17,6 +13,7 @@ class UI {
     this.modalMessage = document.getElementById('modal-message');
     this.modalOptions = document.getElementById('modal-options');
     this.user = undefined;
+    this.messageArr = messages;
   }
 
   renderTweet (tweet) {
@@ -30,6 +27,7 @@ class UI {
     tweet.data.favorite_count === 1
       ? this.likePlurality.textContent = 'like'
       : this.likePlurality.textContent = 'likes';
+    this.message.textContent = this.getRandomMessage();
     this.updateIndex(tweet.index);
   }
 
@@ -117,6 +115,10 @@ class UI {
     } else {
       return 'HMM, SOMETHING WENT WRONG. TRY AGAIN LATER.';
     }
+  }
+
+  getRandomMessage () {
+    return this.messageArr[Math.floor(Math.random() * Math.floor(this.messageArr.length))];
   }
 
   hideModal () {
