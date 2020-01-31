@@ -29,7 +29,8 @@ module.exports = {
     borderCollapse: false,
     tableLayout: false,
     opacity: false,
-    appearance: false
+    appearance: false,
+    placeholderColor: false
   },
   theme: {
     screens: {
