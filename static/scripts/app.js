@@ -44,15 +44,17 @@ function bumpTweet () {
 }
 
 function confirmAction (event) {
-  ui.showConfirmModal();
-  const buttonID = event.target.id;
-  document.getElementById('yes').addEventListener('click', () => {
-    if (buttonID === 'delete-btn') {
-      deleteTweet();
-    } else {
-      bumpTweet();
-    }
-  });
+  if (event.target.classList.contains('btn')) {
+    ui.showConfirmModal();
+    const buttonID = event.target.id;
+    document.getElementById('yes').addEventListener('click', () => {
+      if (buttonID === 'delete-btn') {
+        deleteTweet();
+      } else {
+        bumpTweet();
+      }
+    });
+  }
 }
 
 function clickModal (event) {
