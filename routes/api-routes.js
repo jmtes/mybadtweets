@@ -86,7 +86,8 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
   console.log('tweet id is ' + req.body.tweetid);
   const bod = {
-    status: undefined
+    status: undefined,
+    errorCode: undefined
   };
 
   const endpoint = 'statuses/destroy/' + req.body.tweetid;
@@ -100,16 +101,18 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
   });
 
   client.post(endpoint, (err, data, response) => {
-    console.log('inside callback');
-    console.log(err);
-    console.log(data);
+    console.log('inside delete callback');
+    console.log('err is: ', err);
+    console.log('data is: ', data.text);
     if (!err) {
       bod.status = 'OK';
       console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
     } else {
+      console.log('err is: ', err.code, err.message);
       bod.status = 'FAIL';
+      bod.errorCode = err.code;
       console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
@@ -121,7 +124,8 @@ router.post('/retweet', authCheck, bodyParser, (req, res) => {
   console.log('inside route');
   console.log('tweet id is ' + req.body.tweetid);
   const bod = {
-    status: undefined
+    status: undefined,
+    errorCode: undefined
   };
 
   const endpoint = 'statuses/retweet/' + req.body.tweetid;
@@ -135,16 +139,17 @@ router.post('/retweet', authCheck, bodyParser, (req, res) => {
   });
 
   client.post(endpoint, (err, data, response) => {
-    console.log('inside callback');
-    console.log(err);
-    console.log(data.text);
+    console.log('inside delete callback');
+    // console.log('data is: ', data.text);
     if (!err) {
       bod.status = 'OK';
       console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
     } else {
+      console.log('err is: ', err.code, err.message);
       bod.status = 'FAIL';
+      bod.errorCode = err.code;
       console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
