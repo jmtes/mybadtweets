@@ -26,6 +26,7 @@ function deleteTweet () {
     .then(data => {
       if (data.status === 'OK') {
         ui.showSuccess('DELETED');
+        slides.recordAction('DELETED');
       } else {
         ui.showFailure('DELETED', data.errorCode);
       }
@@ -37,6 +38,7 @@ function bumpTweet () {
     .then(data => {
       if (data.status === 'OK') {
         ui.showSuccess('RETWEETED');
+        slides.recordAction('RETWEETED');
       } else {
         ui.showFailure('RETWEETED', data.errorCode);
       }
