@@ -24,10 +24,15 @@ class UI {
     // Set link href
     this.tweetText.setAttribute('href', this.getTweetURL(tweet.data));
     this.likeCount.textContent = String(tweet.data.favorite_count);
+
     tweet.data.favorite_count === 1
       ? this.likePlurality.textContent = 'like'
       : this.likePlurality.textContent = 'likes';
-    this.message.textContent = this.getRandomMessage();
+
+    tweet.data.actionTaken
+      ? this.message.textContent = this.getActionMessage(tweet.data.actionTaken)
+      : this.message.textContent = this.getRandomMessage();
+
     this.updateIndex(tweet.index);
   }
 
