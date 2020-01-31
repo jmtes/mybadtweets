@@ -81,11 +81,11 @@ class UI {
     this.modalOptions.appendChild(okButton);
 
     // Change message in tweet card
-    this.message.textContent = this.showActionMessage(action);
+    this.message.textContent = this.getActionMessage(action);
   }
 
-  showFailure (action) {
-    this.modalMessage.textContent = 'HMM, SOMETHING WENT WRONG. TRY AGAIN LATER.';
+  showFailure (action, errorCode) {
+    this.modalMessage.textContent = this.getErrorMessage(action, errorCode);
 
     // Create option button
     const okButton = document.createElement('span');
@@ -99,11 +99,23 @@ class UI {
     this.modalOptions.appendChild(okButton);
   }
 
-  showActionMessage (action) {
+  getActionMessage (action) {
     if (action === 'DELETED') {
       return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
     } else {
       return 'YOU BUMPED THIS RECENTLY! HOPE IT DOES NUMBERS THIS TIME CHIEF!';
+    }
+  }
+
+  getErrorMessage (action, errorCode) {
+    if (action === 'DELETED' && errorCode === 144) {
+      return "YOU CAN'T DELETE A TWEET TWICE! NO MATTER HOW BAD IT WAS!";
+    } else if (action === 'RETWEETED' && errorCode === 144) {
+      return "YOU CAN'T RETWEET A TWEET THAT DOESN'T EXIST!";
+    } else if (errorCode === 327) {
+      return "YOU CAN'T RETWEET THIS TWICE! IT WASN'T EVEN THAT GOOD!";
+    } else {
+      return 'HMM, SOMETHING WENT WRONG. TRY AGAIN LATER.';
     }
   }
 

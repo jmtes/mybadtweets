@@ -27,7 +27,7 @@ function deleteTweet () {
       if (data.status === 'OK') {
         ui.showSuccess('DELETED');
       } else {
-        ui.showFailure('DELETED');
+        ui.showFailure('DELETED', data.errorCode);
       }
     });
 }
@@ -38,7 +38,7 @@ function bumpTweet () {
       if (data.status === 'OK') {
         ui.showSuccess('RETWEETED');
       } else {
-        ui.showFailure('RETWEETED');
+        ui.showFailure('RETWEETED', data.errorCode);
       }
     });
 }
