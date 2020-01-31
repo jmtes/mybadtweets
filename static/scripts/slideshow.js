@@ -28,6 +28,14 @@ class Slides {
     };
   }
 
+  recordAction (action) {
+    if (action === 'DELETED') {
+      this.tweets[this.currentIndex].actionTaken = 'DELETED';
+    } else {
+      this.tweets[this.currentIndex].actionTaken = 'RETWEETED';
+    }
+  }
+
   getTweetCount () {
     return this.tweets.length;
   }
