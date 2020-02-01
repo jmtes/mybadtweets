@@ -2,11 +2,15 @@ import { messages } from './messages';
 
 class UI {
   constructor () {
+    this.subtitle = document.getElementById('subtitle');
+    this.loader = document.getElementById('loader');
+    this.slide = document.getElementById('slide');
     this.tweetDate = document.getElementById('date');
     this.tweetText = document.getElementById('tweet-text');
     this.likeCount = document.getElementById('like-count');
     this.likePlurality = document.getElementById('like-plurality');
     this.message = document.getElementById('message');
+    this.panel = document.getElementById('panel');
     this.tweetIndex = document.getElementById('tweet-index');
     this.tweetCount = document.getElementById('tweet-count');
     this.modal = document.getElementById('modal-bg');
@@ -34,6 +38,13 @@ class UI {
       : this.message.textContent = this.getRandomMessage();
 
     this.updateIndex(tweet.index);
+  }
+
+  hideLoader () {
+    this.subtitle.textContent = 'HERE ARE THOSE SHITTY TWEETS YOUR ORDERED';
+    this.loader.classList.add('hidden');
+    this.slide.classList.remove('hidden');
+    this.panel.classList.remove('hidden');
   }
 
   updateIndex (index) {
@@ -102,6 +113,10 @@ class UI {
     this.modalOptions.appendChild(okButton);
   }
 
+  hideModal () {
+    this.modal.classList.add('hidden');
+  }
+
   getActionMessage (action) {
     if (action === 'DELETED') {
       return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
@@ -124,10 +139,6 @@ class UI {
 
   getRandomMessage () {
     return this.messageArr[Math.floor(Math.random() * Math.floor(this.messageArr.length))];
-  }
-
-  hideModal () {
-    this.modal.classList.add('hidden');
   }
 
   clearModalOptions () {

@@ -18,6 +18,7 @@ function getTweets () {
       slides.setTweets(data.tweets);
       ui.showTweetCount(slides.getTweetCount());
       nextTweet();
+      ui.hideLoader();
     });
 }
 
