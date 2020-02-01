@@ -102,6 +102,10 @@ class UI {
     this.modalOptions.appendChild(okButton);
   }
 
+  hideModal () {
+    this.modal.classList.add('hidden');
+  }
+
   getActionMessage (action) {
     if (action === 'DELETED') {
       return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
@@ -124,10 +128,6 @@ class UI {
 
   getRandomMessage () {
     return this.messageArr[Math.floor(Math.random() * Math.floor(this.messageArr.length))];
-  }
-
-  hideModal () {
-    this.modal.classList.add('hidden');
   }
 
   clearModalOptions () {
