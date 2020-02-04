@@ -4,99 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>mybadtweets</title>
-
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/tweets.css">
-  <link rel="stylesheet" href="styles/animations.css">
-
+  <link rel="stylesheet" href="styles/mbt.css">
+  <title>MYBADTWEETS</title>
 </head>
 <body>
-  <!-- <header> -->
-    <!-- <span class='menu'>
-      <button class='settings'>settings</button>
-      <% if (user) {%>
-      <a class='logout' onclick='window.location.href = "auth/logout"'>logout</a>
-      <% } %>
-    </span> -->
-  <!-- </header> -->
-  <div class='container'>
-    <!-- <h3>now displaying twitter user <%= user.username%>'s SHITTIEST tweets!</h3> -->
-    <div class='title'>
-      <h1><a href='/'>mybadtweets™</a></h1>
-    </div>
-    <h3>these are your SHITTIEST tweets!</h3>
-    <div class='card-wrapper'>
-      <% tweets.forEach(tweet => { %>
-      <% let date = tweet.created_at.split(' '); %>
-      <% let plurality = tweet.favorite_count === 1 ? 'like' : 'likes'; %>
-      <div class='card'>
-        <div class='tweet'>
-          <div class='current'>
-          <p>on <%= date[1].toLowerCase() %> <%= date[2] %>, <%= date[5] %> you tweeted:</p>
-          <a class='tweet-text' href='https://twitter.com/<%= user.username %>/status/<%= tweet.id_str %>' target='_blank'>"<%= tweet.full_text %>"</a>
-          <p>and it received <span class='rainbow'><strong><%= tweet.favorite_count %></strong></span> <%= plurality %>!</p>
+
+  <div id="content" class="flex items-start justify-center h-screen w-screen font-body">
+    <div id="wrapper" class="relative w-full h-auto m-auto flex flex-wrap items-center content-around justify-center text-center">
+      <div id="title" class="w-full mx-auto">
+        <span class="w-auto font-bold sm:text-title-sm nm:text-title-nm text-shadow-title hover:tracking-default transition-letter-spacing transition-1000 cursor-default">MYBADTWEETS</span>
+        <h2 id="subtitle" class="m-4 font-bold sm:subtitle-sm nm:text-lg"></h2>
+      </div>
+      <img id="loader" src="images/loader.gif" alt="Loading GIF" class="w-16">
+      <div id="slide" class="flex items-center justify-center w-full mx-auto hidden">
+        <div id="prev" class="text-page hover:text-shadow-page transition-text-shadow transition-300 cursor-pointer">&lt;</div>
+        <div id="tweet" class="w-7/10 mx-8 mt-2 mb-6 p-5 border-black border-solid border-tweet shadow">
+          <p class="my-1em">on <span id="date"></span> you tweeted:</p>
+          <a href="#" target="_blank" id="tweet-text" class="text-2xl font-bold text-shadow-tweet hover:text-shadow-tweet-hover transition-text-shadow transition-200"></a>
+          <p class="my-1em">and it received <span id="like-count" class="font-bold animation-rainbow animation-800"></span> <span id="like-plurality"></span>!</p>
           <br>
-          <p class='message'><em><%= msgs[Math.floor(Math.random() * Math.floor(msgs.length))] %></em></p>
-          </div>
-          <a class='page prev'> < </a>
-          <a class='page next'> > </a>
-      </div>
-        <div class='panel'>
-          <!-- <p>wow, that really should've stayed in the drafts!</p> -->
-          <div class='buttoncontainer' data-tweetid='<%= tweet.id_str %>'>
-            <a class='delete button'>DELETE IT!</a>
-            <a class='retweet button'>BUMP IT!</a>
-          </div>
+          <p id="message" class="my-1em italic"></p>
         </div>
+        <div id="next" class="text-page hover:text-shadow-page transition-text-shadow transition-300 cursor-pointer">&gt;</div>
       </div>
-      <% }); %>
-      <div class='progress'>
-        1 / 3
+      <div id="panel" class="w-3/5 mx-auto flex flex-wrap items-stretch content-center justify-around hidden">
+        <div id="delete-btn" class="btn inline-block m-button p-button border-black border-solid border-tweet shadow text-xs cursor-pointer hover:text-shadow-tweet hover:tracking-button hover:font-bold">DELETE IT!</div>
+        <div id="retweet-btn" class="btn inline-block m-button p-button border-black border-solid border-tweet shadow text-xs cursor-pointer hover:text-shadow-tweet hover:tracking-button hover:font-bold">BUMP IT!</div>
+        <div id="progress" class="w-full text-xs py-4"><span id="tweet-index">1</span> OUT OF <span id="tweet-count"></span></div>
+        <div id="logout" class="w-auto text-xs py-0 cursor-pointer hover:text-shadow-tweet transition-text-shadow transition-250"><a href="/auth/logout">LOGOUT</a></div>
       </div>
     </div>
   </div>
-  <footer>
-    <!-- <p>about / settings / logout</p> -->
-    <span class='about'>ABOUT</span>
-    <!-- <span> / </span>
-    <span class='settings'>settings</span> -->
-    <!-- <% if (user) { %>  -->
-    <span> / </span>
-    <span><a href='/auth/logout'>LOGOUT</a></span>
-    <!-- <% } %> -->
-  </footer>
-  <div class='show modal-bg confirm-modal'>
-    <div class='confirm modal-box'>
-    <span class='close' onclick='document.querySelector(".confirm-modal").style.display = "none"'>x</span>
-    <h4><em>are you sure?</em></h4>
-    <br>
-    <div class='buttoncontainer'>
-      <a class='yes'>YES</a>
-      <a class='no'>NO</a>
-    </div>
-    </div>
-  </div>
-  <div class='show modal-bg about-modal'>
-    <div class='about-box modal-box'>
-      <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
-      <h6>how are bad tweets determined</h6>
-      <p>mybadtweets fetches all your original tweets from your 3200 most recent ones per the limitation set by the twitter api. of the likes you've gotten on those, it calculates the average and the standard deviation. it then gets the like threshold of the tweets it'll display by subtracting the latter from the former. this is under the assumption that your likes fall into a normal disribution.</p>
-      <h6>why though</h6>
-      <p>this was made purely for lighthearted self-deprecation purposes</p>
-      <h6>who did this</h6>
-      <p>mybadtweets was made by juno tesoro as a school project. you can find them on github and twitter</p>
+  <div id="modal-bg" class="close-modal fixed flex bg-modal w-screen h-screen inset-0 hidden">
+    <div id="modal" class="relative w-1/4 m-auto p-5 bg-white opacity-100 border-black border-solid border-tweet shadow font-body text-center">
+      <span class="close-modal absolute right-375 top-0 text-sm cursor-pointer hover:text-shadow-tweet transition-text-shadow transition-250">x</span>
+      <p id="modal-message" class="text-xs italic font-bold">ARE YOU SURE?</p>
       <br>
+      <div id="modal-options" class="flex items-stretch content-center justify-around text-xs">
+      </div>
     </div>
   </div>
-  <script src='scripts/button-press.js'></script>
-  <!-- <script src='scripts/delete.js'></script>
-  <script src='scripts/retweet.js'></script> -->
-  <!-- <script src='scripts/slides.js'></script> -->
-  <script src='scripts/tweets.js'></script>
-  <script src='scripts/about.js'></script>
-  <script src='scripts/app.bundle.js'></script>
-  <!-- <script src='./static/scripts/title.js'></script> -->
+
+  <script src="scripts/app.bundle.js"></script>
 </body>
 </html>

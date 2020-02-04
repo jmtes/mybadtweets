@@ -15,7 +15,7 @@ router.get('/', authCheck, (req, res) => {
   // console.log(req.user);
   // console.log(req.session);
   // console.log(req.sessionID);
-  res.render('newtweets');
+  res.render('tweets');
 });
 
 module.exports = router;
