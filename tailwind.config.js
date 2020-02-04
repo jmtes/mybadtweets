@@ -186,7 +186,7 @@ module.exports = {
     maxHeight: [],
     margin: [],
     height: [],
-    fontWeight: [],
+    fontWeight: ['hover'],
     flex: [],
     alignContent: [],
     justifyContent: [],

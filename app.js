@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
   // console.log(req.user);
   // console.log(req.session);
   // console.log(req.sessionID);
-  res.render('index', {
+  res.render('newindex', {
     user: req.user
   });
 });
