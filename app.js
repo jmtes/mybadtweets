@@ -31,7 +31,7 @@ app.set('view engine', 'ejs');
 
 // Connect to mongodb
 mongoose.connect(keys.mongodb.dbURI, () => {
-  console.log('connected to mongodb');
+  console.log('Connected to MongoDB.');
 });
 
 app.use(cookieParser());
@@ -57,11 +57,9 @@ app.get('/', (req, res) => {
   // console.log(req.user);
   // console.log(req.session);
   // console.log(req.sessionID);
-  res.render('index', {
-    user: req.user
-  });
+  res.render('index');
 });
 
 app.listen(process.env.PORT, () => {
-  console.log('App now listening for requests on Port 5000.');
+  console.log('App now listening for requests.');
 });
