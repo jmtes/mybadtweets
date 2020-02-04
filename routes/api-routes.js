@@ -4,20 +4,12 @@ const keys = require('../config/keys');
 const bodyParser = require('body-parser').json();
 const math = require('mathjs');
 
-// let client = undefined;
-
 const authCheck = (req, res, next) => {
   if (!req.user) {
     // If user is not logged in
     res.redirect('/auth');
   } else {
     // If user is logged in
-    // client = new Twit({
-    //   consumer_key: keys.twitter.consumerKey,
-    //   consumer_secret: keys.twitter.consumerSecret,
-    //   access_token: req.user.accessToken,
-    //   access_token_secret: req.user.accessTokenSecret
-    // });
     next();
   }
 };
