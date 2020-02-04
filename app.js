@@ -13,7 +13,6 @@ const keys = require('./config/keys');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const minify = require('express-minify');
-// const cookieSession = require('cookie-session');
 
 // Set up session
 app.use(session({
@@ -36,10 +35,6 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 });
 
 app.use(cookieParser());
-// app.use(cookieSession({
-//   maxAge: 24 * 60 * 60 * 1000,
-//   keys: [keys.session.secret]
-// }));
 
 // Initialize passport
 app.use(passport.initialize());
@@ -57,19 +52,16 @@ app.use(minify());
 // Set up static assets folder
 app.use(express.static('static'));
 
-// Use body parser
-// app.use(bodyParser.json());
-
 // Create home route
 app.get('/', (req, res) => {
   // console.log(req.user);
   // console.log(req.session);
   // console.log(req.sessionID);
-  res.render('newindex', {
+  res.render('index', {
     user: req.user
   });
 });
 
 app.listen(process.env.PORT, () => {
-  console.log('App now listening for requests on Port 3000.');
+  console.log('App now listening for requests on Port 5000.');
 });

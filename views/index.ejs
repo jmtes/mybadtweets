@@ -4,62 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>mybadtweets</title>
-
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/common.css">
-  <link rel="stylesheet" href="styles/index.css">
-  <link rel="stylesheet" href="styles/animations.css">
-
+  <link rel="stylesheet" href="styles/mbt.css">
+  <title>MYBADTWEETS</title>
 </head>
 <body>
-  <!-- <header> -->
-    <!-- <span class='menu'>
-      <button class='settings'>settings</button>
-      <% if (user) {%>
-      <button class='logout' onclick='window.location.href = "auth/logout"'>logout</button>
-      <% } %>
-    </span> -->
-  <!-- </header> -->
-  <div class='container'>
-    <div class='description'>
-      <div class='title'>
-        <h1><a href='/'>mybadtweets™</a></h1>
-      </div>
-      <h3>YOU GOT TWEETS?</h3>
-      <p>some, if not all of them are likely bad! with mybadtweets, you can view the worst of your tweets and curate them to ensure you're delivering content of only the highest quality to your indifferent followers. smash the button below to get started</p>
-      <div class='buttoncontainer'>
-        <!-- <div class='signin button'> -->
-          <a class='signin button' href="auth/">SIGN IN WITH TWITTER!!!</a>
-        <!-- </div> -->
-        <!-- <div class='leave button'> -->
-          <!-- <a class='leave button' href="javascript:history.back()">i want to leave actually</a> -->
-        <!-- </div> -->
-      </div>
+
+  <div id="content" class="flex items-start justify-center h-screen w-screen font-body">
+    <div id="wrapper" class="relative w-full h-auto m-auto flex flex-wrap items-center content-around justify-center text-center">
+      <header id="title" class="w-full mx-auto">
+        <span class="w-auto m-auto font-bold sm:text-title-sm nm:text-title-nm text-shadow-title hover:tracking-default transition-letter-spacing transition-1000 cursor-default">MYBADTWEETS</span>
+        <h2 id="subtitle" class="w-auto m-auto pt-2 sm:subtitle-sm nm:text-lg font-bold">.・゜゜・.・゜゜・ YOU GOT TWEETS? ・゜゜・．・゜゜・．</h2>
+      </header>
+      <main class="w-6/12 m-auto pt-4">
+        <p>some, if not all of them are likely bad! with mybadtweets, you can view the worst of your tweets and curate them to ensure you're delivering content of only the highest quality to your followers.</p>
+        <p class="font-bold pt-4 mb-4">CLICK BELOW TO GET STARTED!</p>
+        <div class="btn inline-block m-button p-button border-black border-solid border-tweet shadow text-xs cursor-pointer hover:text-shadow-tweet hover:tracking-button hover:font-bold"><a href="/auth">SIGN IN WITH TWITTER</a></div>
+      </main>
     </div>
   </div>
-  <footer>
-    <!-- <p>about / settings / logout</p> -->
-    <span class='about'>ABOUT</span>
-    <!-- <span> / </span>
-    <span class='settings'>settings</span> -->
-  </footer>
-  <div class='show modal-bg about-modal'>
-    <div class='about-box modal-box'>
-      <span class='close' onclick='document.querySelector(".about-modal").style.display = "none"'>x</span>
-      <h6>how are bad tweets determined</h6>
-      <p>mybadtweets fetches all your original tweets from your 3200 most recent ones per the limitation set by the twitter api. of the likes you've gotten on those, it calculates the average and the standard deviation. it then gets the like threshold of the tweets it'll display by subtracting the latter from the former. this is under the assumption that your likes fall into a normal disribution.</p>
-      <h6>why though</h6>
-      <p>this was made purely for lighthearted self-deprecation purposes</p>
-      <h6>who did this</h6>
-      <p>mybadtweets was made by juno tesoro as a school project. you can find them on github and twitter</p>
-      <br>
-    </div>
-  </div>
-  <script src='scripts/index-buttons.js'></script>
-  <script src='scripts/button-press.js'></script>
-  <script src='scripts/about.js'></script>
-  <script src='scripts/app.bundle.js'></script>
-  <!-- <script src='./static/scripts/title.js'></script> -->
+
 </body>
 </html>
