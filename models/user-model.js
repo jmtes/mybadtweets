@@ -1,3 +1,5 @@
+// This module sets up the MongoDB schema for user records.
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
