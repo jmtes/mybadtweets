@@ -15,7 +15,7 @@ const authCheck = (req, res, next) => {
   }
 };
 
-// Create new Twit instance from user info.
+// Create new Twit instance from user info
 function newTwit (req) {
   return new Twit({
     consumer_key: keys.twitter.consumerKey,
@@ -25,7 +25,7 @@ function newTwit (req) {
   });
 }
 
-// Determine how few likes a tweet must have to be considered "bad".
+// Determine how few likes a tweet must have to be considered "bad"
 // @param tweets - array of tweet objects
 function calcLikeThreshold (tweets) {
   const tweetLikes = [];
@@ -41,8 +41,23 @@ function calcLikeThreshold (tweets) {
     stdDev = parseInt(stdDev * 0.8);
   }
 
-  // Return difference between average and standard deviation.
+  // Return difference between average and standard deviation
   return (avg - stdDev);
+}
+
+// Filter the bad tweets
+// @param tweets - array of tweet objects
+function getBadTweets (tweets) {
+  const likeThreshold = calcLikeThreshold(tweets);
+
+  if (likeThreshold) {
+    tweets = tweets.filter(tweet => tweet.favorite_count < likeThreshold);
+  } else {
+    tweets = tweets.filter(tweet => tweet.favorite_count === likeThreshold);
+  }
+
+  // Return filtered array
+  return tweets;
 }
 
 router.get('/fetch', authCheck, (req, res) => {
@@ -60,55 +75,39 @@ router.get('/fetch', authCheck, (req, res) => {
 
   const client = newTwit(req);
 
-  client.get('statuses/user_timeline', params, function makeTweetList (_err, data, response) {
+  client.get('statuses/user_timeline', params, function makeTweetList (_err, data) {
     tweetArray = tweetArray.concat(data);
     params.max_id = tweetArray[tweetArray.length - 1].id;
     i--;
     if (i) {
       client.get('statuses/user_timeline', params, makeTweetList);
     } else {
-      const likeThreshold = calcLikeThreshold(tweetArray);
-      let badTweets;
-      if (likeThreshold) {
-        badTweets = tweetArray.filter(tweet => tweet.favorite_count < likeThreshold);
-      } else {
-        badTweets = tweetArray.filter(tweet => tweet.favorite_count === likeThreshold);
-      }
       res.send(JSON.stringify({
         user: req.user.username,
-        tweets: badTweets
+        tweets: getBadTweets(tweetArray)
       }));
     }
   });
 });
 
 router.post('/delete', authCheck, bodyParser, (req, res) => {
-  console.log('inside route');
-  console.log('tweet id is ' + req.body.tweetid);
   const bod = {
     status: undefined,
     errorCode: undefined
   };
 
   const endpoint = 'statuses/destroy/' + req.body.tweetid;
-  console.log(endpoint);
 
   const client = newTwit(req);
 
-  client.post(endpoint, (err, data, response) => {
-    console.log('inside delete callback');
-    console.log('err is: ', err);
-    console.log('data is: ', data.text);
+  client.post(endpoint, (err) => {
     if (!err) {
       bod.status = 'OK';
-      console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
     } else {
-      console.log('err is: ', err.code, err.message);
       bod.status = 'FAIL';
       bod.errorCode = err.code;
-      console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
     }
@@ -116,31 +115,23 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
 });
 
 router.post('/retweet', authCheck, bodyParser, (req, res) => {
-  console.log('inside route');
-  console.log('tweet id is ' + req.body.tweetid);
   const bod = {
     status: undefined,
     errorCode: undefined
   };
 
   const endpoint = 'statuses/retweet/' + req.body.tweetid;
-  console.log('endpoint is ' + endpoint);
 
   const client = newTwit(req);
 
-  client.post(endpoint, (err, data, response) => {
-    console.log('inside delete callback');
-    // console.log('data is: ', data.text);
+  client.post(endpoint, (err) => {
     if (!err) {
       bod.status = 'OK';
-      console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
     } else {
-      console.log('err is: ', err.code, err.message);
       bod.status = 'FAIL';
       bod.errorCode = err.code;
-      console.log(bod);
       res.set('Content-Type', 'application/json');
       res.send(bod);
     }
