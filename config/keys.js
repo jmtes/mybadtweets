@@ -6,14 +6,14 @@
 
 module.exports = {
   twitter: {
-    consumerKey: process.env.CONSUMERKEY,
-    consumerSecret: process.env.CONSUMERSECRET,
-    callbackURL: process.env.CALLBACKURL
+    consumerKey: process.env.MBT_CONSUMERKEY,
+    consumerSecret: process.env.MBT_CONSUMERSECRET,
+    callbackURL: process.env.MBT_CALLBACKURL
   },
   mongodb: {
-    dbURI: process.env.DBURI
+    dbURI: process.env.MBT_DBURI
   },
   session: {
-    secret: process.env.SESSIONKEY
+    secret: process.env.MBT_SESSIONSECRET
   }
 };

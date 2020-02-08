@@ -60,6 +60,6 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.MBT_PORT, () => {
   console.log('App now listening for requests.');
 });
