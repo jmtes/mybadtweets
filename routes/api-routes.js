@@ -30,17 +30,13 @@ function newTwit (req) {
 function calcLikeThreshold (tweets) {
   const tweetLikes = [];
 
-  // Add each tweet's like count to list
   tweets.forEach(function (tweet) {
     tweetLikes.push(tweet.favorite_count);
   });
 
-  // From list, calculate average amount of likes and standard deviation.
   const avg = parseInt(math.mean(tweetLikes));
   let stdDev = parseInt(math.std(tweetLikes));
 
-  // If standard deviation is greater than average, take some mathematical
-  // discretion to ensure like threshold comes out positive.
   while (stdDev > avg) {
     stdDev = parseInt(stdDev * 0.8);
   }
