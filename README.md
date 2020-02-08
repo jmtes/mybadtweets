@@ -15,18 +15,23 @@ npm install
 ```
 3. Set the port you want the app to listen to. In this example, port 3000 is used.
 ```
-export PORT=3000
+export MBT_PORT=3000
 ```
-4. In order for the app to run, the environment variables `CONSUMERKEY` and `CONSUMERSECRET` need to be set to your Twitter API consumer key and secret. You need to register for a Twitter developer account and then create an app to be given these, which [this page](https://developer.twitter.com/en/docs/basics/getting-started) outlines how to do if you haven't already. Be sure to specify `http://localhost:PORT` as the callback URL for your app, with `PORT` being the number you configured in the previous step.
+4. In order for the app to run, the environment variables `MBT_CONSUMERKEY` and `MBT_CONSUMERSECRET` need to be set to your Twitter API consumer key and secret. You need to register for a Twitter developer account and then create an app to be given these, which [this page](https://developer.twitter.com/en/docs/basics/getting-started) outlines how to do if you haven't already. Be sure to specify `http://localhost:MBT_PORT/auth/redirect` as a callback URL for your app, with `MBT_PORT` being the number you configured in the previous step. Then set the environment variable `MBT_CALLBACKURL`.
 ```
-export CONSUMERKEY=yourAPIKey
-export CONSUMERSECRET=yourAPISecretKey
+export MBT_CONSUMERKEY=yourAPIKey
+export MBT_CONSUMERSECRET=yourAPISecretKey
+export MBT_CALLBACKURL='/auth/redirect'
 ```
-5. The app also needs to connect to a MongoDB Atlas cluster to run (refer to [this page](https://docs.atlas.mongodb.com/getting-started/) if you need to create one). Once you have the database URI, set the `DBURI` variable to it, making sure to put it in quotation marks lest errors ensue.
+5. The app also needs to connect to a MongoDB Atlas cluster to run (refer to [this page](https://docs.atlas.mongodb.com/getting-started/) if you need to create one). Once you've created your cluster, visit the "Clusters" panel on the MongoDB homepage and click "Connect" in your cluster's listing. From there, click "Connect Your Application" and set the driver to Node.js with version 3.0 or later. Copy the connection string and set the `MBT_DBURI` variable to it, making sure to put it in quotation marks lest errors ensue. 
 ```
-export DBURI='yourDBURI'
+export MBT_DBURI='yourDBURI'
 ```
-6. Now you can run the app and open it in your browser!
+6. Lastly, set your session secret. This can be anything you want but I'd recommend [generating a random string](https://www.random.org/strings/).
+```
+export MBT_SESSIONSECRET=yourSessionSecret
+```
+7. Now you can run the app and open it in your browser!
 ```
 node app.js
 ```
@@ -37,7 +42,7 @@ node app.js
 * [Mongoose](https://mongoosejs.com) - the ODM used
 * [Passport.js](http://www.passportjs.org/) - middleware used for twitter authentication
 * [twit](https://www.npmjs.com/package/twit) - twitter API client used
-
+* [Tailwind CSS](https://tailwindcss.com/) - the CSS framework used
 
 ## Contributing and Future Developments
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
