@@ -17,6 +17,9 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+console.log('MBT_CALLBACKURL ENV VAR: ' + process.env.MBT_CALLBACKURL);
+console.log('TWITTER CALLBACK URL' + keys.twitter.callbackURL);
+
 // Set up Twitter authentication strategy.
 passport.use(new Strategy({
   consumerKey: keys.twitter.consumerKey,
