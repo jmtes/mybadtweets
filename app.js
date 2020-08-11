@@ -32,9 +32,13 @@ app.use(
 app.set('view engine', 'ejs');
 
 // Connect to mongodb
-mongoose.connect(keys.mongodb.dbURI, () => {
-  console.log('Connected to MongoDB.');
-});
+mongoose.connect(
+  keys.mongodb.dbURI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log('Connected to MongoDB.');
+  }
+);
 
 app.use(cookieParser());
 
