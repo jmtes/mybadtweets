@@ -15,16 +15,18 @@ const compression = require('compression');
 const minify = require('express-minify');
 
 // Set up session
-app.use(session({
-  name: 'session-id',
-  resave: false,
-  saveUninitialized: false,
-  secret: keys.session.secret,
-  unset: 'destroy',
-  cookie: {
-    maxAge: 1000 * 60 * 30 // 30 minutes
-  }
-}));
+app.use(
+  session({
+    name: 'session-id',
+    resave: false,
+    saveUninitialized: false,
+    secret: keys.session.secret,
+    unset: 'destroy',
+    cookie: {
+      maxAge: 1000 * 60 * 30 // 30 minutes
+    }
+  })
+);
 
 // Set up view engine
 app.set('view engine', 'ejs');
@@ -60,6 +62,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.listen(process.env.MBT_PORT, () => {
-  console.log('App now listening for requests.');
+const PORT = process.env.MBT_PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`App now listening on port ${PORT}.`);
 });
