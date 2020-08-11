@@ -15,24 +15,30 @@ const compression = require('compression');
 const minify = require('express-minify');
 
 // Set up session
-app.use(session({
-  name: 'session-id',
-  resave: false,
-  saveUninitialized: false,
-  secret: keys.session.secret,
-  unset: 'destroy',
-  cookie: {
-    maxAge: 1000 * 60 * 30 // 30 minutes
-  }
-}));
+app.use(
+  session({
+    name: 'session-id',
+    resave: false,
+    saveUninitialized: false,
+    secret: keys.session.secret,
+    unset: 'destroy',
+    cookie: {
+      maxAge: 1000 * 60 * 30 // 30 minutes
+    }
+  })
+);
 
 // Set up view engine
 app.set('view engine', 'ejs');
 
 // Connect to mongodb
-mongoose.connect(keys.mongodb.dbURI, () => {
-  console.log('Connected to MongoDB.');
-});
+mongoose.connect(
+  keys.mongodb.dbURI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log('Connected to MongoDB.');
+  }
+);
 
 app.use(cookieParser());
 
@@ -60,6 +66,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.listen(process.env.PORT, () => {
-  console.log('App now listening for requests.');
+const PORT = process.env.MBT_PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`App now listening on port ${PORT}.`);
 });
