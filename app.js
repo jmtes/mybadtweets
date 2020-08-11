@@ -66,8 +66,6 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-const PORT = process.env.MBT_PORT || 3000;
-
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`App now listening on port ${PORT}.`);
 });
