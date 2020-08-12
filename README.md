@@ -51,10 +51,11 @@ Lastly, set your session secret. This can be anything you want but I'd recommend
 export MBT_SESSION_SECRET=yourSessionSecret
 ```
 
-Now you can run the app and open it in your browser!
+Now you can build the app, start it, and open it in your browser!
 
 ```
-node app.js
+npm run build
+npm run start
 ```
 
 ## Built With
