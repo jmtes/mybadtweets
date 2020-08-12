@@ -1,17 +1,6 @@
-import { twitter } from './twitter';
-import { slides } from './slideshow';
-import { ui } from './ui';
-
-// Fetch tweets from Twitter API
-const getTweets = () => {
-  twitter.getTweets().then((data) => {
-    ui.setUser(data.user);
-    slides.setTweets(data.tweets);
-    ui.showTweetCount(slides.getTweetCount());
-    nextTweet();
-    ui.hideLoader();
-  });
-};
+import twitter from './twitter';
+import slides from './slideshow';
+import ui from './ui';
 
 // Delete tweet
 const deleteTweet = () => {
@@ -60,23 +49,34 @@ const clickModal = (event) => {
 };
 
 // Display next tweet in slideshow
-const nextTweet = () => {
+const getNextTweet = () => {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
 };
 
 // Display previous tweet in slideshow
-const prevTweet = () => {
+const getPrevTweet = () => {
   const prevTweet = slides.getPrevTweet();
   ui.renderTweet(prevTweet);
+};
+
+// Fetch tweets from Twitter API
+const getTweets = () => {
+  twitter.getTweets().then((data) => {
+    ui.setUser(data.user);
+    slides.setTweets(data.tweets);
+    ui.showTweetCount(slides.getTweetCount());
+    getNextTweet();
+    ui.hideLoader();
+  });
 };
 
 // DOM content loaded event listener
 document.addEventListener('DOMContentLoaded', getTweets);
 
 // Page event listeners
-document.getElementById('next').addEventListener('click', nextTweet);
-document.getElementById('prev').addEventListener('click', prevTweet);
+document.getElementById('next').addEventListener('click', getNextTweet);
+document.getElementById('prev').addEventListener('click', getPrevTweet);
 
 // Button event listener
 document.getElementById('panel').addEventListener('click', confirmAction);

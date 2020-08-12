@@ -1,4 +1,6 @@
-import { messages } from './messages';
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["getActionMessage", "getErrorMessage", "getDateString"] }] */
+
+import messages from './messages';
 
 class UI {
   // Set UI elements
@@ -31,15 +33,12 @@ class UI {
     this.tweetText.setAttribute('href', this.getTweetURL(tweet.data));
     this.likeCount.textContent = String(tweet.data.favorite_count);
 
-    tweet.data.favorite_count === 1
-      ? (this.likePlurality.textContent = 'like')
-      : (this.likePlurality.textContent = 'likes');
+    this.likePlurality.textContent =
+      tweet.data.favorite_count === 1 ? 'like' : 'likes';
 
-    tweet.data.actionTaken
-      ? (this.message.textContent = this.getActionMessage(
-          tweet.data.actionTaken
-        ))
-      : (this.message.textContent = this.getRandomMessage());
+    this.message.textContent = tweet.data.actionTaken
+      ? this.getActionMessage(tweet.data.actionTaken)
+      : this.getRandomMessage();
 
     this.updateIndex(tweet.index);
   }
@@ -136,22 +135,22 @@ class UI {
   getActionMessage(action) {
     if (action === 'DELETED') {
       return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
-    } else {
-      return 'YOU BUMPED THIS RECENTLY! HOPE IT DOES NUMBERS THIS TIME CHIEF!';
     }
+    return 'YOU BUMPED THIS RECENTLY! HOPE IT DOES NUMBERS THIS TIME CHIEF!';
   }
 
   // Let user know what they did wrong
   getErrorMessage(action, errorCode) {
     if (action === 'DELETED' && errorCode === 144) {
       return "YOU CAN'T DELETE A TWEET TWICE! NO MATTER HOW BAD IT WAS!";
-    } else if (action === 'RETWEETED' && errorCode === 144) {
-      return "YOU CAN'T RETWEET A TWEET THAT DOESN'T EXIST!";
-    } else if (errorCode === 327) {
-      return "YOU CAN'T RETWEET THIS TWICE! IT WASN'T EVEN THAT GOOD!";
-    } else {
-      return 'HMM, SOMETHING WENT WRONG. TRY AGAIN LATER.';
     }
+    if (action === 'RETWEETED' && errorCode === 144) {
+      return "YOU CAN'T RETWEET A TWEET THAT DOESN'T EXIST!";
+    }
+    if (errorCode === 327) {
+      return "YOU CAN'T RETWEET THIS TWICE! IT WASN'T EVEN THAT GOOD!";
+    }
+    return 'HMM, SOMETHING WENT WRONG. TRY AGAIN LATER.';
   }
 
   // Get message to display alongside tweet
@@ -188,4 +187,6 @@ class UI {
   }
 }
 
-export const ui = new UI();
+const ui = new UI();
+
+export default ui;

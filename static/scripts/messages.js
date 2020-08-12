@@ -1,4 +1,4 @@
-export const messages = [
+const messages = [
   'WOW, THAT REALLY SHOULD HAVE STAYED IN THE DRAFTS!',
   'THAT MUST HAVE SOUNDED A LOT BETTER IN YOUR HEAD, HUH?',
   'HIT OR MISS; I GUESS THEY NEVER HIT, HUH?',
@@ -19,3 +19,5 @@ export const messages = [
   "THIS WAS JUST BAD I DON'T EVEN HAVE ANYTHING ELSE TO SAY",
   "YOU'RE NOT A CLOWN. YOU'RE THE ENTIRE CIRCUS"
 ];
+
+export default messages;

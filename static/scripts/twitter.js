@@ -1,3 +1,5 @@
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["getTweets", "deleteTweet", "bumpTweet"] }] */
+
 class Twitter {
   // Query internal API
   async getTweets() {
@@ -29,4 +31,6 @@ class Twitter {
   }
 }
 
-export const twitter = new Twitter();
+const twitter = new Twitter();
+
+export default twitter;

@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const Twit = require('twit');
-const keys = require('../config/keys');
 const bodyParser = require('body-parser').json();
 const math = require('mathjs');
+
+const keys = require('../config/keys');
 
 // Check if user is logged in
 const authCheck = (req, res, next) => {
@@ -34,11 +35,11 @@ const calcLikeThreshold = (tweets) => {
     tweetLikes.push(tweet.favorite_count);
   });
 
-  const avg = parseInt(math.mean(tweetLikes));
-  let stdDev = parseInt(math.std(tweetLikes));
+  const avg = parseInt(math.mean(tweetLikes), 10);
+  let stdDev = parseInt(math.std(tweetLikes), 10);
 
   while (stdDev > avg) {
-    stdDev = parseInt(stdDev * 0.8);
+    stdDev = parseInt(stdDev * 0.8, 10);
   }
 
   // Return difference between average and standard deviation
@@ -81,7 +82,7 @@ router.get('/fetch', authCheck, (req, res) => {
   ) {
     tweetArray = tweetArray.concat(data);
     params.max_id = tweetArray[tweetArray.length - 1].id;
-    i--;
+    i -= 1;
     if (i) {
       client.get('statuses/user_timeline', params, makeTweetList);
     } else {
@@ -101,7 +102,7 @@ router.post('/delete', authCheck, bodyParser, (req, res) => {
     errorCode: undefined
   };
 
-  const endpoint = 'statuses/destroy/' + req.body.tweetid;
+  const endpoint = `statuses/destroy/${req.body.tweetid}`;
 
   const client = newTwit(req);
 
@@ -125,7 +126,7 @@ router.post('/retweet', authCheck, bodyParser, (req, res) => {
     errorCode: undefined
   };
 
-  const endpoint = 'statuses/retweet/' + req.body.tweetid;
+  const endpoint = `statuses/retweet/${req.body.tweetid}`;
 
   const client = newTwit(req);
 

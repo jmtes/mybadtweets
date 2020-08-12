@@ -1,18 +1,20 @@
 const express = require('express');
-const passportSetup = require('./config/passport-setup');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const compression = require('compression');
+const minify = require('express-minify');
+
 const session = require('express-session');
 const authRoutes = require('./routes/auth-routes');
 const tweetRoutes = require('./routes/tweet-routes');
 const apiRoutes = require('./routes/api-routes');
-const passport = require('passport');
+const keys = require('./config/keys');
+
+// eslint-disable-next-line no-unused-vars
+const passportSetup = require('./config/passport-setup');
 
 const app = express();
-
-const mongoose = require('mongoose');
-const keys = require('./config/keys');
-const cookieParser = require('cookie-parser');
-const compression = require('compression');
-const minify = require('express-minify');
 
 // Set up session
 app.use(

@@ -22,9 +22,8 @@ class Slides {
 
   // Get previous tweet
   getPrevTweet() {
-    this.currentIndex === 0
-      ? (this.currentIndex = this.tweets.length - 1)
-      : this.currentIndex--;
+    this.currentIndex =
+      this.currentIndex === 0 ? this.tweets.length - 1 : this.currentIndex - 1;
     return {
       data: this.tweets[this.currentIndex],
       index: this.currentIndex + 1
@@ -56,4 +55,6 @@ class Slides {
   }
 }
 
-export const slides = new Slides();
+const slides = new Slides();
+
+export default slides;
