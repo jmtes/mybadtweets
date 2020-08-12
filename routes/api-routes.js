@@ -16,18 +16,18 @@ const authCheck = (req, res, next) => {
 };
 
 // Create new Twit instance from user info
-function newTwit (req) {
+const newTwit = (req) => {
   return new Twit({
     consumer_key: keys.twitter.consumerKey,
     consumer_secret: keys.twitter.consumerSecret,
     access_token: req.user.accessToken,
     access_token_secret: req.user.accessTokenSecret
   });
-}
+};
 
 // Determine how few likes a tweet must have to be considered "bad"
 // @param tweets - array of tweet objects
-function calcLikeThreshold (tweets) {
+const calcLikeThreshold = (tweets) => {
   const tweetLikes = [];
 
   tweets.forEach(function (tweet) {
@@ -42,23 +42,23 @@ function calcLikeThreshold (tweets) {
   }
 
   // Return difference between average and standard deviation
-  return (avg - stdDev);
-}
+  return avg - stdDev;
+};
 
 // Filter the bad tweets
 // @param tweets - array of tweet objects
-function getBadTweets (tweets) {
+const getBadTweets = (tweets) => {
   const likeThreshold = calcLikeThreshold(tweets);
 
   if (likeThreshold) {
-    tweets = tweets.filter(tweet => tweet.favorite_count < likeThreshold);
+    tweets = tweets.filter((tweet) => tweet.favorite_count < likeThreshold);
   } else {
-    tweets = tweets.filter(tweet => tweet.favorite_count === likeThreshold);
+    tweets = tweets.filter((tweet) => tweet.favorite_count === likeThreshold);
   }
 
   // Return filtered array
   return tweets;
-}
+};
 
 router.get('/fetch', authCheck, (req, res) => {
   let tweetArray = [];
@@ -75,17 +75,22 @@ router.get('/fetch', authCheck, (req, res) => {
 
   const client = newTwit(req);
 
-  client.get('statuses/user_timeline', params, function makeTweetList (_err, data) {
+  client.get('statuses/user_timeline', params, function makeTweetList(
+    _err,
+    data
+  ) {
     tweetArray = tweetArray.concat(data);
     params.max_id = tweetArray[tweetArray.length - 1].id;
     i--;
     if (i) {
       client.get('statuses/user_timeline', params, makeTweetList);
     } else {
-      res.send(JSON.stringify({
-        user: req.user.username,
-        tweets: getBadTweets(tweetArray)
-      }));
+      res.send(
+        JSON.stringify({
+          user: req.user.username,
+          tweets: getBadTweets(tweetArray)
+        })
+      );
     }
   });
 });
