@@ -1,7 +1,8 @@
 import { messages } from './messages';
 
 class UI {
-  constructor () {
+  // Set UI elements
+  constructor() {
     this.subtitle = document.getElementById('subtitle');
     this.loader = document.getElementById('loader');
     this.slide = document.getElementById('slide');
@@ -20,7 +21,8 @@ class UI {
     this.messageArr = messages;
   }
 
-  renderTweet (tweet) {
+  // Display tweet
+  renderTweet(tweet) {
     // Make date string
     const date = this.getDateString(tweet.data.created_at);
     this.tweetDate.textContent = date;
@@ -30,43 +32,51 @@ class UI {
     this.likeCount.textContent = String(tweet.data.favorite_count);
 
     tweet.data.favorite_count === 1
-      ? this.likePlurality.textContent = 'like'
-      : this.likePlurality.textContent = 'likes';
+      ? (this.likePlurality.textContent = 'like')
+      : (this.likePlurality.textContent = 'likes');
 
     tweet.data.actionTaken
-      ? this.message.textContent = this.getActionMessage(tweet.data.actionTaken)
-      : this.message.textContent = this.getRandomMessage();
+      ? (this.message.textContent = this.getActionMessage(
+          tweet.data.actionTaken
+        ))
+      : (this.message.textContent = this.getRandomMessage());
 
     this.updateIndex(tweet.index);
   }
 
-  hideLoader () {
+  // Hide loader
+  hideLoader() {
     this.subtitle.textContent = 'HERE ARE THOSE SHITTY TWEETS YOUR ORDERED';
     this.loader.classList.add('hidden');
     this.slide.classList.remove('hidden');
     this.panel.classList.remove('hidden');
   }
 
-  updateIndex (index) {
+  // Update index in tweet pagination
+  updateIndex(index) {
     this.tweetIndex.textContent = String(index);
   }
 
-  showTweetCount (totalTweets) {
+  // Show total number of tweets
+  showTweetCount(totalTweets) {
     this.tweetCount.textContent = String(totalTweets);
   }
 
-  showConfirmModal () {
+  // Show modal to confirm user action
+  showConfirmModal() {
     this.modalMessage.textContent = 'ARE YOU SURE?';
 
     // Create option buttons
     const yesButton = document.createElement('span');
     yesButton.id = 'yes';
-    yesButton.className = 'modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    yesButton.className =
+      'modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
     yesButton.textContent = 'YES';
 
     const noButton = document.createElement('span');
     noButton.id = 'no';
-    noButton.className = 'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    noButton.className =
+      'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
     noButton.textContent = 'NO';
 
     // Remove any existing option buttons
@@ -80,12 +90,14 @@ class UI {
     this.modal.classList.remove('hidden');
   }
 
-  showSuccess (action) {
+  // Notify user of successful action
+  showSuccess(action) {
     this.modalMessage.textContent = `TWEET SUCCESSFULLY ${action}`;
 
     // Create option button
     const okButton = document.createElement('span');
-    okButton.className = 'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    okButton.className =
+      'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
     okButton.textContent = 'OK';
 
     // Remove any existing option buttons
@@ -98,12 +110,14 @@ class UI {
     this.message.textContent = this.getActionMessage(action);
   }
 
-  showFailure (action, errorCode) {
+  // Alert user of action failure
+  showFailure(action, errorCode) {
     this.modalMessage.textContent = this.getErrorMessage(action, errorCode);
 
     // Create option button
     const okButton = document.createElement('span');
-    okButton.className = 'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
+    okButton.className =
+      'close-modal modal-btn cursor-pointer hover:text-shadow-tweet hover:tracking-button';
     okButton.textContent = 'OK';
 
     // Remove any existing option buttons
@@ -113,11 +127,13 @@ class UI {
     this.modalOptions.appendChild(okButton);
   }
 
-  hideModal () {
+  // Hide modal
+  hideModal() {
     this.modal.classList.add('hidden');
   }
 
-  getActionMessage (action) {
+  // Remind user of action previously taken on a tweet
+  getActionMessage(action) {
     if (action === 'DELETED') {
       return 'YOU DELETED THIS RECENTLY! PERHAPS IT WAS FOR THE BEST';
     } else {
@@ -125,7 +141,8 @@ class UI {
     }
   }
 
-  getErrorMessage (action, errorCode) {
+  // Let user know what they did wrong
+  getErrorMessage(action, errorCode) {
     if (action === 'DELETED' && errorCode === 144) {
       return "YOU CAN'T DELETE A TWEET TWICE! NO MATTER HOW BAD IT WAS!";
     } else if (action === 'RETWEETED' && errorCode === 144) {
@@ -137,18 +154,22 @@ class UI {
     }
   }
 
-  getRandomMessage () {
-    return this.messageArr[Math.floor(Math.random() * Math.floor(this.messageArr.length))];
+  // Get message to display alongside tweet
+  getRandomMessage() {
+    return this.messageArr[
+      Math.floor(Math.random() * Math.floor(this.messageArr.length))
+    ];
   }
 
-  clearModalOptions () {
+  // Clear modal options
+  clearModalOptions() {
     while (this.modalOptions.firstChild) {
       this.modalOptions.removeChild(this.modalOptions.firstChild);
     }
   }
 
   // date param should be the created_at property of a tweet
-  getDateString (date) {
+  getDateString(date) {
     date = date.split(' ');
     const month = date[1].toLowerCase();
     const day = date[2];
@@ -156,12 +177,13 @@ class UI {
     return `${month} ${day}, ${year}`;
   }
 
-  getTweetURL (tweet) {
+  // Get tweet URL
+  getTweetURL(tweet) {
     return `https://twitter.com/${this.user}/status/${tweet.id_str}`;
   }
 
   // Set user
-  setUser (username) {
+  setUser(username) {
     this.user = username;
   }
 }

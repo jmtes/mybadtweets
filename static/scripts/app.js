@@ -1,11 +1,9 @@
-// Retweet button event listener
-
 import { twitter } from './twitter';
 import { slides } from './slideshow';
 import { ui } from './ui';
 
+// Fetch tweets from Twitter API
 const getTweets = () => {
-  // Fetch tweets from Twitter API
   twitter.getTweets().then((data) => {
     ui.setUser(data.user);
     slides.setTweets(data.tweets);
@@ -15,6 +13,7 @@ const getTweets = () => {
   });
 };
 
+// Delete tweet
 const deleteTweet = () => {
   twitter.deleteTweet(slides.getCurrentID()).then((data) => {
     if (data.status === 'OK') {
@@ -26,6 +25,7 @@ const deleteTweet = () => {
   });
 };
 
+// Retweet tweet
 const bumpTweet = () => {
   twitter.bumpTweet(slides.getCurrentID()).then((data) => {
     if (data.status === 'OK') {
@@ -37,6 +37,7 @@ const bumpTweet = () => {
   });
 };
 
+// Confirm tweet delete/retweet
 const confirmAction = (event) => {
   if (event.target.classList.contains('btn')) {
     ui.showConfirmModal();
@@ -51,17 +52,20 @@ const confirmAction = (event) => {
   }
 };
 
+// Close modal if target contains close-modal class
 const clickModal = (event) => {
   if (event.target.classList.contains('close-modal')) {
     ui.hideModal();
   }
 };
 
+// Display next tweet in slideshow
 const nextTweet = () => {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
 };
 
+// Display previous tweet in slideshow
 const prevTweet = () => {
   const prevTweet = slides.getPrevTweet();
   ui.renderTweet(prevTweet);
