@@ -4,49 +4,40 @@ import { twitter } from './twitter';
 import { slides } from './slideshow';
 import { ui } from './ui';
 
-console.log('twitter obj: ', twitter);
-console.log('ui obj: ', ui);
-console.log('slides obj: ', slides);
-
-function getTweets () {
+function getTweets() {
   // Fetch tweets from Twitter API
-  twitter.getTweets()
-    .then(data => {
-      console.log('user is: ', data.user);
-      console.log('their tweets are: ', data.tweets);
-      ui.setUser(data.user);
-      slides.setTweets(data.tweets);
-      ui.showTweetCount(slides.getTweetCount());
-      nextTweet();
-      ui.hideLoader();
-    });
+  twitter.getTweets().then((data) => {
+    ui.setUser(data.user);
+    slides.setTweets(data.tweets);
+    ui.showTweetCount(slides.getTweetCount());
+    nextTweet();
+    ui.hideLoader();
+  });
 }
 
-function deleteTweet () {
-  twitter.deleteTweet(slides.getCurrentID())
-    .then(data => {
-      if (data.status === 'OK') {
-        ui.showSuccess('DELETED');
-        slides.recordAction('DELETED');
-      } else {
-        ui.showFailure('DELETED', data.errorCode);
-      }
-    });
+function deleteTweet() {
+  twitter.deleteTweet(slides.getCurrentID()).then((data) => {
+    if (data.status === 'OK') {
+      ui.showSuccess('DELETED');
+      slides.recordAction('DELETED');
+    } else {
+      ui.showFailure('DELETED', data.errorCode);
+    }
+  });
 }
 
-function bumpTweet () {
-  twitter.bumpTweet(slides.getCurrentID())
-    .then(data => {
-      if (data.status === 'OK') {
-        ui.showSuccess('RETWEETED');
-        slides.recordAction('RETWEETED');
-      } else {
-        ui.showFailure('RETWEETED', data.errorCode);
-      }
-    });
+function bumpTweet() {
+  twitter.bumpTweet(slides.getCurrentID()).then((data) => {
+    if (data.status === 'OK') {
+      ui.showSuccess('RETWEETED');
+      slides.recordAction('RETWEETED');
+    } else {
+      ui.showFailure('RETWEETED', data.errorCode);
+    }
+  });
 }
 
-function confirmAction (event) {
+function confirmAction(event) {
   if (event.target.classList.contains('btn')) {
     ui.showConfirmModal();
     const buttonID = event.target.id;
@@ -60,19 +51,19 @@ function confirmAction (event) {
   }
 }
 
-function clickModal (event) {
+function clickModal(event) {
   if (event.target.classList.contains('close-modal')) {
     ui.hideModal();
   }
 }
 
-function nextTweet () {
+function nextTweet() {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
   // ui.updateIndex(slides.getCurrentIndex());
 }
 
-function prevTweet () {
+function prevTweet() {
   const prevTweet = slides.getPrevTweet();
   ui.renderTweet(prevTweet);
   // ui.updateIndex(slides.getCurrentIndex());
@@ -90,5 +81,3 @@ document.getElementById('panel').addEventListener('click', confirmAction);
 
 // Modal event listener
 document.getElementById('modal-bg').addEventListener('click', clickModal);
-
-console.log('successfully transpiled!');

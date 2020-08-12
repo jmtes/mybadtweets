@@ -2,15 +2,14 @@
 
 // Delete/Retweet tweet
 class Twitter {
-  async getTweets () {
-    console.log('getTweets triggered');
+  async getTweets() {
     // Query internal API
     let res = await window.fetch('/api/fetch');
     res = await res.json();
     return res;
   }
 
-  async deleteTweet (tweetid) {
+  async deleteTweet(tweetid) {
     let res = await window.fetch('/api/delete', {
       method: 'POST',
       body: JSON.stringify({ tweetid }),
@@ -20,7 +19,7 @@ class Twitter {
     return res;
   }
 
-  async bumpTweet (tweetid) {
+  async bumpTweet(tweetid) {
     let res = await window.fetch('/api/retweet', {
       method: 'POST',
       body: JSON.stringify({ tweetid }),
