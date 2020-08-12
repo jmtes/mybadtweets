@@ -76,7 +76,7 @@ App development progress is being tracked [here](https://trello.com/b/kqxbjGpU/m
 
 ## Authors
 
-- Julienne Tesoro - [Github](https://github.com/jmtes) - [Linkedin](https://www.linkedin.com/in/julienne-tesoro-72156817a/)
+- Juno Tesoro - [Github](https://github.com/jmtes) - [Linkedin](https://www.linkedin.com/in/jutesoro/)
 
 ## Acknowledgements
 
