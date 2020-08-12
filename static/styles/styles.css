@@ -4,7 +4,7 @@
 
 @media only screen and (max-width: 415px) {
   html {
-    font-size: calc(1vw + 1vh + .5vmin);
+    font-size: calc(1vw + 1vh + 0.5vmin);
   }
 }
 
@@ -14,6 +14,7 @@
   }
 }
 
-.btn, .modal-btn {
+.btn,
+.modal-btn {
   transition: text-shadow 250ms ease, letter-spacing 500ms ease;
 }
