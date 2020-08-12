@@ -2,7 +2,7 @@
 
 # mybadtweets
 
-mybadtweets is a web app that shows you your least popular tweets.
+mybadtweets is a web app that fetches your tweets, calculates the average amount of likes you get, and shows you all the tweets whose likes fall much below that average. It was made in the name of light-hearted self-deprecation.
 
 ## Setup for Development
 
@@ -58,6 +58,20 @@ npm run build
 npm run start
 ```
 
+![The UI](https://i.imgur.com/EmA69Me.png)
+
+## Future Features
+
+- Quote-retweet functionality
+- Ability to jump to a specific tweet
+- Ability to specify amount of tweets to display
+- Image rendering
+- A tweet statistics panel
+- Toggle between mean messages, nice messages, and no messages
+- Toggle between slideshow, list, and grid views
+- Dark mode
+- Laugh track that plays with each tweet displayed as one progresses through the slidshow
+
 ## Built With
 
 - [EJS](https://ejs.co) - templating engine
@@ -76,7 +90,7 @@ App development progress is being tracked [here](https://trello.com/b/kqxbjGpU/m
 
 ## Authors
 
-- Juno Tesoro - [Github](https://github.com/jmtes) - [Linkedin](https://www.linkedin.com/in/jutesoro/)
+- Juno Tesoro is a frontend developer and certified bad tweeter. You can find them on [Github](https://github.com/jmtes), [Linkedin](https://www.linkedin.com/in/jutesoro/), and, of course, [Twitter](https://twitter.com/jumicates).
 
 ## Acknowledgements
 
