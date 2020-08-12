@@ -170,7 +170,6 @@ module.exports = {
     borderColor: [],
     textTransform: [],
     fontStyle: [],
-    // fontSize: [],
     textAlign: [],
     stroke: [],
     fill: [],

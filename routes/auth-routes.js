@@ -8,7 +8,7 @@ router.get('/', passport.authenticate('twitter'));
 router.get('/logout', (req, res) => {
   // Handle with passport
   req.logout();
-  req.session.destroy(err => {
+  req.session.destroy((err) => {
     if (err) {
       console.log(err);
     }
@@ -20,7 +20,6 @@ router.get('/logout', (req, res) => {
 
 // Callback route for Twitter to redirect to
 router.get('/redirect', passport.authenticate('twitter'), (req, res) => {
-  // res.send(req.user);
   res.redirect('/tweets');
 });
 

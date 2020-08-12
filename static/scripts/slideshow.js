@@ -1,16 +1,16 @@
-// Tweet generator
+// Slideshow class
 class Slides {
   // tweets param should be array of tweet objects
-  constructor () {
+  constructor() {
     this.tweets = undefined;
     this.currentIndex = -1;
   }
 
-  setTweets (tweets) {
+  setTweets(tweets) {
     this.tweets = tweets;
   }
 
-  getNextTweet () {
+  getNextTweet() {
     this.currentIndex = (this.currentIndex + 1) % this.tweets.length;
     return {
       data: this.tweets[this.currentIndex],
@@ -18,9 +18,9 @@ class Slides {
     };
   }
 
-  getPrevTweet () {
+  getPrevTweet() {
     this.currentIndex === 0
-      ? this.currentIndex = this.tweets.length - 1
+      ? (this.currentIndex = this.tweets.length - 1)
       : this.currentIndex--;
     return {
       data: this.tweets[this.currentIndex],
@@ -28,7 +28,7 @@ class Slides {
     };
   }
 
-  recordAction (action) {
+  recordAction(action) {
     if (action === 'DELETED') {
       this.tweets[this.currentIndex].actionTaken = 'DELETED';
     } else {
@@ -36,15 +36,15 @@ class Slides {
     }
   }
 
-  getTweetCount () {
+  getTweetCount() {
     return this.tweets.length;
   }
 
-  getCurrentIndex () {
+  getCurrentIndex() {
     return this.currentIndex + 1;
   }
 
-  getCurrentID () {
+  getCurrentID() {
     return this.tweets[this.currentIndex].id_str;
   }
 }

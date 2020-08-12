@@ -60,13 +60,11 @@ const clickModal = (event) => {
 const nextTweet = () => {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
-  // ui.updateIndex(slides.getCurrentIndex());
 };
 
 const prevTweet = () => {
   const prevTweet = slides.getPrevTweet();
   ui.renderTweet(prevTweet);
-  // ui.updateIndex(slides.getCurrentIndex());
 };
 
 // DOM content loaded event listener
