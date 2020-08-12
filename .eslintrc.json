@@ -8,5 +8,8 @@
     "no-process-exit": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "no-underscore-dangle": "off"
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
