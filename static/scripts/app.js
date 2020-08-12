@@ -4,7 +4,7 @@ import { twitter } from './twitter';
 import { slides } from './slideshow';
 import { ui } from './ui';
 
-function getTweets() {
+const getTweets = () => {
   // Fetch tweets from Twitter API
   twitter.getTweets().then((data) => {
     ui.setUser(data.user);
@@ -13,9 +13,9 @@ function getTweets() {
     nextTweet();
     ui.hideLoader();
   });
-}
+};
 
-function deleteTweet() {
+const deleteTweet = () => {
   twitter.deleteTweet(slides.getCurrentID()).then((data) => {
     if (data.status === 'OK') {
       ui.showSuccess('DELETED');
@@ -24,9 +24,9 @@ function deleteTweet() {
       ui.showFailure('DELETED', data.errorCode);
     }
   });
-}
+};
 
-function bumpTweet() {
+const bumpTweet = () => {
   twitter.bumpTweet(slides.getCurrentID()).then((data) => {
     if (data.status === 'OK') {
       ui.showSuccess('RETWEETED');
@@ -35,9 +35,9 @@ function bumpTweet() {
       ui.showFailure('RETWEETED', data.errorCode);
     }
   });
-}
+};
 
-function confirmAction(event) {
+const confirmAction = (event) => {
   if (event.target.classList.contains('btn')) {
     ui.showConfirmModal();
     const buttonID = event.target.id;
@@ -49,25 +49,25 @@ function confirmAction(event) {
       }
     });
   }
-}
+};
 
-function clickModal(event) {
+const clickModal = (event) => {
   if (event.target.classList.contains('close-modal')) {
     ui.hideModal();
   }
-}
+};
 
-function nextTweet() {
+const nextTweet = () => {
   const nextTweet = slides.getNextTweet();
   ui.renderTweet(nextTweet);
   // ui.updateIndex(slides.getCurrentIndex());
-}
+};
 
-function prevTweet() {
+const prevTweet = () => {
   const prevTweet = slides.getPrevTweet();
   ui.renderTweet(prevTweet);
   // ui.updateIndex(slides.getCurrentIndex());
-}
+};
 
 // DOM content loaded event listener
 document.addEventListener('DOMContentLoaded', getTweets);
