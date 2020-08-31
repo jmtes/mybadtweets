@@ -47,12 +47,12 @@ passport.use(
 
 // Encodes and writes user info to browser cookie
 passport.serializeUser((user, done) => {
-  done(null, user.twitterID);
+  done(null, user.username);
 });
 
 // Decodes user info from browser cookie to use in backend
-passport.deserializeUser((id, done) => {
-  User.findOne({ twitterID: id }).then((user) => {
+passport.deserializeUser((username, done) => {
+  User.findOne({ username }).then((user) => {
     done(null, user);
   });
 });
