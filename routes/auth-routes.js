@@ -14,7 +14,7 @@ router.get('/logout', (req, res) => {
     }
   });
 
-  res.clearCookie('session-id');
+  res.clearCookie('mbt-session');
   res.redirect('/');
 });
 

@@ -19,7 +19,7 @@ const app = express();
 // Set up session
 app.use(
   session({
-    name: 'session-id',
+    name: 'mbt-session',
     resave: false,
     saveUninitialized: false,
     secret: keys.session.secret,
