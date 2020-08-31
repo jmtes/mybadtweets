@@ -11,10 +11,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  twitterID: {
-    type: String,
-    required: true
-  },
   accessToken: {
     type: String,
     required: true

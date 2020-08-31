@@ -27,7 +27,6 @@ passport.use(
           // User does not exist, create new user
           user = new User({
             username: profile.username,
-            twitterID: profile.id,
             accessToken: token,
             accessTokenSecret: tokenSecret
           });
