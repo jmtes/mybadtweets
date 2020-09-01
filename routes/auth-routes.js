@@ -9,13 +9,10 @@ router.get('/logout', (req, res) => {
   // Handle with passport
   req.logout();
   req.session.destroy((err) => {
-    if (err) {
-      console.log(err);
-    }
+    if (err) console.log(err);
+    res.clearCookie('mbt-session');
+    res.redirect('/');
   });
-
-  res.clearCookie('session-id');
-  res.redirect('/');
 });
 
 // Callback route for Twitter to redirect to

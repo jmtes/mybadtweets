@@ -2,13 +2,28 @@
 
 const mongoose = require('mongoose');
 
+mongoose.set('useCreateIndex', true);
+
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  username: String,
-  twitterID: String,
-  accessToken: String,
-  accessTokenSecret: String
+  username: {
+    type: String,
+    required: true
+  },
+  accessToken: {
+    type: String,
+    required: true
+  },
+  accessTokenSecret: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: new Date(),
+    expires: 86400
+  }
 });
 
 const User = mongoose.model('user', userSchema);

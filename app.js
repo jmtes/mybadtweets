@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const minify = require('express-minify');
+const { v4: uuid } = require('uuid');
 
 const session = require('express-session');
 const authRoutes = require('./routes/auth-routes');
@@ -19,7 +20,8 @@ const app = express();
 // Set up session
 app.use(
   session({
-    name: 'session-id',
+    name: 'mbt-session',
+    genid: () => uuid(),
     resave: false,
     saveUninitialized: false,
     secret: keys.session.secret,
