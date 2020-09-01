@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const minify = require('express-minify');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const { v4: uuid } = require('uuid');
 
-const session = require('express-session');
 const authRoutes = require('./routes/auth-routes');
 const tweetRoutes = require('./routes/tweet-routes');
 const apiRoutes = require('./routes/api-routes');
@@ -17,11 +18,21 @@ const passportSetup = require('./config/passport-setup');
 
 const app = express();
 
+// Set up session store
+const store = new MongoDBStore({
+  uri: keys.mongodb.dbURI,
+  collection: 'sessions',
+  expires: 1000 * 60 * 30
+});
+
+store.on('error', (err) => console.log(err));
+
 // Set up session
 app.use(
   session({
     name: 'mbt-session',
     genid: () => uuid(),
+    store,
     resave: false,
     saveUninitialized: false,
     secret: keys.session.secret,
