@@ -17,7 +17,7 @@ passport.use(
     (token, tokenSecret, profile, done) => {
       const getUser = async () => {
         // Check if user already exists in db
-        let user = await User.findOne({ twitterID: profile.id });
+        let user = await User.findOne({ username: profile.username });
 
         if (user) {
           // User exists, refresh access tokens

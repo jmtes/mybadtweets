@@ -22,7 +22,7 @@ const userSchema = new Schema({
   createdAt: {
     type: Date,
     default: new Date(),
-    expires: 86400
+    expires: 14400
   }
 });
 
