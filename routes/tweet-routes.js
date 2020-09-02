@@ -1,14 +1,6 @@
 const router = require('express').Router();
 
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    // If user is not logged in
-    res.redirect('/auth');
-  } else {
-    // If user is logged in
-    next();
-  }
-};
+const authCheck = require('./middleware/auth-check');
 
 router.get('/', authCheck, (req, res) => {
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
