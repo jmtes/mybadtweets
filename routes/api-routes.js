@@ -4,17 +4,7 @@ const bodyParser = require('body-parser').json();
 const math = require('mathjs');
 
 const keys = require('../config/keys');
-
-// Check if user is logged in
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    // User is not logged in, redirect to auth page
-    res.redirect('/auth');
-  } else {
-    // User is logged in, proceed
-    next();
-  }
-};
+const authCheck = require('./auth-check');
 
 // Create new Twit instance from user info
 const newTwit = (req) => {
