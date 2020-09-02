@@ -1,4 +1,4 @@
-const Twit = require('twit');
+const Twit = require('promised-twit');
 const math = require('mathjs');
 
 const keys = require('../../config/keys');

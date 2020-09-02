@@ -1,12 +1,12 @@
+/* eslint-disable no-await-in-loop */
 const router = require('express').Router();
 const bodyParser = require('body-parser').json();
 
 const authCheck = require('./middleware/auth-check');
 const { newTwit, getBadTweets } = require('./utils/twitter');
 
-router.get('/fetch', authCheck, (req, res) => {
+router.get('/fetch', authCheck, async (req, res) => {
   let tweetArray = [];
-  let i = 16;
 
   const params = {
     screen_name: req.user.username,
@@ -19,72 +19,55 @@ router.get('/fetch', authCheck, (req, res) => {
 
   const client = newTwit(req);
 
-  client.get('statuses/user_timeline', params, function makeTweetList(
-    _err,
-    data
-  ) {
+  for (let i = 0; i < 16; i += 1) {
+    const data = await client.getStatusesUserTimeline(params);
     tweetArray = tweetArray.concat(data);
     params.max_id = tweetArray[tweetArray.length - 1].id;
-    i -= 1;
-    if (i) {
-      client.get('statuses/user_timeline', params, makeTweetList);
-    } else {
-      res.send(
-        JSON.stringify({
-          user: req.user.username,
-          tweets: getBadTweets(tweetArray)
-        })
-      );
-    }
-  });
+  }
+
+  res.json({ user: req.user.username, tweets: getBadTweets(tweetArray) });
 });
 
-router.post('/delete', authCheck, bodyParser, (req, res) => {
+router.post('/delete', authCheck, bodyParser, async (req, res) => {
   const bod = {
     status: undefined,
     errorCode: undefined
   };
 
-  const endpoint = `statuses/destroy/${req.body.tweetid}`;
-
   const client = newTwit(req);
 
-  client.post(endpoint, (err) => {
-    if (!err) {
-      bod.status = 'OK';
-      res.set('Content-Type', 'application/json');
-      res.send(bod);
-    } else {
-      bod.status = 'FAIL';
-      bod.errorCode = err.code;
-      res.set('Content-Type', 'application/json');
-      res.send(bod);
-    }
-  });
+  res.set('Content-Type', 'application/json');
+
+  try {
+    await client.postStatusesDestroyById({ id: req.body.tweetid });
+    bod.status = 'OK';
+    res.json(bod);
+  } catch (err) {
+    bod.status = 'FAIL';
+    bod.errorCode = err.code;
+    res.json(bod);
+  }
 });
 
-router.post('/retweet', authCheck, bodyParser, (req, res) => {
+router.post('/retweet', authCheck, bodyParser, async (req, res) => {
   const bod = {
     status: undefined,
     errorCode: undefined
   };
 
-  const endpoint = `statuses/retweet/${req.body.tweetid}`;
-
   const client = newTwit(req);
 
-  client.post(endpoint, (err) => {
-    if (!err) {
-      bod.status = 'OK';
-      res.set('Content-Type', 'application/json');
-      res.send(bod);
-    } else {
-      bod.status = 'FAIL';
-      bod.errorCode = err.code;
-      res.set('Content-Type', 'application/json');
-      res.send(bod);
-    }
-  });
+  res.set('Content-Type', 'application/json');
+
+  try {
+    await client.postStatusesRetweetById({ id: req.body.tweetid });
+    bod.status = 'OK';
+    res.json(bod);
+  } catch (err) {
+    bod.status = 'FAIL';
+    bod.errorCode = err.code;
+    res.json(bod);
+  }
 });
 
 module.exports = router;
