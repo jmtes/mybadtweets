@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const authCheck = require('./auth-check');
+const authCheck = require('./middleware/auth-check');
 
 router.get('/', authCheck, (req, res) => {
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');

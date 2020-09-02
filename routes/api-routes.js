@@ -4,7 +4,7 @@ const bodyParser = require('body-parser').json();
 const math = require('mathjs');
 
 const keys = require('../config/keys');
-const authCheck = require('./auth-check');
+const authCheck = require('./middleware/auth-check');
 
 // Create new Twit instance from user info
 const newTwit = (req) => {
