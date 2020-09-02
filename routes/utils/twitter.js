@@ -4,12 +4,12 @@ const math = require('mathjs');
 const keys = require('../../config/keys');
 
 // Create new Twit instance from user info
-const newTwit = (req) => {
+const newTwit = ({ accessToken, accessTokenSecret }) => {
   return new Twit({
     consumer_key: keys.twitter.consumerKey,
     consumer_secret: keys.twitter.consumerSecret,
-    access_token: req.user.accessToken,
-    access_token_secret: req.user.accessTokenSecret
+    access_token: accessToken,
+    access_token_secret: accessTokenSecret
   });
 };
 

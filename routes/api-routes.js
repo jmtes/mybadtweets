@@ -17,7 +17,7 @@ router.get('/fetch', authCheck, async (req, res) => {
     tweet_mode: 'extended'
   };
 
-  const client = newTwit(req);
+  const client = newTwit(req.user);
 
   for (let i = 0; i < 16; i += 1) {
     const data = await client.getStatusesUserTimeline(params);
@@ -34,7 +34,7 @@ router.post('/delete', authCheck, bodyParser, async (req, res) => {
     errorCode: undefined
   };
 
-  const client = newTwit(req);
+  const client = newTwit(req.user);
 
   res.set('Content-Type', 'application/json');
 
@@ -55,7 +55,7 @@ router.post('/retweet', authCheck, bodyParser, async (req, res) => {
     errorCode: undefined
   };
 
-  const client = newTwit(req);
+  const client = newTwit(req.user);
 
   res.set('Content-Type', 'application/json');
 
