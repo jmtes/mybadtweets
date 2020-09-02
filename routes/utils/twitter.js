@@ -16,21 +16,12 @@ const newTwit = ({ accessToken, accessTokenSecret }) => {
 // Determine how few likes a tweet must have to be considered "bad"
 // @param tweets - array of tweet objects
 const calcLikeThreshold = (tweets) => {
-  const tweetLikes = [];
+  const tweetLikes = tweets.map((tweet) => tweet.favorite_count);
 
-  tweets.forEach(function (tweet) {
-    tweetLikes.push(tweet.favorite_count);
-  });
+  const avg = Math.round(math.mean(tweetLikes));
 
-  const avg = parseInt(math.mean(tweetLikes), 10);
-  let stdDev = parseInt(math.std(tweetLikes), 10);
-
-  while (stdDev > avg) {
-    stdDev = parseInt(stdDev * 0.8, 10);
-  }
-
-  // Return difference between average and standard deviation
-  return avg - stdDev;
+  // Return average divided by 4 (sophisticated, I know!)
+  return Math.round(avg / 4);
 };
 
 // Filter the bad tweets
@@ -38,14 +29,8 @@ const calcLikeThreshold = (tweets) => {
 const getBadTweets = (tweets) => {
   const likeThreshold = calcLikeThreshold(tweets);
 
-  if (likeThreshold) {
-    tweets = tweets.filter((tweet) => tweet.favorite_count < likeThreshold);
-  } else {
-    tweets = tweets.filter((tweet) => tweet.favorite_count === likeThreshold);
-  }
-
   // Return filtered array
-  return tweets;
+  return tweets.filter((tweet) => tweet.favorite_count <= likeThreshold);
 };
 
 module.exports = {
