@@ -19,13 +19,18 @@ router.get('/fetch', authCheck, async (req, res) => {
 
   const client = newTwit(req.user);
 
-  for (let i = 0; i < 16; i += 1) {
-    const data = await client.getStatusesUserTimeline(params);
-    tweetArray = tweetArray.concat(data);
-    params.max_id = tweetArray[tweetArray.length - 1].id;
-  }
+  try {
+    for (let i = 0; i < 16; i += 1) {
+      const data = await client.getStatusesUserTimeline(params);
+      tweetArray = tweetArray.concat(data);
+      params.max_id = tweetArray[tweetArray.length - 1].id;
+    }
 
-  res.json({ user: req.user.username, tweets: getBadTweets(tweetArray) });
+    res.json({ user: req.user.username, tweets: getBadTweets(tweetArray) });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Something went wrong. Try again later.' });
+  }
 });
 
 router.post('/delete', authCheck, bodyParser, async (req, res) => {
