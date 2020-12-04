@@ -36,27 +36,13 @@
           alt="Loading GIF"
           class="w-16"
         />
-        <div
-          id="slide"
-          class="flex items-center justify-center w-full mx-auto hidden"
-        >
-          <div
-            id="prev"
-            class="text-page hover:text-shadow-page transition-text-shadow transition-300 cursor-pointer"
-          >
+        <div id="slide" class="hidden">
+          <div id="prev" class="page prev">
             &lt;
           </div>
-          <div
-            id="tweet"
-            class="w-7/10 mx-8 mt-2 mb-6 p-5 border-black border-solid border-tweet shadow"
-          >
+          <div id="tweet" class="tweet">
             <p class="my-1em">on <span id="date"></span> you tweeted:</p>
-            <a
-              href="#"
-              target="_blank"
-              id="tweet-text"
-              class="text-2xl font-bold text-shadow-tweet hover:text-shadow-tweet-hover transition-text-shadow transition-200"
-            ></a>
+            <a href="#" target="_blank" id="tweet-text" class="tweet-text"></a>
             <p class="my-1em">
               and it received
               <span
@@ -66,19 +52,13 @@
               <span id="like-plurality"></span>!
             </p>
             <br />
-            <p id="message" class="my-1em italic"></p>
+            <p id="message" class="message"></p>
           </div>
-          <div
-            id="next"
-            class="text-page hover:text-shadow-page transition-text-shadow transition-300 cursor-pointer"
-          >
+          <div id="next" class="page next">
             &gt;
           </div>
         </div>
-        <div
-          id="panel"
-          class="w-3/5 mx-auto flex flex-wrap items-stretch content-center justify-around hidden"
-        >
+        <div id="panel" class="panel hidden">
           <div
             id="delete-btn"
             class="btn inline-block m-button p-button border-black border-solid border-tweet shadow text-xs cursor-pointer hover:text-shadow-tweet hover:tracking-button hover:font-bold"
