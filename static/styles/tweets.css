@@ -40,32 +40,38 @@
   display: none;
 }
 
-/* @media only screen and (max-width: 811px) {
-  #slide {
-    width: 90%;
-  }
-}
-
-@media only screen and (min-width: 812px) {
-  #slide {
-    position: relative;
-    width: 500px;
-  }
-} */
-
 #slide {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 910px) {
+  #slide {
+    justify-content: space-around;
+  }
 }
 
 .tweet {
   border: 0.0625rem solid #000;
   box-shadow: -1px -1px #000;
-  width: 750px;
-  margin: 0 1.5rem;
   padding: 2.5rem 2.5rem;
   position: relative;
+}
+
+@media only screen and (max-width: 910px) {
+  .tweet {
+    width: 85%;
+    margin: 0 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 911px) {
+  .tweet {
+    width: 750px;
+    margin: 0 1.5rem;
+  }
 }
 
 .tweet-text {
