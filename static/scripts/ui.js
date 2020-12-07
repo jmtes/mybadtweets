@@ -45,7 +45,7 @@ class UI {
 
   // Hide loader
   hideLoader() {
-    this.subtitle.textContent = 'HERE ARE THOSE SHITTY TWEETS YOUR ORDERED';
+    this.subtitle.textContent = 'HERE ARE THOSE SHITTY TWEETS YOU ORDERED';
     this.loader.classList.add('hidden');
     this.slide.classList.remove('hidden');
     this.panel.classList.remove('hidden');
