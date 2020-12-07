@@ -87,9 +87,14 @@
   text-shadow: -2px -2px #0000ff;
 }
 
+#like-count {
+  font-weight: bold;
+}
+
 .message {
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-style: italic;
+  color: #5f5f5f;
 }
 
 .panel {
